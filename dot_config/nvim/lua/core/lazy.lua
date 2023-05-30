@@ -13,11 +13,12 @@ vim.opt.rtp:prepend(lazypath)
 
 -- plugins definitions
 local plugins = {
+	{"ellisonleao/gruvbox.nvim",
+		priority = 1000},
 	{"nvim-telescope/telescope.nvim",
 		tag = '0.1.1',
 		dependencies = {'nvim-lua/plenary.nvim'}},
-	{"ellisonleao/gruvbox.nvim",
-		priority = 1000},
+    {"theprimeagen/harpoon"},
 	{"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate"},
 	{
@@ -27,29 +28,18 @@ local plugins = {
 	    -- LSP Support
 	    {'neovim/nvim-lspconfig'},             -- Required
 	    {                                      -- Optional
-	      'williamboman/mason.nvim',
-	      build = function()
-		pcall(vim.cmd, 'MasonUpdate')
-	      end,
+	        'williamboman/mason.nvim',
+	            build = ":MasonUpdate",
 	    },
 	    {'williamboman/mason-lspconfig.nvim'}, -- Optional
-
 	    -- Autocompletion
 	    {'hrsh7th/nvim-cmp'},     -- Required
 	    {'hrsh7th/cmp-nvim-lsp'}, -- Required
 	    {'L3MON4D3/LuaSnip'},     -- Required
 	  }
 	},
-    {
-      "nvim-tree/nvim-tree.lua",
-      version = "*",
-      dependencies = {
-        "nvim-tree/nvim-web-devicons",
-      },
-      config = function()
-        require("nvim-tree").setup {}
-      end,
-    }
 }
+
+vim.g.mapleader = " "
 
 require("lazy").setup(plugins)
