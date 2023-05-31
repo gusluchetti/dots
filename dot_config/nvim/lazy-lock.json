@@ -4,6 +4,7 @@
   "gruvbox.nvim": { "branch": "main", "commit": "df149bccb19a02c5c2b9fa6ec0716f0c0487feb0" },
   "harpoon": { "branch": "master", "commit": "21f4c47c6803d64ddb934a5b314dcb1b8e7365dc" },
   "lazy.nvim": { "branch": "main", "commit": "e6bf3a0d9c4899dcf832270f79bb1cee8fbc506e" },
+  "lazygit.nvim": { "branch": "main", "commit": "883c25d13eafd8b89b3cc116c712b19c9d2a755e" },
   "lsp-zero.nvim": { "branch": "v2.x", "commit": "9c9201eb3a3aace6746e3b85ca38adb4f73d4857" },
   "mason-lspconfig.nvim": { "branch": "main", "commit": "f0ce33f4794a2364eb08d09d09380e8b04ec5e6a" },
   "mason.nvim": { "branch": "main", "commit": "7d7efc738e08fc5bee822857db45cb6103f0b0c1" },

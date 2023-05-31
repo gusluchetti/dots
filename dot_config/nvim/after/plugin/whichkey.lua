@@ -26,7 +26,14 @@ local harpoon = {
   ["<C-k>"] = {"<cmd>lua require('harpoon.ui').nav_next()<cr>", "Go to next mark"},
 }
 
-local mappings = {normal, telescope, harpoon}
+local lazygit = {
+    ["<leader>g"] = {
+        name = "+git",
+        g = {"<cmd>LazyGit<cr>", "Open LazyGit"}
+    }
+}
+
+local mappings = {normal, telescope, harpoon, lazygit}
 local opts = {
   mode = "n", -- NORMAL mode
   -- prefix: use "<leader>f" for example for mapping everything related to finding files
