@@ -1,11 +1,12 @@
 local wk = require("which-key")
 
-local normal = {
-  ["<leader>f"] = {
+local core = {
+    ["<leader>f"] = {
     name = "+file",
     n = { "<cmd>enew<cr>", "New File" },
-  },
+    }
 }
+
 
 local telescope = {
   ["<leader>f"] = {
@@ -33,7 +34,7 @@ local lazygit = {
     }
 }
 
-local mappings = {normal, telescope, harpoon, lazygit}
+local mappings = {core, telescope, harpoon, lazygit}
 local opts = {
   mode = "n", -- NORMAL mode
   -- prefix: use "<leader>f" for example for mapping everything related to finding files

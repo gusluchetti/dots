@@ -16,6 +16,7 @@ vim.opt.rtp:prepend(lazypath)
 local plugins = {
 	{"ellisonleao/gruvbox.nvim",
 		priority = 1000},
+    {"norcalli/nvim-colorizer.lua"},
 	{"nvim-telescope/telescope.nvim",
 		tag = '0.1.1',
 		dependencies = {'nvim-lua/plenary.nvim'}},
