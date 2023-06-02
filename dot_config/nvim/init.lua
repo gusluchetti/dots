@@ -1,6 +1,3 @@
-require("sushii.options")
-require("sushii.keymaps")
 require("sushii.plugins")
-
-vim.o.background = "dark"
-vim.cmd([[colorscheme gruvbox]])
+require("sushii.keymaps")
+require("sushii.options")

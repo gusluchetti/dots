@@ -1,9 +1,5 @@
 local lsp = require('lsp-zero').preset({})
 
-lsp.ensure_installed({
-	'lua_ls',
-})
-
 lsp.on_attach(function(client, bufnr)
 	local opts = {buffer = bufnr, remap = false}
 

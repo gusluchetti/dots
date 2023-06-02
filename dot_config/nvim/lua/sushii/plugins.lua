@@ -9,25 +9,30 @@ if not vim.loop.fs_stat(lazypath) then
     lazypath,
   })
 end
-
 vim.opt.rtp:prepend(lazypath)
 
--- plugins definitions
 local plugins = {
-	{"ellisonleao/gruvbox.nvim",
-		priority = 1000},
-    {"norcalli/nvim-colorizer.lua"},
-	{"nvim-telescope/telescope.nvim",
-		tag = '0.1.1',
-		dependencies = {'nvim-lua/plenary.nvim'}},
+	{"ellisonleao/gruvbox.nvim", priority = 1000},
+    {"folke/which-key.nvim",
+        event = "VeryLazy",
+        init = function()
+            vim.o.timeout = true
+            vim.o.timeoutlen = 300
+        end,
+        opts = {},
+    },
     {"theprimeagen/harpoon"},
+	{"nvim-telescope/telescope.nvim",
+	    tag = '0.1.1',
+		dependencies = {'nvim-lua/plenary.nvim'}
+    },
 	{"nvim-treesitter/nvim-treesitter",
-		build = ":TSUpdate"},
+		build = ":TSUpdate"
+    },
 	{
 	  'VonHeikemen/lsp-zero.nvim',
 	  branch = 'v2.x',
 	  dependencies = {
-	    -- LSP Support
 	    {'neovim/nvim-lspconfig'},             -- Required
 	    {                                      -- Optional
 	        'williamboman/mason.nvim',
@@ -41,38 +46,27 @@ local plugins = {
 	  }
 	},
     {
-      "folke/which-key.nvim",
-      event = "VeryLazy",
-      init = function()
-        vim.o.timeout = true
-        vim.o.timeoutlen = 300
-      end,
-      -- empty opts = default
-      opts = {}
-    },
-    {
         "kdheepak/lazygit.nvim",
-        -- optional for floating window border decoration
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-        },
+        dependencies = {"nvim-lua/plenary.nvim"},
     },
     {
-    'goolord/alpha-nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
-    config = function ()
-        require'alpha'.setup(require'alpha.themes.startify'.config)
-    end
-    },
-    {
-    'nvim-tree/nvim-tree.lua',
+        'goolord/alpha-nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons' },
-    }
+        config = function ()
+            require'alpha'.setup(require'alpha.themes.startify'.config)
+        end
+    },
+    {'nvim-tree/nvim-tree.lua',
+        dependencies = { 'nvim-tree/nvim-web-devicons' }
+    },
 }
 
 vim.g.mapleader = " "
-
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+
 require("lazy").setup(plugins)
+
+vim.o.background = "dark"
+vim.cmd([[colorscheme gruvbox]])
