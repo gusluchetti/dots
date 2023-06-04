@@ -6,7 +6,19 @@ lsp.on_attach(function(client, bufnr)
 	vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
 end)
 
--- (Optional) Configure lua language server for neovim
-require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
+lsp.format_mapping('cf', {
+  format_opts = {
+    async = false,
+    timeout_ms = 1000,
+  },
+  servers = {
+    ['lua_ls'] = {'lua'},
+    ['html'] = {'html'},
+    ['cssls'] = {'css'},
+    -- if you have a working setup with null-ls
+    -- you can specify filetypes it can format.
+    -- ['null-ls'] = {'javascript', 'typescript'},
+  }
+})
 
 lsp.setup()
