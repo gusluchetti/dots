@@ -21,6 +21,7 @@ main languages should be setup already
 # others
 # configure keyboard, qwerty + programmers dvorak
 localectl --no-convert set-x11-keymap us,us intl,dvorak grp:alt_shift_toggle
+libinput, enable touch on touchpad, /usr/share/X11/xorg.conf.d/...
 
 # notes
 brightnessctl - brightness
