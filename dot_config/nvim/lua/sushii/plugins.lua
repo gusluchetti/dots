@@ -45,10 +45,9 @@ local plugins = {
 	    {'L3MON4D3/LuaSnip'},     -- Required
 	  }
 	},
-    {"dcampos/nvim-snippy"},
-    {"dcampos/cmp-snippy",
-        dependencies = {"hrsh7th/nvim-cmp"}},
     {"honza/vim-snippets"},
+    {"dcampos/nvim-snippy"},
+    {"dcampos/cmp-snippy"},
     {
         "kdheepak/lazygit.nvim",
         dependencies = {"nvim-lua/plenary.nvim"},
