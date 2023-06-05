@@ -111,6 +111,7 @@ export PATH=$HOME/go/bin:$PATH
 # For a full list of active aliases, run `alias`.
 
 alias vim="nvim"
+alias chezgit="lazygit -p ~/.local/share/chezmoi"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
