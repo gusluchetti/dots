@@ -1,22 +1,27 @@
 # download programs
-download curl wget git neovim xclip i3status i3blocks picom alacritty rofi libinput neofetch zsh
+install curl wget git xclip polybar picom alacritty rofi 
+libinput neofetch zsh neovim
+
 # ssh setup for git
 add ssh key to machine (ssh-keygen, eval ssh-agent, ssh-add, xclip copy sel key)
+
 # chezmoi
 chezmoi setup, sh -c "$(curl -fsLS get.chezmoi.io)" -- init gusluchetti/dots --ssh --apply
+
 # zsh
 set zsh as shell (sudo lchsh %USER, /usr/bin/zsh), 
 download and setup oh-my-zsh (sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)")
 for custom plugins/themes - (${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom/folder/thing_name})
 
-# neovim installation
+# node install - install nvm
 
-# node install
+# neovim installation - get nvim config from chezmoi
+main languages should be setup already
 
-# html + css setup
+# others
+# configure keyboard, qwerty + programmers dvorak
+localectl --no-convert set-x11-keymap us,us intl,dvorak grp:alt_shift_toggle
 
-# python env setup
-
-# rust setup
-
-# go setup
+# notes
+brightnessctl - brightness
+xrandr - monitor config if needed
