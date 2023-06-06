@@ -68,6 +68,9 @@ for_window [class="urxvt"] border pixel 1
 bindsym $mod+w exec /usr/bin/firefox
 bindsym $mod+n exec /usr/bin/thunar
 bindsym Print exec /usr/bin/flameshot gui
+# multiple keyboard layouts: qwerty us intl, progm dvorak
+exec --no-startup-id setxkbmap -layout 'us,us' \
+    -variant intl,dvp -option 'grp:alt_shift_toggle'
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
