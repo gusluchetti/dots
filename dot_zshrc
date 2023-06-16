@@ -81,11 +81,11 @@ fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
-
-# GOLANG configurations
+# rust (cargo) path
+export PATH=$HOME/.cargo/bin:$PATH
+# golang paths
 export GOPATH=$HOME/go
 export PATH=$HOME/go/bin:$PATH
 
