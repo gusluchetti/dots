@@ -24,8 +24,13 @@
 ## Downloading/applying chezmoi dot files
     (sh -c "$(curl -fsLS get.chezmoi.io)" -- init gusluchetti/dots --ssh --apply)
 
-## install nvm
+## Install NVM (Node Version Manager)
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+    # zsh should have nvm configuration already
+    nvm install --lts
+    nvm use --lts
+    # Downloading NPM (Node Package Manager)
+    npm install -g npm
 
 ## neovim installation
     get nvim config from chezmoi
