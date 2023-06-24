@@ -1,3 +1,4 @@
+# oh my zsh + plugins
 [".oh-my-zsh"]
     type = "archive"
     url = "https://github.com/ohmyzsh/ohmyzsh/archive/master.tar.gz"
@@ -27,3 +28,9 @@
     url = "https://github.com/romkatv/powerlevel10k/archive/v1.15.0.tar.gz"
     exact = true
     stripComponents = 1
+
+# polypomo - polybar plugin
+[".config/polybar/modules/polypomo"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/unode/polypomo/master/polypomo"
+    refreshPeriod = "168h"
