@@ -20,6 +20,12 @@ local plugins = {
         end
     },
     {
+        'numToStr/Comment.nvim',
+        config = function()
+            require('Comment').setup()
+        end
+    },
+    {
         "folke/which-key.nvim",
         event = "VeryLazy",
         init = function()
@@ -27,6 +33,12 @@ local plugins = {
             vim.o.timeoutlen = 300
         end,
         opts = {},
+    },
+    {
+        'lewis6991/gitsigns.nvim',
+        config = function()
+            require('gitsigns').setup()
+        end
     },
     { "theprimeagen/harpoon" },
     {
@@ -44,7 +56,6 @@ local plugins = {
         dependencies = {
             { 'neovim/nvim-lspconfig' }, -- Required
             {
-                -- Optional
                 'williamboman/mason.nvim',
                 build = ":MasonUpdate",
             },
@@ -76,39 +87,12 @@ local plugins = {
     {
         'nvim-tree/nvim-tree.lua',
         dependencies = { 'nvim-tree/nvim-web-devicons' }
-    },
-    {
-        "nvim-neorg/neorg",
-        build = ":Neorg sync-parsers",
-        dependencies = { "nvim-lua/plenary.nvim" },
-        config = function()
-            require("neorg").setup {
-                load = {
-                    ["core.defaults"] = {},  -- Loads default behaviour
-                    ["core.concealer"] = {}, -- Adds pretty icons to your documents
-                    ["core.dirman"] = {      -- Manages Neorg workspaces
-                        config = {
-                            workspaces = {
-                                notes = "~/notes",
-                            },
-                        },
-                    },
-                },
-            }
-        end,
-    },
-    {
-        "andrewferrier/wrapping.nvim",
-        config = function()
-            require("wrapping").setup()
-        end
-    },
+    }
 }
 
 vim.g.mapleader = " "
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
-
 
 require("lazy").setup(plugins)
 

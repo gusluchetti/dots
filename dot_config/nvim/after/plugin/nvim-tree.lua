@@ -1,6 +1,6 @@
 local nvimtree = require("nvim-tree");
 
-vim.keymap.set("n", "<C-e>", "<cmd>NvimTreeToggle<CR>")
+vim.keymap.set("n", "<C-n>", "<cmd>NvimTreeToggle<CR>", {desc = "Toggle nvim-tree"})
 
 nvimtree.setup({
   sort_by = "case_sensitive",
