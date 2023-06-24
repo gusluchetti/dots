@@ -25,11 +25,6 @@
     chsh -s /usr/bin/zsh
     sudo chsh -s /usr/bin/zsh
 
-## Downloading/applying chezmoi dot files
-    # chezmoi should be responsible for then configuring most things, such as:
-    # .config folder, zsh plugins, amongst other things
-    (sh -c "$(curl -fsLS get.chezmoi.io)" -- init gusluchetti/dots --ssh --apply)
-
 ## Install NVM (Node Version Manager)
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
     # zsh should have nvm configuration already
@@ -38,5 +33,12 @@
     # Downloading NPM (Node Package Manager)
     npm install -g npm
 
-# Configure keyboard, qwerty + programmers dvorak
+## Configure keyboard, qwerty + programmers dvorak
     localectl --no-convert set-x11-keymap us,us intl,dvorak grp:alt_shift_toggle
+
+read -p "Base configuration done. Dot files will now be added to the system. Press any key to continue."
+
+## Downloading/applying chezmoi dot files
+    # chezmoi should be responsible for then configuring most things, such as:
+    # .config folder, zsh plugins, amongst other things
+    (sh -c "$(curl -fsLS get.chezmoi.io)" -- init gusluchetti/dots --ssh --apply)
