@@ -41,6 +41,9 @@ echo "-- Installing NVM (Node Version Manager) --"
     # Downloading NPM (Node Package Manager)
     npm install -g npm
 
+echo "-- Installing Rust through rustup --"
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
 echo "-- Configure keyboard, qwerty + programmers dvorak --"
     localectl --no-convert set-x11-keymap us,us intl,dvorak grp:alt_shift_toggle
 
