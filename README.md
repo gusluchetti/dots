@@ -1,5 +1,5 @@
 # dots
-My dotfiles, managed using [https://www.chezmoi.io/](Chezmoi).
+My dotfiles, managed using [Chezmoi](https://www.chezmoi.io/).
 Trying to make this as OS-independent as possible! Not as easy as I thought it'd be.
 
 ---
