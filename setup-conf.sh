@@ -1,25 +1,31 @@
-#!/bin/bash
+# !/bin/bash
 
-# SETUP INSTRUCTIONS 
-## Programs to install
-    sudo dnf install git curl wget xclip polybar picom alacritty dmenu libinput neofetch zsh neovim vlc mpv lame brightnessctl
-
-## Enable extra repos
+## Enabling extra repos
     sudo dnf config-manager --add-repo https://copr.fedorainfracloud.org/coprs/atim/lazygit/repo/fedora-38/atim-lazygit-fedora-38.repo
     sudo dnf config-manager --add-repo https://copr.fedorainfracloud.org/coprs/fz0x1/zola/repo/fedora-38/fz0x1-zola-fedora-38.repo
+    sudo dnf config-manager --save
 
-## ssh setup for git
-    add ssh key to machine (ssh-keygen, eval ssh-agent, ssh-add, xclip copy sel key)
+## Installing essentials
+    sudo dnf install git curl wget alacritty zsh neovim vlc dmenu neofetch polybar picom mpv lame brightnessctl lazygit zola
 
-## chezmoi
-    chezmoi setup ( sh -c "$(curl -fsLS get.chezmoi.io)" -- init gusluchetti/dots --ssh --apply )
+## Setting SSH key Git
+    ssh-keygen -t ed25519 -C "gustavo@luchetti.dev"
+    eval "$(ssh-agent -s)"
+    ssh-add  ~/.ssh/id_ed25519
+    cat ~/.ssh/id_ed25519.pub   
 
-## zsh
-    set zsh as shell (sudo lchsh %USER, /usr/bin/zsh), 
+## Setting ZSH as default shell
+    sudo lchsh $USER
+    /usr/bin/zsh
+    # chezmoi should be responsible for then configuring oh-my-zsh + plugins
     download and setup oh-my-zsh (sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)")
     for custom plugins/themes - (${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom/folder/thing_name})
 
+## Downloading/applying chezmoi dot files
+    (sh -c "$(curl -fsLS get.chezmoi.io)" -- init gusluchetti/dots --ssh --apply)
+
 ## install nvm
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 
 ## neovim installation
     get nvim config from chezmoi
@@ -28,4 +34,3 @@
 ## others
 configure keyboard, qwerty + programmers dvorak
 localectl --no-convert set-x11-keymap us,us intl,dvorak grp:alt_shift_toggle
-libinput, enable touch on touchpad, /usr/share/X11/xorg.conf.d/...
