@@ -1,4 +1,7 @@
 # !/bin/bash
+    echo "Hi! This is my own install script\n"
+    echo -n "Please enter your preferred github email: "
+    read email
 
 ## Enabling extra repos
     sudo dnf config-manager --add-repo https://copr.fedorainfracloud.org/coprs/atim/lazygit/repo/fedora-38/atim-lazygit-fedora-38.repo
@@ -6,22 +9,21 @@
     sudo dnf config-manager --save
 
 ## Installing essentials
-    sudo dnf install git curl wget alacritty zsh neovim vlc dmenu neofetch polybar picom mpv lame brightnessctl lazygit zola
+    sudo dnf install -y git curl wget alacritty zsh neovim vlc rofi neofetch polybar picom mpv lame brightnessctl lazygit zola
 
-## Setting SSH key Git
-    ssh-keygen -t ed25519 -C "gustavo@luchetti.dev"
+## Setting SSH key for Git
+    ssh-keygen -t ed25519 -C "$email"
     eval "$(ssh-agent -s)"
     ssh-add  ~/.ssh/id_ed25519
-    cat ~/.ssh/id_ed25519.pub   
+    cat ~/.ssh/id_ed25519.pub
+    read -p "Press ENTER only after you've added your SSH key (https://github.com/settings/keys)"
 
 ## Setting ZSH as default shell
-    sudo lchsh $USER
-    /usr/bin/zsh
-    # chezmoi should be responsible for then configuring oh-my-zsh + plugins
-    download and setup oh-my-zsh (sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)")
-    for custom plugins/themes - (${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom/folder/thing_name})
+    chsh -s /usr/bin/zsh
 
 ## Downloading/applying chezmoi dot files
+    # chezmoi should be responsible for then configuring most things, such as:
+    # .config folder, zsh plugins, amongst other things
     (sh -c "$(curl -fsLS get.chezmoi.io)" -- init gusluchetti/dots --ssh --apply)
 
 ## Install NVM (Node Version Manager)
@@ -32,10 +34,5 @@
     # Downloading NPM (Node Package Manager)
     npm install -g npm
 
-## neovim installation
-    get nvim config from chezmoi
-    main languages should be setup already
-
-## others
-configure keyboard, qwerty + programmers dvorak
-localectl --no-convert set-x11-keymap us,us intl,dvorak grp:alt_shift_toggle
+# Configure keyboard, qwerty + programmers dvorak
+    localectl --no-convert set-x11-keymap us,us intl,dvorak grp:alt_shift_toggle
