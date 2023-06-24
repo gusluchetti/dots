@@ -3,10 +3,13 @@
     echo -n "Please enter your preferred github email: "
     read email
 
-## Enabling extra repos
+## Enabling Extra Repos (RPM Fusion and zola/lazygit @ COPR)
     sudo dnf config-manager --add-repo https://copr.fedorainfracloud.org/coprs/atim/lazygit/repo/fedora-38/atim-lazygit-fedora-38.repo
     sudo dnf config-manager --add-repo https://copr.fedorainfracloud.org/coprs/fz0x1/zola/repo/fedora-38/fz0x1-zola-fedora-38.repo
     sudo dnf config-manager --save
+
+    sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+    sudo dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
 ## Installing essentials
     sudo dnf install -y git curl wget alacritty zsh neovim vlc rofi neofetch polybar picom mpv lame brightnessctl lazygit zola
@@ -20,6 +23,7 @@
 
 ## Setting ZSH as default shell
     chsh -s /usr/bin/zsh
+    sudo chsh -s /usr/bin/zsh
 
 ## Downloading/applying chezmoi dot files
     # chezmoi should be responsible for then configuring most things, such as:
