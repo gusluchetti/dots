@@ -38,6 +38,7 @@ echo "-- Installing Rust + extras --"
     # cargo binstall installation
     curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
     cargo binstall cargo-watch rtx-cli
+    echo 'eval "$(~/.cargo/bin/rtx activate zsh)"' >> ~/.zshrc
 
 echo "-- Configure keyboard, qwerty + programmers dvorak --"
     localectl --no-convert set-x11-keymap us,us intl,dvorak grp:alt_shift_toggle
