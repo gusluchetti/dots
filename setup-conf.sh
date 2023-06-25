@@ -33,16 +33,11 @@ echo "-- Setting ZSH as default shell --"
     chsh -s /usr/bin/zsh
     sudo chsh -s /usr/bin/zsh
 
-echo "-- Installing NVM (Node Version Manager) --"
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
-    # zsh should have nvm configuration already
-    nvm install --lts
-    nvm use --lts
-    # Downloading NPM (Node Package Manager)
-    npm install -g npm
-
-echo "-- Installing Rust through rustup --"
+echo "-- Installing Rust + extras --"
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    # cargo binstall installation
+    curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
+    cargo binstall cargo-watch rtx-cli
 
 echo "-- Configure keyboard, qwerty + programmers dvorak --"
     localectl --no-convert set-x11-keymap us,us intl,dvorak grp:alt_shift_toggle
