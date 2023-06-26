@@ -85,8 +85,20 @@ local plugins = {
         dependencies = { 'nvim-tree/nvim-web-devicons' }
     },
     {
+        'windwp/nvim-autopairs',
+        event = "InsertEnter",
+        opts = {} -- this is equalent to setup({}) function
+    },
+    {
         'nvim-tree/nvim-tree.lua',
         dependencies = { 'nvim-tree/nvim-web-devicons' }
+    },
+    {
+        "simrat39/rust-tools.nvim",
+        ft = "rust",
+    },
+    {
+        'mfussenegger/nvim-dap'
     }
 }
 
