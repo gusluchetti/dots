@@ -13,13 +13,9 @@ echo "-- Enabling Extra Repos (RPM Fusion Releases,zola/lazygit @ COPR) --"
     sudo dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
 echo "-- Installing Essentials --"
-    sudo dnf install -y gcc clang git curl wget alacritty exa zsh neovim vlc rofi \
+    sudo dnf install -y --allowerasing gcc clang git curl wget alacritty exa zsh neovim vlc rofi \
         neofetch polybar picom lazygit zola discord zstd ripgrep grub-customizer \ 
-        mpv lame 
-
-    sudo dnf install -y gcc \
-        neofetch \
-        grub-customizer
+        mpv lame ffmpeg
 
 echo "-- Installing FiraMonoNerdFont --"
     wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/FiraMono.zip -P "$PWD"
