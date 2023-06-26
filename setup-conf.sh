@@ -15,7 +15,7 @@ echo "-- Enabling Extra Repos (RPM Fusion Releases,zola/lazygit @ COPR) --"
 echo "-- Installing Essentials --"
     sudo dnf install -y --allowerasing gcc clang git curl wget alacritty exa zsh neovim vlc rofi \
         neofetch polybar picom lazygit zola discord zstd ripgrep grub-customizer \ 
-        mpv lame ffmpeg
+        mpv lame ffmpeg lldb
 
 echo "-- Installing FiraMonoNerdFont --"
     wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/FiraMono.zip -P "$PWD"
