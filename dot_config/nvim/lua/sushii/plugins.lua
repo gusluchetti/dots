@@ -98,7 +98,11 @@ local plugins = {
         ft = "rust",
     },
     {
-        'mfussenegger/nvim-dap'
+        "rcarriga/nvim-dap-ui",
+        dependencies = { "mfussenegger/nvim-dap" },
+        config = function()
+            require("dapui").setup()
+        end
     }
 }
 

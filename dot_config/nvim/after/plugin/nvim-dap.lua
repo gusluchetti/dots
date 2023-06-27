@@ -4,4 +4,4 @@ vim.keymap.set("n", "<leader>dui", function()
     local widgets = require('dap.ui.widgets');
     local sidebar = widgets.sidebar(widgets.scopes);
     sidebar.open();
-end, { desc = "Open DAP UI" })
+end, { desc = "Open [D]AP [UI]" })
