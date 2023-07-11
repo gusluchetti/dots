@@ -35,7 +35,7 @@ sudo scoop install git 7zip vlc --global
 scoop install googlechrome firefox github discord teamspeak3 obsidian notion spotify-tui neovim foobar2000 anki
 echo "`nInstalling extras..."
 scoop install tinynvidiaupdatechecker obs-studio vscodium 1password-cli
-scoop install logitech-omm windirstat librehardwaremonitor bottom rufus
+scoop install logitech-omm windirstat librehardwaremonitor bottom rufus flameshot
 echo "`nInstalling gaming related programs..."
 scoop install yuzu betterjoy vibrance-gui autoclicker archisteamfarm steamcmd
 echo "`nInstalling development things..."
