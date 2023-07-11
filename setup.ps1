@@ -34,7 +34,7 @@ echo "`nInstalling Essentials..."
 sudo scoop install git github 7zip vlc-nightly googlechrome firefox discord --global
 scoop install teamspeak3 obsidian notion spotify-tui neovim foobar2000 anki
 echo "`nInstalling Extras..."
-scoop install logitech-omm tinynvidiaupdatechecker obs-studio vscodium
+scoop install logitech-omm tinynvidiaupdatechecker obs-studio vscodium 1password-cli
 echo "`nInstalling development things..."
 scoop install touch curl ripgrep sd gcc rustup nodejs pnpm less neofetch
 scoop install docker docker-compose lazydocker lazygit
