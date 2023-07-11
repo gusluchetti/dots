@@ -32,7 +32,7 @@ scoop bucket add games
 
 sudo winget install Microsoft.DotNet.DesktopRuntime.7 --architecture x86
 echo "`nInstalling essentials..."
-sudo scoop install git 7zip vlc steamcmd --global
+sudo scoop install git 7zip vlc --global
 scoop install googlechrome firefox github discord teamspeak3 obsidian notion spotify-tui neovim foobar2000 anki
 echo "`nInstalling extras..."
 scoop install tinynvidiaupdatechecker obs-studio vscodium 1password-cli
