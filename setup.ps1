@@ -16,7 +16,8 @@ Read-Host "Initial setup complete! If you'd like, quit this setup and go to Wind
 echo "`nSet Execution Policy to RemoteSigned"
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 echo "`nInstalling Scoop Package Manager..."
-irm get.scoop.sh | iex
+irm get.scoop.sh -outfile 'install.ps1'
+.\install.ps1 -ScoopDir 'E:\Programs\Scoop' -ScoopGlobalDir 'E:\Programs\Scoop\Global' -NoProxy
 
 echo "`nSetting up Scoop..."
 scoop install sudo
