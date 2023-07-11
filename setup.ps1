@@ -34,7 +34,7 @@ scoop install teamspeak3 obsidian notion spotify-tui neovim foobar2000 anki
 echo "`nInstalling Extras..."
 scoop install logitech-omm tinynvidiaupdatechecker obs-studio vscodium
 echo "`nInstalling development things..."
-scoop install touch ripgrep rustup wget curl docker docker-compose gcc grep nodejs pnpm less neofetch sed
+scoop install touch ripgrep rustup curl docker docker-compose gcc grep nodejs pnpm less neofetch sed
 
 echo "`nInstalling FiraCode (NerdFont)"
 scoop bucket add nerd-fonts
