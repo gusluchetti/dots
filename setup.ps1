@@ -17,7 +17,7 @@ echo "`nSet Execution Policy to RemoteSigned"
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 echo "`nInstalling Scoop Package Manager..."
 irm get.scoop.sh -outfile 'install.ps1'
-.\install.ps1 -ScoopDir 'D:\Programs\Scoop' -ScoopGlobalDir 'D:\Programs\Scoop\Global' -NoProxy
+.\install.ps1 -ScoopDir 'D:\Programs\Scoop' -ScoopGlobalDir 'C:\Scoop\Global' -NoProxy
 
 echo "`nSetting up Scoop..."
 scoop install sudo
