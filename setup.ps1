@@ -19,7 +19,7 @@ Read-Host "Initial setup complete! If you'd like, quit this setup and go to Wind
 echo "`nInstalling Scoop Package Manager..."
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 irm get.scoop.sh -outfile 'install.ps1'
-.\install.ps1 -ScoopDir 'D:\Programs\Scoop' -ScoopGlobalDir 'C:\Scoop' -NoProxy
+.\install.ps1 -ScoopDir '~\Scoop' -ScoopGlobalDir 'C:\Scoop' -NoProxy
 
 echo "`nSetting up Scoop..."
 scoop install sudo
@@ -41,12 +41,12 @@ scoop install googlechrome firefox obsidian teamspeak3 obs-studio vscodium gimp 
 scoop install logitech-omm tinynvidiaupdatechecker 1password-cli handbrake-cli
 scoop install windirstat librehardwaremonitor bottom rufus flameshot msiafterburner
 echo "`nInstalling gaming related programs..."
+sudo scoop install osulazer ferium --global
 scoop install yuzu betterjoy vibrance-gui autoclicker archisteamfarm steamcmd
-scoop install osulazer ferium
 echo "`nInstalling development things..."
 scoop install touch curl ripgrep sd gcc rustup nodejs pnpm less neofetch
 scoop install docker docker-compose lazydocker lazygit
 
 echo "`nInstalling nerd font (FiraCode)"
 scoop bucket add nerd-fonts
-sudo scoop install FiraCode FiraCode-NF FiraCode-NF-Mono
+sudo scoop install FiraCode FiraCode-NF FiraCode-NF-Mono --global
