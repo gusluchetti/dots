@@ -13,9 +13,8 @@ winget install -e -v $version -l "D:\Programs\qBittorrent" qBittorrent.qBittorre
 
 Read-Host "Initial setup complete! If you'd like, quit this setup and go to Windows Terminal to proceed..."
 
-echo "`nSet Execution Policy to RemoteSigned"
-Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 echo "`nInstalling Scoop Package Manager..."
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 irm get.scoop.sh -outfile 'install.ps1'
 .\install.ps1 -ScoopDir 'D:\Programs\Scoop' -ScoopGlobalDir 'C:\Scoop' -NoProxy
 
