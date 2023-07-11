@@ -149,7 +149,7 @@ exec --no-startup-id dbus-launch dunst --config ~/.config/dunst/dunstrc
 
 # alter if needed (current desktop config)
 exec --no-startup-id xrandr --output HDMI-1 --off
-exec --no-startup-id xrandr --output DP-1 --mode 1920x1080 --rate 239.96
+exec --no-startup-id xrandr --output DP-1 --mode 1920x1080 --rate 60
 
 # change focus
 bindsym $mod+j focus left
