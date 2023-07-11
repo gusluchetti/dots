@@ -5,6 +5,9 @@ winget install -e Microsoft.PowerShell
 winget install -e Microsoft.PowerToys
 winget install -e Microsoft.WindowsTerminal
 winget install -e Microsoft.Office
+
+echo "`nInstalling iCloud (Microsoft Store)..."
+winget install iCloud --id 9PKTQ5699M62
 echo "`nInstalling Steam..."
 winget install -e Valve.Steam
 echo "`nInstalling qBittorrent (v4.5.2)..."
@@ -34,7 +37,7 @@ echo "`nInstalling essentials..."
 sudo scoop install git 7zip vlc --global
 scoop install googlechrome firefox github discord teamspeak3 obsidian notion spotify-tui neovim foobar2000 anki
 echo "`nInstalling extras..."
-scoop install tinynvidiaupdatechecker obs-studio vscodium 1password-cli
+scoop install tinynvidiaupdatechecker obs-studio vscodium 1password-cli handbrake-cli
 scoop install logitech-omm windirstat librehardwaremonitor bottom rufus flameshot
 echo "`nInstalling gaming related programs..."
 scoop install yuzu betterjoy vibrance-gui autoclicker archisteamfarm steamcmd
