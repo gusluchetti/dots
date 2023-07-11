@@ -9,7 +9,8 @@ echo "`nInstalling Steam..."
 winget install Valve.Steam -h
 echo "`nInstalling qBittorrent (v4.5.2)..."
 winget install qBittorrent.qBittorrent -v 4.5.2
-echo "Initial setup complete! Now to configure Scoop..."
+
+Read-Host "Initial setup complete! If you'd like, quit this setup and go to Windows Terminal to proceed..."
 
 echo "`nSet Execution Policy to RemoteSigned"
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
