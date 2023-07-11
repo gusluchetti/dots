@@ -9,7 +9,7 @@ echo "`nInstalling Steam..."
 winget install -e Valve.Steam
 echo "`nInstalling qBittorrent (v4.5.2)..."
 $version= Read-Host "Please input latest whitelisted bakabt.me version, i.e 4.5.2"
-winget install -e -v $version -l "E:\Programs\qBittorrent" qBittorrent.qBittorrent
+winget install -e -v $version -l "D:\Programs\qBittorrent" qBittorrent.qBittorrent
 
 Read-Host "Initial setup complete! If you'd like, quit this setup and go to Windows Terminal to proceed..."
 
@@ -17,7 +17,7 @@ echo "`nSet Execution Policy to RemoteSigned"
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 echo "`nInstalling Scoop Package Manager..."
 irm get.scoop.sh -outfile 'install.ps1'
-.\install.ps1 -ScoopDir 'E:\Programs\Scoop' -ScoopGlobalDir 'E:\Programs\Scoop\Global' -NoProxy
+.\install.ps1 -ScoopDir 'D:\Programs\Scoop' -ScoopGlobalDir 'D:\Programs\Scoop\Global' -NoProxy
 
 echo "`nSetting up Scoop..."
 scoop install sudo
