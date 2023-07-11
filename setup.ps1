@@ -8,7 +8,8 @@ winget install -eh Microsoft.Office
 echo "`nInstalling Steam..."
 winget install Valve.Steam -h
 echo "`nInstalling qBittorrent (v4.5.2)..."
-winget install qBittorrent.qBittorrent -v 4.5.2
+$version= Read-Host "Please input latest whitelisted bakabt.me version, i.e 4.5.2"
+winget install qBittorrent.qBittorrent -v $version
 
 Read-Host "Initial setup complete! If you'd like, quit this setup and go to Windows Terminal to proceed..."
 
