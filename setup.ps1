@@ -35,10 +35,11 @@ scoop bucket add games
 sudo winget install Microsoft.DotNet.DesktopRuntime.7 --architecture x86
 echo "`nInstalling essentials..."
 sudo scoop install git 7zip vlc --global
-scoop install googlechrome firefox github discord teamspeak3 obsidian notion spotify-tui neovim foobar2000 anki
+scoop install googlechrome github discord notion spotify-tui neovim foobar2000 anki
 echo "`nInstalling extras..."
-scoop install tinynvidiaupdatechecker obs-studio vscodium 1password-cli handbrake-cli
-scoop install logitech-omm windirstat librehardwaremonitor bottom rufus flameshot
+scoop install firefox obsidian teamspeak3 obs-studio vscodium
+scoop install logitech-omm tinynvidiaupdatechecker 1password-cli handbrake-cli
+scoop install windirstat librehardwaremonitor bottom rufus flameshot msiafterburner
 echo "`nInstalling gaming related programs..."
 scoop install yuzu betterjoy vibrance-gui autoclicker archisteamfarm steamcmd
 echo "`nInstalling development things..."
