@@ -42,6 +42,7 @@ scoop install logitech-omm tinynvidiaupdatechecker 1password-cli handbrake-cli
 scoop install windirstat librehardwaremonitor bottom rufus flameshot msiafterburner
 echo "`nInstalling gaming related programs..."
 scoop install yuzu betterjoy vibrance-gui autoclicker archisteamfarm steamcmd
+scoop install osulazer
 echo "`nInstalling development things..."
 scoop install touch curl ripgrep sd gcc rustup nodejs pnpm less neofetch
 scoop install docker docker-compose lazydocker lazygit
