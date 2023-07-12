@@ -43,7 +43,7 @@ scoop install windirstat librehardwaremonitor bottom rufus flameshot msiafterbur
 
 echo "`nInstalling gaming related programs..."
 sudo scoop install osulazer ferium --global
-scoop install yuzu betterjoy vibrance-gui autoclicker archisteamfarm steamcmd
+scoop install yuzu betterjoy vibrance-gui autoclicker archisteamfarm steamcmd mo2
 
 echo "`nInstalling development things..."
 sudo scoop install touch curl ripgrep sd less --global
