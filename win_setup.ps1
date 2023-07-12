@@ -39,7 +39,8 @@ scoop install googlechrome github discord obsidian spotify neovim foobar2000 ank
 echo "`nInstalling extras..."
 scoop install firefox teamspeak3 logitech-omm obs-studio vscodium gimp franz
 scoop install tinynvidiaupdatechecker handbrake-cli qbittorrent@4.5.2 revouninstaller
-scoop install windirstat librehardwaremonitor bottom rufus flameshot msiafterburner
+scoop install windirstat bottom rufus flameshot
+scoop install ddu msiafterburner librehardwaremonitor
 
 echo "`nInstalling gaming related programs..."
 sudo scoop install osulazer ferium --global
