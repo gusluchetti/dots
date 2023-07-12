@@ -37,7 +37,7 @@ sudo scoop install 7zip vlc --global
 scoop install googlechrome github discord notion spotify neovim foobar2000 anki
 
 echo "`nInstalling extras..."
-scoop install firefox obsidian teamspeak3 obs-studio vscodium gimp franz spotify-tui
+scoop install firefox obsidian teamspeak3 obs-studio vscodium gimp franz
 scoop install logitech-omm tinynvidiaupdatechecker handbrake-cli qbittorrent@4.5.2 revouninstaller
 scoop install windirstat librehardwaremonitor bottom rufus flameshot msiafterburner
 
