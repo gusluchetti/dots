@@ -34,20 +34,20 @@ scoop bucket add games
 
 echo "`nInstalling essentials..."
 sudo scoop install 7zip vlc --global
-scoop install googlechrome github discord notion spotify neovim foobar2000 anki
+scoop install googlechrome github discord obsidian spotify neovim foobar2000 anki
 
 echo "`nInstalling extras..."
-scoop install firefox obsidian teamspeak3 obs-studio vscodium gimp franz
-scoop install logitech-omm tinynvidiaupdatechecker handbrake-cli qbittorrent@4.5.2 revouninstaller
+scoop install firefox teamspeak3 logitech-omm obs-studio vscodium gimp franz
+scoop install tinynvidiaupdatechecker handbrake-cli qbittorrent@4.5.2 revouninstaller
 scoop install windirstat librehardwaremonitor bottom rufus flameshot msiafterburner
 
 echo "`nInstalling gaming related programs..."
 sudo scoop install osulazer ferium --global
-scoop install yuzu betterjoy vibrance-gui autoclicker archisteamfarm steamcmd postman
+scoop install yuzu betterjoy vibrance-gui autoclicker archisteamfarm steamcmd
 
 echo "`nInstalling development things..."
 sudo scoop install touch curl ripgrep sd less --global
-scoop install neofetch gcc rustup nodejs pnpm
+scoop install neofetch gcc rustup nodejs pnpm postman
 scoop install docker docker-compose lazydocker lazygit
 
 echo "`nInstalling nerd font (FiraCode)"
