@@ -38,7 +38,7 @@ scoop install chromium github discord notion spotify-tui neovim foobar2000 anki
 
 echo "`nInstalling extras..."
 scoop install googlechrome firefox obsidian teamspeak3 obs-studio vscodium gimp franz
-scoop install logitech-omm tinynvidiaupdatechecker handbrake-cli qbittorrent revouninstaller
+scoop install logitech-omm tinynvidiaupdatechecker handbrake-cli qbittorrent@4.5.2 revouninstaller
 scoop install windirstat librehardwaremonitor bottom rufus flameshot msiafterburner
 
 echo "`nInstalling gaming related programs..."
