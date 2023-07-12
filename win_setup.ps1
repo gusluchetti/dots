@@ -16,9 +16,7 @@ Read-Host "Initial setup complete! If you'd like, quit this setup and go to Wind
 
 echo "`nInstalling Scoop Package Manager..."
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
-irm get.scoop.sh -outfile 'install.ps1'
-.\install.ps1 -ScoopGlobalDir 'C:\scoop' -NoProxy
-Remove-Item install.ps1
+irm get.scoop.sh | iex
 
 echo "`nSetting up Scoop..."
 scoop install sudo
@@ -36,10 +34,10 @@ scoop bucket add games
 
 echo "`nInstalling essentials..."
 sudo scoop install 7zip vlc --global
-scoop install googlechrome github discord notion spotify-tui neovim foobar2000 anki
+scoop install googlechrome github discord notion spotify neovim foobar2000 anki
 
 echo "`nInstalling extras..."
-scoop install firefox obsidian teamspeak3 obs-studio vscodium gimp franz
+scoop install firefox obsidian teamspeak3 obs-studio vscodium gimp franz spotify-tui
 scoop install logitech-omm tinynvidiaupdatechecker handbrake-cli qbittorrent@4.5.2 revouninstaller
 scoop install windirstat librehardwaremonitor bottom rufus flameshot msiafterburner
 
