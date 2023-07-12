@@ -20,7 +20,7 @@ Read-Host "Initial setup complete! If you'd like, quit this setup and go to Wind
 echo "`nInstalling Scoop Package Manager..."
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 irm get.scoop.sh -outfile 'install.ps1'
-.\install.ps1 -ScoopGlobalDir 'C:\Scoop' -NoProxy
+.\install.ps1 -ScoopGlobalDir 'C:\scoop' -NoProxy
 Remove-Item install.ps1
 
 echo "`nSetting up Scoop..."
