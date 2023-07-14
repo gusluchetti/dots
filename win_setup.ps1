@@ -39,12 +39,12 @@ scoop install googlechrome github discord obsidian spotify neovim foobar2000 ank
 echo "`nInstalling extras..."
 scoop install firefox teamspeak3 logitech-omm obs-studio vscodium gimp franz
 scoop install tinynvidiaupdatechecker handbrake-cli qbittorrent@4.5.2 revouninstaller
-scoop install windirstat bottom rufus flameshot
-scoop install ddu msiafterburner librehardwaremonitor
+scoop install windirstat bottom rufus flameshot vcredist2022
+sudo scoop install ddu msiafterburner librehardwaremonitor --global
 
 echo "`nInstalling gaming related programs..."
 sudo scoop install osulazer ferium --global
-scoop install yuzu betterjoy vibrance-gui autoclicker archisteamfarm steamcmd
+scoop install yuzu betterjoy autoclicker archisteamfarm steamcmd
 
 echo "`nInstalling development things..."
 sudo scoop install touch curl ripgrep sd less --global
