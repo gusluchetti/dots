@@ -37,10 +37,12 @@ sudo scoop install 7zip vlc --global
 scoop install googlechrome github discord obsidian spotify neovim foobar2000 anki
 
 echo "`nInstalling extras..."
-scoop install firefox teamspeak3 logitech-omm obs-studio vscodium gimp franz
-scoop install tinynvidiaupdatechecker handbrake-cli qbittorrent@4.5.2 revouninstaller
-scoop install windirstat bottom rufus flameshot vcredist2022
-sudo scoop install ddu msiafterburner librehardwaremonitor --global
+scoop install firefox teamspeak3 logitech-omm obs-studio vscodium gimp franz rufus
+scoop install tinynvidiaupdatechecker windirstat qbittorrent@4.5.2 revouninstaller
+scoop install flameshot bottom handbrake-cli
+echo "`nInstalling global extras and its dependencies..."
+sudo scoop install vcredist2008 vcredist2022 --global
+sudo scoop install ddu msiafterburner msikombustor rtss librehardwaremonitor furmark --global
 
 echo "`nInstalling gaming related programs..."
 sudo scoop install osulazer ferium --global
