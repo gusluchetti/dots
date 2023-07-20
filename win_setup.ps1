@@ -43,7 +43,7 @@ scoop install qbittorrent@4.5.2
 echo "`nInstalling extras..."
 scoop install firefox teamspeak3 logitech-omm obs-studio gimp franz flameshot
 scoop install tinynvidiaupdatechecker wiztree wizfile revouninstaller vscodium
-scoop install bottom handbrake-cli ventoy
+scoop install bottom handbrake-cli ventoy moderndeck
 
 echo "`nInstalling global extras..."
 sudo scoop install ddu msiafterburner msikombustor rtss librehardwaremonitor furmark --global
@@ -54,8 +54,8 @@ scoop install yuzu betterjoy autoclicker archisteamfarm steamcmd
 
 echo "`nInstalling development things..."
 sudo scoop install touch curl ripgrep sd less --global
-scoop install neofetch gcc rustup nodejs pnpm postman
-scoop install docker docker-compose lazydocker lazygit
+scoop install neofetch gcc rustup nodejs pnpm curlie oh-my-posh docker docker-compose
+scoop install lazydocker lazygit
 
 echo "`nInstalling nerd fonts (FiraCode)"
 scoop bucket add nerd-fonts
