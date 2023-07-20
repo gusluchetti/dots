@@ -31,16 +31,20 @@ scoop bucket add extras
 scoop bucket add versions
 scoop bucket add games
 
+echo "`nInstalling requirements..."
+sudo scoop install vcredist2008 vcredist2022 --global
+
 echo "`nInstalling essentials..."
 sudo scoop install 7zip vlc --global
 scoop install googlechrome github armcord obsidian spotify neovim foobar2000 anki
 
-echo "`nInstalling requirements..."
-sudo scoop install vcredist2008 vcredist2022 --global
+echo "`nInstalling qBitTorrent 4.5.2 (latest version whitelisted by bakabt.me)..."
+scoop install qbittorrent@4.5.2
 echo "`nInstalling extras..."
-scoop install firefox teamspeak3 logitech-omm obs-studio vscodium gimp franz ventoy
-scoop install tinynvidiaupdatechecker wiztree wizfile qbittorrent@4.5.2 revouninstaller
-scoop install flameshot bottom handbrake-cli
+scoop install firefox teamspeak3 logitech-omm obs-studio gimp franz flameshot
+scoop install tinynvidiaupdatechecker wiztree wizfile revouninstaller vscodium
+scoop install bottom handbrake-cli ventoy
+
 echo "`nInstalling global extras..."
 sudo scoop install ddu msiafterburner msikombustor rtss librehardwaremonitor furmark --global
 
@@ -53,6 +57,6 @@ sudo scoop install touch curl ripgrep sd less --global
 scoop install neofetch gcc rustup nodejs pnpm postman
 scoop install docker docker-compose lazydocker lazygit
 
-echo "`nInstalling nerd font (FiraCode)"
+echo "`nInstalling nerd fonts (FiraCode)"
 scoop bucket add nerd-fonts
 sudo scoop install FiraCode FiraCode-NF FiraCode-NF-Mono --global
