@@ -7,9 +7,8 @@ winget install -e Microsoft.WindowsTerminal
 winget install -e Microsoft.Office
 winget install -e Microsoft.DotNet.DesktopRuntime.7 --architecture x86
 
-echo "`nInstalling iCloud (Microsoft Store)..."
+echo "`nInstalling programs that don't mesh with Scoop..."
 winget install iCloud --id 9PKTQ5699M62
-echo "`nInstalling Steam..."
 winget install -e Valve.Steam
 
 Read-Host "Initial setup complete! If you'd like, quit this setup and go to Windows Terminal to proceed..."
@@ -34,14 +33,15 @@ scoop bucket add games
 
 echo "`nInstalling essentials..."
 sudo scoop install 7zip vlc --global
-scoop install googlechrome github discord obsidian spotify neovim foobar2000 anki
+scoop install googlechrome github armcord obsidian spotify neovim foobar2000 anki
 
-echo "`nInstalling extras..."
-scoop install firefox teamspeak3 logitech-omm obs-studio vscodium gimp franz rufus
-scoop install tinynvidiaupdatechecker windirstat qbittorrent@4.5.2 revouninstaller
-scoop install flameshot bottom handbrake-cli
-echo "`nInstalling global extras and its dependencies..."
+echo "`nInstalling requirements..."
 sudo scoop install vcredist2008 vcredist2022 --global
+echo "`nInstalling extras..."
+scoop install firefox teamspeak3 logitech-omm obs-studio vscodium gimp franz ventoy
+scoop install tinynvidiaupdatechecker wiztree wizfile qbittorrent@4.5.2 revouninstaller
+scoop install flameshot bottom handbrake-cli
+echo "`nInstalling global extras..."
 sudo scoop install ddu msiafterburner msikombustor rtss librehardwaremonitor furmark --global
 
 echo "`nInstalling gaming related programs..."
