@@ -14,7 +14,7 @@ echo "`nInstalling Scoop Package Manager..."
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 irm get.scoop.sh | iex
 
-echo "`nSetting up Scoop..."
+echo "`nSetting up clean Scoop installation..."
 scoop uninstall *
 scoop install sudo
 sudo scoop install aria2 --global
