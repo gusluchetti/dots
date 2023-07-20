@@ -18,6 +18,7 @@ Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 irm get.scoop.sh | iex
 
 echo "`nSetting up Scoop..."
+scoop uninstall *
 scoop install sudo
 sudo scoop install aria2 --global
 scoop config aria2-warning-enabled false
@@ -59,4 +60,4 @@ scoop install lazydocker lazygit
 
 echo "`nInstalling nerd fonts (FiraCode)"
 scoop bucket add nerd-fonts
-sudo scoop install FiraCode FiraCode-NF FiraCode-NF-Mono --global
+sudo scoop install FiraCode-NF-Mono CascadiaCode-NF-Mono --global
