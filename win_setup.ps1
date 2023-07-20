@@ -6,7 +6,7 @@ winget install -e Github.cli --source winget
 
 echo "`nInstalling other programs ..."
 winget install -e iCloud --source msstore # icloud from the msstore :(
-winget install -e --id Valve.Steam
+winget install -e Valve.Steam --source winget
 
 Read-Host "Initial setup complete! If you'd like, quit this setup and go to Windows Terminal to proceed..."
 
