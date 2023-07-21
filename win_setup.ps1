@@ -41,7 +41,7 @@ scoop install qbittorrent@4.5.2
 echo "`nInstalling extras..."
 scoop install firefox teamspeak3 logitech-omm obs-studio gimp franz flameshot
 scoop install tinynvidiaupdatechecker wiztree wizfile revouninstaller vscodium
-scoop install bottom handbrake-cli ventoy moderndeck
+scoop install bottom handbrake-cli ventoy
 
 echo "`nInstalling global extras..."
 sudo scoop install ddu msiafterburner msikombustor rtss librehardwaremonitor furmark --global
