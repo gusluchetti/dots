@@ -1,12 +1,13 @@
-echo "`n Installing mainstay programs through WinGet..."
+echo "`n Installing essentials programs through WinGet..."
 winget install -e Microsoft.PowerShell --source winget
 winget install -e Microsoft.WindowsTerminal --source winget
 winget install -e Microsoft.Office --source winget
-winget install -e Github.cli --source winget
 
-echo "`nInstalling other programs ..."
-winget install -e iCloud --source msstore # icloud from the msstore :(
+winget install -e Github.cli --source winget
 winget install -e Valve.Steam --source winget
+winget install -e Discord.Discord.Canary --source winget
+
+winget install -e iCloud --source msstore # icloud from the msstore :(
 
 Read-Host "Initial setup complete! If you'd like, quit this setup and go to Windows Terminal to proceed..."
 
@@ -34,7 +35,7 @@ sudo scoop install dotnet-sdk dotnet-sdk-lts vcredist2008 vcredist2022 powertoys
 
 echo "`nInstalling essentials..."
 sudo scoop install 7zip vlc --global
-scoop install gh googlechrome armcord obsidian neovim foobar2000 spotify anki
+scoop install gh googlechrome obsidian neovim foobar2000 spotify anki
 
 echo "`nInstalling qBitTorrent 4.5.2 (latest version whitelisted by bakabt.me)..."
 scoop install qbittorrent@4.5.2
