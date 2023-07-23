@@ -2,8 +2,8 @@ echo "`n Installing essentials programs through WinGet..."
 winget install -e Microsoft.PowerShell --source winget
 winget install -e Microsoft.WindowsTerminal --source winget
 winget install -e Microsoft.Office --source winget
-winget install -e Microsoft.VisualStudio.2019.BuildTools --source winget
-echo "`n Don't forget to select top 3 options!"
+winget install -e Microsoft.VisualStudio.2022.BuildTools --source winget
+echo "`n Select Desktop C++ Development!"
 
 winget install -e Github.cli --source winget
 winget install -e Valve.Steam --source winget
