@@ -54,8 +54,7 @@ scoop install yuzu betterjoy autoclicker archisteamfarm steamcmd
 echo "`nInstalling development things..."
 sudo scoop install touch curl ripgrep sd less --global
 scoop install neofetch gcc rustup nodejs pnpm curlie oh-my-posh docker docker-compose
-scoop install lazydocker lazygit
-Set-Alias -Name lg -Value lazygit # ez alias for lazygit!
+scoop install lazydocker lazygit winpython
 
 echo "`nInstalling nerd fonts (FiraCode)"
 scoop bucket add nerd-fonts
