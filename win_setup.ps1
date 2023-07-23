@@ -19,7 +19,7 @@ irm get.scoop.sh | iex
 echo "`nSetting up clean Scoop installation..."
 scoop uninstall *
 scoop install sudo
-sudo scoop install aria2 --global
+sudo scoop install aria2 -g
 scoop config aria2-warning-enabled false
 scoop alias rm upgrade
 scoop alias add upgrade 'scoop update *' 'Updates all apps, just like brew or apt'
@@ -32,10 +32,10 @@ scoop bucket add versions
 scoop bucket add games
 
 echo "`nInstalling requirements..."
-sudo scoop install dotnet-sdk dotnet-sdk-lts vcredist2008 vcredist2022 powertoys --global
+sudo scoop install dotnet-sdk dotnet-sdk-lts vcredist2008 vcredist2022 powertoys -g
 
 echo "`nInstalling essentials..."
-sudo scoop install 7zip vlc --global
+sudo scoop install 7zip vlc -g
 scoop install gh googlechrome obsidian neovim foobar2000 spotify anki
 
 echo "`nInstalling qBitTorrent 4.5.2 (latest version whitelisted by bakabt.me)..."
@@ -46,7 +46,7 @@ scoop install tinynvidiaupdatechecker wiztree wizfile revouninstaller vscodium
 scoop install focus bottom handbrake-cli ventoy
 
 echo "`nInstalling global extras..."
-sudo scoop install ddu msiafterburner msikombustor rtss librehardwaremonitor furmark --global
+sudo scoop install ddu msiafterburner msikombustor rtss librehardwaremonitor furmark -g
 
 echo "`nInstalling gaming related programs..."
 sudo scoop install osulazer ferium --global
@@ -55,7 +55,8 @@ scoop install yuzu betterjoy autoclicker archisteamfarm steamcmd
 echo "`nInstalling development things..."
 sudo scoop install touch curl ripgrep sd less --global
 scoop install neofetch gcc rustup nodejs pnpm curlie oh-my-posh docker docker-compose
-scoop install lazydocker lazygit python-310
+scoop install lazydocker lazygit
+scoop install pyenv@2.64.11 && scoop hold pyenv
 
 echo "`nInstalling nerd fonts (FiraCode)"
 scoop bucket add nerd-fonts
