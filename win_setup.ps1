@@ -59,6 +59,10 @@ scoop install pyenv@2.64.11 && scoop hold pyenv # python being finicky as usual
 scoop install neofetch gcc rustup nodejs pnpm curlie oh-my-posh docker docker-compose
 scoop install lazydocker lazygit
 
+echo "`nInstalling Rust/Cargo programs..."
+cargo install cargo-binstall #en
+cargo binstall speedtest-rs wiki-tui
+
 echo "`nInstalling nerd fonts (FiraCode)"
 scoop bucket add nerd-fonts
 sudo scoop install FiraCode-NF-Mono CascadiaCode-NF-Mono --global
