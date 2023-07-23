@@ -3,6 +3,7 @@ winget install -e Microsoft.PowerShell --source winget
 winget install -e Microsoft.WindowsTerminal --source winget
 winget install -e Microsoft.Office --source winget
 winget install -e Microsoft.VisualStudio.2022.BuildTools --source winget
+echo "`n Don't forget to select top 3 options!"
 
 winget install -e Github.cli --source winget
 winget install -e Valve.Steam --source winget
@@ -54,9 +55,9 @@ scoop install yuzu betterjoy autoclicker archisteamfarm steamcmd
 
 echo "`nInstalling development things..."
 sudo scoop install touch curl ripgrep sd less --global
+scoop install pyenv@2.64.11 && scoop hold pyenv # python being finicky as usual
 scoop install neofetch gcc rustup nodejs pnpm curlie oh-my-posh docker docker-compose
 scoop install lazydocker lazygit
-scoop install pyenv@2.64.11 && scoop hold pyenv
 
 echo "`nInstalling nerd fonts (FiraCode)"
 scoop bucket add nerd-fonts
