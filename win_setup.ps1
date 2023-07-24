@@ -37,7 +37,8 @@ sudo scoop install dotnet-sdk dotnet-sdk-lts vcredist2008 vcredist2022 powertoys
 
 echo "`nInstalling essentials..."
 sudo scoop install 7zip vlc -g
-scoop install gh googlechrome obsidian neovim foobar2000 spotify anki
+scoop install gh googlechrome obsidian neovim spotify anki
+scoop install foobar2000 -a 32bit && scoop install foobar2000-encoders
 
 echo "`nInstalling qBitTorrent 4.5.2 (latest version whitelisted by bakabt.me)..."
 scoop install qbittorrent@4.5.2
