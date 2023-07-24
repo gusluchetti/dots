@@ -25,6 +25,9 @@ scoop config aria2-warning-enabled false
 scoop alias rm upgrade
 scoop alias add upgrade 'scoop update *' 'Updates all apps, just like brew or apt'
 
+echo "`nInstalling Powershell Modules..."
+sudo Install-Module -Name z
+
 echo "`nInstalling git and dark..."
 scoop install git dark
 echo "`nAdding 'extras' and 'versions' buckets..."
