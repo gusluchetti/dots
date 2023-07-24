@@ -61,7 +61,7 @@ echo "`nInstalling development things..."
 sudo scoop install touch curl ripgrep sd less --global
 scoop install pyenv@2.64.11 && scoop hold pyenv # python being finicky as usual
 scoop install neofetch gcc rustup nodejs pnpm curlie oh-my-posh docker docker-compose
-scoop install lazydocker lazygit
+scoop install zola lazydocker lazygit
 
 echo "`nInstalling Rust/Cargo programs..."
 cargo install cargo-binstall #en
