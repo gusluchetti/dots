@@ -28,7 +28,7 @@ scoop alias add upgrade 'scoop update *' 'Updates all apps, just like brew or ap
 echo "`nInstalling Powershell Modules..."
 sudo Install-Module -Name z
 
-echo "`nInstalling git and dark..."
+echo "`nInstalling git and dark (essential dependencies)..."
 scoop install git dark
 echo "`nAdding 'extras' and 'versions' buckets..."
 scoop bucket add extras
@@ -61,7 +61,7 @@ echo "`nInstalling development things..."
 sudo scoop install touch curl ripgrep sd less --global
 scoop install pyenv@2.64.11 && scoop hold pyenv # python being finicky as usual
 scoop install neofetch gcc rustup nodejs pnpm curlie oh-my-posh docker docker-compose
-scoop install zola lazydocker lazygit
+scoop install zola
 
 echo "`nInstalling Rust/Cargo programs..."
 cargo install cargo-binstall
