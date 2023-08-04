@@ -64,7 +64,7 @@ scoop install neofetch gcc rustup nodejs pnpm curlie oh-my-posh docker docker-co
 scoop install zola lazydocker lazygit
 
 echo "`nInstalling Rust/Cargo programs..."
-cargo install cargo-binstall #en
+cargo install cargo-binstall
 cargo binstall speedtest-rs wiki-tui
 
 echo "`nInstalling nerd fonts (FiraCode)"
