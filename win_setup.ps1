@@ -3,19 +3,21 @@ winget install -e Microsoft.PowerShell --source winget
 winget install -e Microsoft.WindowsTerminal --source winget
 winget install -e Microsoft.Office --source winget
 winget install -e Microsoft.VisualStudio.2022.BuildTools --source winget
+winget install -e Microsoft.PowerToys --source winget
 echo "`n Select Desktop C++ Development!"
 
 winget install -e Github.cli --source winget
 winget install -e Valve.Steam --source winget
-winget install -e Discord.Discord.Canary --source winget
+winget install -e Discord.Discord --source winget
 
 winget install -e iCloud --source msstore # icloud from the msstore :(
 
 Read-Host "Initial setup complete! If you'd like, quit this setup and go to Windows Terminal to proceed..."
 
+$ErrorActionPreference = 'Continue'
 echo "`nInstalling Scoop Package Manager..."
-Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
-irm get.scoop.sh | iex
+Set-ExecutionPolicy RemoteSigned -Scope Process
+Invoke-RestMethod get.scoop.sh | Invoke-Expression
 
 echo "`nSetting up clean Scoop installation..."
 scoop uninstall *
@@ -35,33 +37,29 @@ scoop bucket add extras
 scoop bucket add versions
 scoop bucket add games
 
-echo "`nInstalling requirements..."
-sudo scoop install dotnet-sdk dotnet-sdk-lts vcredist2008 vcredist2022 powertoys -g
-
 echo "`nInstalling essentials..."
-sudo scoop install 7zip vlc -g
-scoop install gh googlechrome obsidian neovim spotify anki
+sudo scoop install 7zip vlc gh googlechrome firefox spotify -g
+scoop install obsidian neovim anki
 scoop install foobar2000 -a 32bit && scoop install foobar2000-encoders
 
 echo "`nInstalling qBitTorrent 4.5.2 (latest version whitelisted by bakabt.me)..."
 scoop install qbittorrent@4.5.2
 echo "`nInstalling extras..."
-scoop install firefox teamspeak3 logitech-omm obs-studio gimp franz flameshot
-scoop install tinynvidiaupdatechecker wiztree wizfile revouninstaller vscodium
-scoop install yapa2 bottom handbrake-cli ventoy
+scoop install teamspeak3 logitech-omm obs-studio gimp franz flameshot vscode
+scoop install wiztree wizfile revouninstaller handbrake-cli ventoy
 
 echo "`nInstalling global extras..."
-sudo scoop install ddu msiafterburner msikombustor rtss librehardwaremonitor furmark -g
+sudo scoop install ddu msiafterburner msikombustor rtss furmark -g
+sudo scoop install librehardwaremonitor -g
 
 echo "`nInstalling gaming related programs..."
-sudo scoop install osulazer ferium --global
-scoop install yuzu betterjoy autoclicker archisteamfarm steamcmd
+sudo scoop install osulazer ferium -g
+scoop install autoclicker yuzu betterjoy
 
 echo "`nInstalling development things..."
-sudo scoop install touch curl ripgrep sd less --global
+sudo scoop install touch curl ripgrep sd less -g 
+scoop install neofetch gcc rustup nodejs pnpm oh-my-posh zola
 scoop install pyenv@2.64.11 && scoop hold pyenv # python being finicky as usual
-scoop install neofetch gcc rustup nodejs pnpm curlie oh-my-posh docker docker-compose
-scoop install zola
 
 echo "`nInstalling Rust/Cargo programs..."
 cargo install cargo-binstall
@@ -69,4 +67,9 @@ cargo binstall speedtest-rs wiki-tui
 
 echo "`nInstalling nerd fonts (FiraCode)"
 scoop bucket add nerd-fonts
-sudo scoop install FiraCode-NF-Mono CascadiaCode-NF-Mono --global
+sudo scoop install FiraCode-NF-Mono CascadiaCode-NF-Mono -g 
+
+echo "`nA restart is necessary to apply some changes made by global apps..." 
+echo "`nRestarting in 2 seconds..." 
+Start-Sleep -Seconds 2.0
+Restart-Computer
