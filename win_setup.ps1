@@ -16,7 +16,7 @@ Read-Host "Initial setup complete! If you'd like, quit this setup and go to Wind
 
 $ErrorActionPreference = 'Continue'
 echo "`nInstalling Scoop Package Manager..."
-Set-ExecutionPolicy RemoteSigned -Scope Process
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 Invoke-RestMethod get.scoop.sh | Invoke-Expression
 
 echo "`nSetting up clean Scoop installation..."
