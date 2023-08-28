@@ -25,7 +25,7 @@ scoop install sudo
 sudo scoop install aria2 -g
 scoop config aria2-warning-enabled false
 scoop alias rm upgrade
-scoop alias add upgrade 'scoop update *' 'Updates all apps, just like brew or apt'
+scoop alias add upgrade 'scoop update && scoop update * && scoop cleanup *' 'Updates scoop, all apps and cleans up old versions'
 
 echo "`nInstalling Powershell Modules..."
 sudo Install-Module -Name z
