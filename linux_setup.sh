@@ -38,7 +38,7 @@ echo "-- Installing Rust + extras --"
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
     # cargo binstall installation
     curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
-    cargo binstall cargo-watch rtx-cli
+    cargo binstall cargo-watch rtx-cli watchexec-cli
     echo 'eval "$(~/.cargo/bin/rtx activate zsh)"' >> ~/.zshrc
 
 echo "-- Configure keyboard, qwerty + programmers dvorak --"
