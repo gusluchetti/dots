@@ -1,10 +1,7 @@
 {{ if eq .chezmoi.os "darwin" }}
-echo 'MacOS Setup'
 {{ template "mac_install-pkgs.sh" }}
 {{ else if eq .chezmoi.os "linux" }}
-echo 'Linux Setup'
 {{ template "linux-fedora_install-pkgs.sh" }}
 {{ else if eq .chezmoi.os "windows" }}
-echo 'Windows Setup'
 {{ template "win_install-pkgs.ps1" }}
 {{ end }}
