@@ -1,3 +1,7 @@
 #!/bin/bash
+
 echo 'running macos setup...'
-brew install git neovim firefox
+brew bundle --no-lock --file=/dev/stdin <<EOF
+brew "git neovim eza"
+cask "chromium firefox"
+EOF
