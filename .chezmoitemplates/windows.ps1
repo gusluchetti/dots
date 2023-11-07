@@ -10,7 +10,7 @@ winget install -e Github.cli --source winget
 winget install -e Valve.Steam --source winget
 winget install -e Discord.Discord --source winget
 
-winget install -e iCloud --source msstore # icloud from the msstore :(
+winget install -e iCloud --source msstore 
 
 Read-Host "Initial setup complete! If you'd like, quit this setup and go to Windows Terminal to proceed..."
 
@@ -25,9 +25,6 @@ scoop install sudo
 sudo scoop install aria2 -g
 scoop config aria2-warning-enabled false
 
-scoop alias rm full-upgrade
-scoop alias add full-upgrade 'scoop update && scoop update * -g && scoop cleanup * -g' '(sudo required) Globally updates scoop, all apps and cleans up old versions'
-
 echo "`nInstalling Powershell Modules..."
 sudo Install-Module -Name z
 
@@ -39,7 +36,7 @@ scoop bucket add versions
 scoop bucket add games
 
 echo "`nInstalling essentials..."
-sudo scoop install 7zip vlc gh googlechrome firefox spotify -g
+sudo scoop install 7zip vlc gh firefox chromium spotify -g
 scoop install obsidian neovim anki
 scoop install foobar2000 -a 32bit && scoop install foobar2000-encoders
 
@@ -58,8 +55,8 @@ sudo scoop install osulazer ferium -g
 scoop install autoclicker yuzu betterjoy
 
 echo "`nInstalling development things..."
-sudo scoop install touch curl ripgrep sd less -g 
-scoop install neofetch gcc rustup nodejs pnpm oh-my-posh zola
+sudo scoop install touch curl ripgrep sd less fd -g 
+scoop install oh-my-posh neofetch gcc rustup nodejs pnpm zola
 scoop install pyenv@2.64.11 && scoop hold pyenv # python being finicky as usual
 scoop install pandoc miktex
 
@@ -72,6 +69,6 @@ scoop bucket add nerd-fonts
 sudo scoop install FiraCode-NF-Mono CascadiaCode-NF-Mono -g 
 
 echo "`nA restart is necessary to apply some changes made by global apps..." 
-echo "`nRestarting in 2 seconds..." 
-Start-Sleep -Seconds 2.0
+echo "`nRestarting in 3 seconds..." 
+Start-Sleep -Seconds 3.0
 Restart-Computer
