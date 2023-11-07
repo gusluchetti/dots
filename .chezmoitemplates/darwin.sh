@@ -5,6 +5,7 @@ brew "gh"
 brew "neovim"
 brew "eza"
 brew "ripgrep"
+brew "z"
 cask "chromium"
 cask "firefox"
 EOF
