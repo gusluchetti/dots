@@ -1,7 +1,0 @@
-{{ if eq .chezmoi.os "darwin" }}
-{{ template ".chezmoitemplates/mac_install-pkgs.sh" }}
-{{ else if eq .chezmoi.os "linux" }}
-{{ template ".chezmoitemplates/linux-fedora_install-pkgs.sh" }}
-{{ else if eq .chezmoi.os "windows" }}
-{{ template ".chezmoitemplates/win_install-pkgs.ps1" }}
-{{ end }}
