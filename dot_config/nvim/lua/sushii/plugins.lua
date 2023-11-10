@@ -81,6 +81,10 @@ local plugins = {
         end
     },
     {
+        'stevearc/conform.nvim',
+        opts = {},
+    },
+    {
         'nvim-lualine/lualine.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons' }
     },
@@ -96,12 +100,6 @@ local plugins = {
     {
         "simrat39/rust-tools.nvim",
         ft = "rust",
-    },
-    {
-        'mhartington/formatter.nvim',
-        config = function()
-            require("formatter").setup()
-        end
     },
     {
         "rcarriga/nvim-dap-ui",
