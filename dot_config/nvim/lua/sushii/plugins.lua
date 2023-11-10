@@ -98,6 +98,12 @@ local plugins = {
         ft = "rust",
     },
     {
+        'mhartington/formatter.nvim',
+        config = function()
+            require("formatter").setup()
+        end
+    },
+    {
         "rcarriga/nvim-dap-ui",
         dependencies = { "mfussenegger/nvim-dap" },
         config = function()
