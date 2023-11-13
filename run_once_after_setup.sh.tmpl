@@ -1,7 +1,0 @@
-{{ if eq .chezmoi.os "darwin" -}}
-    {{ template "darwin.sh" }}
-{{ else if eq .chezmoi.os "linux" -}}
-    {{ template "linux-fedora.sh" }}
-{{ else if eq .chezmoi.os "windows" -}}
-    {{ template "windows.ps1" }}
-{{ end }}
