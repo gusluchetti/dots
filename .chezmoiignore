@@ -1,5 +1,5 @@
 {{ if eq .chezmoi.os "windows" -}}
-    run_once_before_setup.sh.tmpl
+    run_once_after_setup.sh.tmpl
 {{ end }}
 
 README.md
