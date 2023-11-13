@@ -1,7 +1,7 @@
+{{ if eq .chezmoi.os "windows" -}}
+    run_once_before_setup.sh.tmpl
+{{ end }}
+
 README.md
 */user-dirs.dirs
 */user-dirs.locale
-
-Microsoft.PowerShell_profile.ps1
-linux_setup.sh
-win_setup.ps1
