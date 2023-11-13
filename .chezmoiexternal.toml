@@ -14,5 +14,5 @@
 [".oh-my-zsh/custom/themes/powerlevel10k"]
     type = "git-repo"
     url = "https://github.com/romkatv/powerlevel10k.git"
-    clone.args = ["--depth 1"]
+    clone.args = ["-d 1"]
     exact = true
