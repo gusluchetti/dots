@@ -3,6 +3,4 @@ oh-my-posh init pwsh --config "https://raw.githubusercontent.com/JanDeDobbeleer/
 Set-Alias -Name ls -Value eza
 
 Function longAll {eza -la}
-Set-Alias -Name la -Value longAll
-
-
+Set-Alias -Name l -Value longAll
