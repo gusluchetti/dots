@@ -1,7 +1,1 @@
-{{- if eq .chezmoi.os "windows" }}
-    *.sh.tmpl
-{{- end }}
-
 README.md
-*/user-dirs.dirs
-*/user-dirs.locale
