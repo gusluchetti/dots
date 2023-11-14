@@ -1,6 +1,8 @@
-README.md
-.config/nvim/lazy-lock.json
-
 {{- if ne .chezmoi.os "windows" }}
 Documents
 {{- end }}
+
+.config/nvim/lazy-lock.json
+ansible-setup.yaml
+
+README.md
