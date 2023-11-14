@@ -1,0 +1,50 @@
+- name: "Testing ansible out"
+  hosts: localhost
+  connection: local 
+  tasks:
+
+  - name: Install dev tools
+    ansible.builtin.package:
+      name:
+        - gh
+        - git
+        - zola
+        - wget
+        - curl
+      state: present
+
+  # TODO: zsh and alacritty setup?
+  - name: Install shell and terminal
+    ansible.builtin.package:
+      name:
+        - zsh
+        - alacritty
+      state: present
+
+  - name: Install terminal/navigation-related programs
+    ansible.builtin.package:
+      name:
+        - neofetch
+        - ripgrep
+        - eza
+        - fzf
+        - tree
+        - neovim
+        - lazygit
+      state: present
+
+  - name: Install media-related programs
+    ansible.builtin.package:
+      name:
+        - scrot
+        - mpv
+        - ffmpeg
+        - vlc
+      state: present
+
+  - name: Install browsers
+    community.general.homebrew_cask:
+      name:
+        - firefox 
+        - chromium 
+      state: present
