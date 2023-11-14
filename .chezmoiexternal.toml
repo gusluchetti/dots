@@ -1,18 +1,20 @@
-[".oh-my-zsh"]
-    type = "git-repo"
-    url = "https://github.com/ohmyzsh/ohmyzsh.git"
-    exact = true
-[".oh-my-zsh/custom/plugins/zsh-autosuggestions"]
-    type = "git-repo"
-    url = "https://github.com/zsh-users/zsh-autosuggestions.git"
-    stripComponents = 1
-    exact = true
-[".oh-my-zsh/custom/plugins/zsh-completions"]
-    type = "git-repo"
-    url = "https://github.com/zsh-users/zsh-completions.git"
-    exact = true
-[".oh-my-zsh/custom/themes/powerlevel10k"]
-    type = "git-repo"
-    url = "https://github.com/romkatv/powerlevel10k.git"
-    clone.args = ["--depth", "1"]
-    exact = true
+{{- if ne .chezmoi.os "windows" }}
+    [".oh-my-zsh"]
+        type = "git-repo"
+        url = "https://github.com/ohmyzsh/ohmyzsh.git"
+        exact = true
+    [".oh-my-zsh/custom/plugins/zsh-autosuggestions"]
+        type = "git-repo"
+        url = "https://github.com/zsh-users/zsh-autosuggestions.git"
+        stripComponents = 1
+        exact = true
+    [".oh-my-zsh/custom/plugins/zsh-completions"]
+        type = "git-repo"
+        url = "https://github.com/zsh-users/zsh-completions.git"
+        exact = true
+    [".oh-my-zsh/custom/themes/powerlevel10k"]
+        type = "git-repo"
+        url = "https://github.com/romkatv/powerlevel10k.git"
+        clone.args = ["--depth", "1"]
+        exact = true
+{{- end }}
