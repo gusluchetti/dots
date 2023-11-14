@@ -3,6 +3,12 @@
   connection: local 
   tasks:
 
+  - name: Update and upgrade homebrew
+    ansible.builtin.package:
+      use: homebrew
+      update_homebrew: true
+      upgrade: true
+
   - name: Install dev tools
     ansible.builtin.package:
       name:
@@ -13,12 +19,25 @@
         - curl
       state: present
 
-  # TODO: zsh and alacritty setup?
-  - name: Install shell and terminal
-    ansible.builtin.package:
+  - name: Install browsers
+    community.general.homebrew:
       name:
-        - zsh
-        - alacritty
+        - firefox 
+        - chromium 
+      install_options: cask
+      state: present
+
+  # TODO: zsh and alacritty setup?
+  - name: Install shell (zsh)
+    ansible.builtin.package:
+      name: zsh
+      state: present
+
+  # only on mac
+  - name: Install terminal (iterm2)
+    community.general.homebrew:
+      name: iterm2
+      install_options: cask
       state: present
 
   - name: Install terminal/navigation-related programs
@@ -40,11 +59,4 @@
         - mpv
         - ffmpeg
         - vlc
-      state: present
-
-  - name: Install browsers
-    community.general.homebrew_cask:
-      name:
-        - firefox 
-        - chromium 
       state: present
