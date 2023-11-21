@@ -116,7 +116,7 @@ font:
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
     # family: monospace
-    family: "BerkeleyMono Nerd Font, monospace, Consolas, Menlo"
+    family: "BerkeleyMono Nerd Font"
     # The `style` can be specified to pick a specific face.
     style: Regular
   # Bold font face
