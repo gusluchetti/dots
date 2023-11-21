@@ -153,8 +153,7 @@ require('lazy').setup({
   },
 
   {
-    -- Theme inspired by Atom
-    'elissonleao/gruvbox.nvim',
+    'ellisonleao/gruvbox.nvim',
     priority = 1000,
     config = function()
       require("gruvbox").setup({
