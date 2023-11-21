@@ -63,5 +63,6 @@
           - firefox 
           - chromium 
           - vlc
+          - obsidian
         install_options: cask
         state: present
