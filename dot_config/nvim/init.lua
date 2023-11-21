@@ -154,10 +154,13 @@ require('lazy').setup({
 
   {
     -- Theme inspired by Atom
-    'navarasu/onedark.nvim',
+    'elissonleao/gruvbox.nvim',
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'onedark'
+      require("gruvbox").setup({
+        contrast = "dark"
+      })
+      vim.cmd.colorscheme 'gruvbox'
     end,
   },
 
@@ -240,7 +243,9 @@ require('lazy').setup({
 vim.o.hlsearch = false
 
 -- Make line numbers default
-vim.wo.number = true
+vim.o.nu = true
+-- Make relative line numbers default
+vim.o.rnu = true
 
 -- Enable mouse mode
 vim.o.mouse = 'a'
