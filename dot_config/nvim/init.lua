@@ -245,6 +245,12 @@ vim.o.hlsearch = false
 vim.o.nu = true
 vim.o.rnu = true
 
+-- Tab (as 4 spaces) global options
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+
 -- Enable mouse mode
 vim.o.mouse = 'a'
 
