@@ -151,13 +151,11 @@ require('lazy').setup({
       end,
     },
   },
-
+  -- Setting up my preferred theme
   {
     'ellisonleao/gruvbox.nvim',
     priority = 1000,
-    opts = {
-      contrast = "dark"
-    },
+    opts = { contrast = "dark" },
     config = function()
       vim.cmd.colorscheme 'gruvbox'
     end,
@@ -169,10 +167,10 @@ require('lazy').setup({
     -- See `:help lualine.txt`
     opts = {
       options = {
-        icons_enabled = false,
-        theme = 'gruvbox',
+        icons_enabled = true,
         component_separators = '|',
         section_separators = '',
+        theme = 'gruvbox',
       },
     },
   },
@@ -469,6 +467,7 @@ local on_attach = function(_, bufnr)
 
   nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
   nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
+  nmap('<leader>cf', vim.lsp.buf.format, '[C]ode [F]ormat')
 
   nmap('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
   nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
