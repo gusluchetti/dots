@@ -1,8 +1,7 @@
 --[[
-started off as kickstart-nvim
+  started off as kickstart-nvim
 
-  If you don't know anything about Lua, I recommend taking some time to read through
-  a guide. One possible example:
+  - lua guide when in trouble:
   - https://learnxinyminutes.com/docs/lua/
 
   And then you can explore or search through `:help lua-guide`
@@ -192,12 +191,6 @@ require('lazy').setup({
     build = ':TSUpdate',
   },
 
-  -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
-  --       These are some example plugins that I've included in the kickstart repository.
-  --       Uncomment any of the lines below to enable them.
-  -- require 'kickstart.plugins.autoformat',
-  -- require 'kickstart.plugins.debug',
-
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    You can use this folder to prevent any conflicts with this init.lua if you're interested in keeping
   --    up-to-date with whatever is in the kickstart repo.
@@ -205,112 +198,10 @@ require('lazy').setup({
   --
   --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
   { import = 'custom.plugins' },
-
+  require 'custom.options',
+  require 'custom.keymaps',
 }, {})
 
--- [[ Setting options ]]
--- See `:help vim.o`
--- NOTE: You can change these options as you wish!
-
-
-vim.opt.title = true
-
--- Search options
-vim.opt.hlsearch = false
-vim.opt.incsearch = true
-
--- Make (relative) line numbers default
-vim.opt.number = true
-vim.opt.relativenumber = true
-
--- Tab (as 4 spaces) global options
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
-
--- Enable mouse mode
-vim.opt.mouse = 'a'
-
--- Sync clipboard between OS and Neovim.
---  Remove this option if you want your OS clipboard to remain independent.
---  See `:help 'clipboard'`
-vim.opt.clipboard = 'unnamedplus'
-
-vim.opt.autoindent = true
-vim.opt.breakindent = true
-vim.opt.wrap = true;
-vim.opt.textwidth = 84;
-vim.opt.colorcolumn = "+1"
-
--- Save undo history
-vim.opt.undofile = true
-
--- Case-insensitive searching UNLESS \C or capital in search
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.opt.smartindent = true
-
-vim.opt.signcolumn = 'yes'
-vim.opt.scrolloff = 8
-
--- Decrease update time
-vim.opt.updatetime = 250
-vim.opt.timeoutlen = 300
-
--- Set completeopt to have a better completion experience
-vim.opt.completeopt = 'menuone,noselect'
-
--- visuals
--- NOTE: You should make sure your terminal supports this
-vim.opt.termguicolors = true
-
-vim.opt.cursorline = true
-vim.opt.winblend = 0
-vim.opt.wildoptions = "pum"
-vim.opt.pumblend = 5
-vim.opt.background = "dark"
-
--- do not search into node_modules
-vim.opt.wildignore:append { '*/node_modules/*' }
-
--- [[ Basic Keymaps ]]
-
--- Keymaps for better default experience
--- See `:help vim.keymap.set()`
-vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
-
--- Remap for dealing with word wrap
-vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-
--- Diagnostic keymaps
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
-
--- move things around on visual mode
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
-
--- keep cursor on same place after copying line below
-vim.keymap.set("n", "J", "mzJ`z")
-
--- keep cursor on center on page change
-vim.keymap.set("n", "<C-f>", "<C-f>zz")
-vim.keymap.set("n", "<C-b>", "<C-b>zz")
-
--- keep cursor on center on term search
-vim.keymap.set("n", "n", "nzzzv")
-vim.keymap.set("n", "N", "Nzzzv")
-
--- move focused window shortcut
-vim.keymap.set("n", "<leader>wh", "<cmd>wincmd h<CR>")
-vim.keymap.set("n", "<leader>wl", "<cmd>wincmd l<CR>")
-
--- toggle project explore
-vim.keymap.set("n", "<C-n>", "<cmd>NvimTreeToggle<CR>")
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
