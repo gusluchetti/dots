@@ -13,6 +13,10 @@ started off as kickstart-nvim
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+-- disable netrw, since we're using nvim-tree
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    https://github.com/folke/lazy.nvim
 --    `:help lazy.nvim.txt` for more info
@@ -44,6 +48,16 @@ require('lazy').setup({
 
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
+
+  {
+    -- Setting up my preferred theme
+    'ellisonleao/gruvbox.nvim',
+    priority = 1000,
+    opts = { contrast = "dark" },
+    config = function()
+      vim.cmd.colorscheme 'gruvbox'
+    end,
+  },
 
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
@@ -119,16 +133,6 @@ require('lazy').setup({
         end, { expr = true, buffer = bufnr, desc = 'Jump to previous hunk' })
       end,
     },
-  },
-
-  {
-    -- Setting up my preferred theme
-    'ellisonleao/gruvbox.nvim',
-    priority = 1000,
-    opts = { contrast = "dark" },
-    config = function()
-      vim.cmd.colorscheme 'gruvbox'
-    end,
   },
 
   {
@@ -289,7 +293,7 @@ vim.keymap.set("n", "<leader>wh", "<cmd>wincmd h<CR>")
 vim.keymap.set("n", "<leader>wl", "<cmd>wincmd l<CR>")
 
 -- toggle project explore
-vim.keymap.set("n", "<leader>pv", "<cmd>Lex<CR>")
+vim.keymap.set("n", "<leader>pv", "<cmd>NvimTreeToggle<CR>")
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
