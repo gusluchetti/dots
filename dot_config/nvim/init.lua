@@ -205,6 +205,7 @@ require('lazy').setup({
   --
   --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
   { import = 'custom.plugins' },
+
 }, {})
 
 -- [[ Setting options ]]
@@ -238,7 +239,9 @@ vim.opt.clipboard = 'unnamedplus'
 
 vim.opt.autoindent = true
 vim.opt.breakindent = true
-vim.opt.wrap = false;
+vim.opt.wrap = true;
+vim.opt.textwidth = 84;
+vim.opt.colorcolumn = "+1"
 
 -- Save undo history
 vim.opt.undofile = true
@@ -262,7 +265,6 @@ vim.opt.completeopt = 'menuone,noselect'
 -- NOTE: You should make sure your terminal supports this
 vim.opt.termguicolors = true
 
-vim.opt.colorcolumn = "80"
 vim.opt.cursorline = true
 vim.opt.winblend = 0
 vim.opt.wildoptions = "pum"
