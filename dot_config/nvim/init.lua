@@ -293,7 +293,7 @@ vim.keymap.set("n", "<leader>wh", "<cmd>wincmd h<CR>")
 vim.keymap.set("n", "<leader>wl", "<cmd>wincmd l<CR>")
 
 -- toggle project explore
-vim.keymap.set("n", "<leader>pv", "<cmd>NvimTreeToggle<CR>")
+vim.keymap.set("n", "<C-n>", "<cmd>NvimTreeToggle<CR>")
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
