@@ -1,14 +1,11 @@
--- [[ Basic Keymaps ]]
-
--- Keymaps for better default experience
--- See `:help vim.keymap.set()`
+-- keymaps for better default experience
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
--- Remap for dealing with word wrap
-vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+-- remap for dealing with word wrap
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 
--- Diagnostic keymaps
+-- diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
@@ -29,10 +26,12 @@ vim.keymap.set("n", "<C-b>", "<C-b>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
--- move focused window shortcut
+-- move focused between windows
 vim.keymap.set("n", "<leader>wh", "<cmd>wincmd h<CR>")
 vim.keymap.set("n", "<leader>wl", "<cmd>wincmd l<CR>")
 
 -- toggle project explore
 vim.keymap.set("n", "<C-n>", "<cmd>NvimTreeToggle<CR>")
 
+-- select all
+vim.keymap.set("n", "C-a", "G<S-v>gg")

@@ -34,33 +34,20 @@ vim.opt.rtp:prepend(lazypath)
 
 -- [[ Configure plugins ]]
 -- NOTE: Here is where you install your plugins.
---  You can configure plugins using the `config` key.
---
---  You can also configure plugins after the setup call,
---    as they will be available in your neovim runtime.
+--  You can configure plugins using the `config` key or after the setup call, as
+--  they will be available in your neovim runtime.
 require('lazy').setup({
-  -- NOTE: First, some plugins that don't require any configuration
-
-  -- Git related plugins
-  'tpope/vim-fugitive',
-  'tpope/vim-rhubarb',
-  'mattn/emmet-vim',
-
-  -- Detect tabstop and shiftwidth automatically
-  'tpope/vim-sleuth',
-
+  'tpope/vim-fugitive', -- git helper
+  'tpope/vim-rhubarb',  -- fugitive extension
+  'tpope/vim-sleuth',   -- auto tabstop,shiftwidth
   {
-    -- Setting up my preferred theme
     'ellisonleao/gruvbox.nvim',
     priority = 1000,
     opts = { contrast = "dark" },
     config = function()
-      vim.cmd.colorscheme 'gruvbox'
+      vim.cmd.colorscheme('gruvbox')
     end,
   },
-
-  -- NOTE: This is where your plugins related to LSP can be installed.
-  --  The configuration is done below. Search for lspconfig to find it below.
   {
     -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
@@ -68,34 +55,22 @@ require('lazy').setup({
       -- Automatically install LSPs to stdpath for neovim
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
-
-      -- Useful status updates for LSP
-      -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
       { 'j-hui/fidget.nvim', opts = {} },
-
-      -- Additional lua configuration, makes nvim stuff amazing!
-      'folke/neodev.nvim',
+      { 'folke/neodev.nvim', opts = {} },
+      -- NOTE: `opts = {}` == `require('fidget').setup({})`
     },
   },
 
   {
-    -- Autocompletion
-    'hrsh7th/nvim-cmp',
+    'hrsh7th/nvim-cmp',               -- completion engine
     dependencies = {
-      -- Snippet Engine & its associated nvim-cmp source
-      'L3MON4D3/LuaSnip',
-      'saadparwaiz1/cmp_luasnip',
-
-      -- Adds LSP completion capabilities
-      'hrsh7th/cmp-nvim-lsp',
-
-      -- Adds a number of user-friendly snippets
-      'rafamadriz/friendly-snippets',
+      'L3MON4D3/LuaSnip',             -- snippet engine
+      'saadparwaiz1/cmp_luasnip',     -- lua snip completion source for cmp
+      'hrsh7th/cmp-nvim-lsp',         -- lsp completion capabilities
+      'rafamadriz/friendly-snippets', -- snippets
     },
   },
-
-  -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim',  opts = {} },
+  { 'folke/which-key.nvim',  opts = {} }, -- show pending keybinds
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -136,9 +111,7 @@ require('lazy').setup({
   },
 
   {
-    -- Set lualine as statusline
-    'nvim-lualine/lualine.nvim',
-    -- See `:help lualine.txt`
+    'nvim-lualine/lualine.nvim', -- lualine as statusline
     opts = {
       options = {
         icons_enabled = false,
@@ -148,32 +121,21 @@ require('lazy').setup({
       },
     },
   },
-
   {
-    -- Add indentation guides even on blank lines
-    'lukas-reineke/indent-blankline.nvim',
-    -- Enable `lukas-reineke/indent-blankline.nvim`
-    -- See `:help ibl`
+    'lukas-reineke/indent-blankline.nvim', -- indentation guides
     main = 'ibl',
     opts = {},
   },
-
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
-
   {
     -- Fuzzy Finder (files, lsp, etc)
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',
     dependencies = {
       'nvim-lua/plenary.nvim',
-      -- Fuzzy Finder Algorithm which requires local dependencies to be built.
-      -- Only load if `make` is available. Make sure you have the system
-      -- requirements installed.
       {
         'nvim-telescope/telescope-fzf-native.nvim',
-        -- NOTE: If you are having trouble with this installation,
-        --       refer to the README for telescope-fzf-native for more instructions.
         build = 'make',
         cond = function()
           return vim.fn.executable 'make' == 1
@@ -181,16 +143,11 @@ require('lazy').setup({
       },
     },
   },
-
   {
-    -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
-    dependencies = {
-      'nvim-treesitter/nvim-treesitter-textobjects',
-    },
+    dependencies = { 'nvim-treesitter/nvim-treesitter-textobjects' },
     build = ':TSUpdate',
   },
-
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    You can use this folder to prevent any conflicts with this init.lua if you're interested in keeping
   --    up-to-date with whatever is in the kickstart repo.
@@ -199,8 +156,8 @@ require('lazy').setup({
   { import = 'custom.plugins' },
 }, {})
 
-require ('keymaps')
-require ('options')
+require('keymaps')
+require('options')
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
