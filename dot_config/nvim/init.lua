@@ -211,13 +211,16 @@ require('lazy').setup({
 -- See `:help vim.o`
 -- NOTE: You can change these options as you wish!
 
+
+vim.opt.title = true
+
 -- Search options
-vim.o.hlsearch = false
-vim.o.incsearch = true
+vim.opt.hlsearch = false
+vim.opt.incsearch = true
 
 -- Make (relative) line numbers default
-vim.o.nu = true
-vim.o.rnu = true
+vim.opt.number = true
+vim.opt.relativenumber = true
 
 -- Tab (as 4 spaces) global options
 vim.opt.tabstop = 4
@@ -226,37 +229,48 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
 -- Enable mouse mode
-vim.o.mouse = 'a'
+vim.opt.mouse = 'a'
 
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
-vim.o.clipboard = 'unnamedplus'
+vim.opt.clipboard = 'unnamedplus'
 
-vim.o.breakindent = true
-vim.o.wrap = false;
+vim.opt.autoindent = true
+vim.opt.breakindent = true
+vim.opt.wrap = false;
 
 -- Save undo history
-vim.o.undofile = true
+vim.opt.undofile = true
 
 -- Case-insensitive searching UNLESS \C or capital in search
-vim.o.ignorecase = true
-vim.o.smartcase = true
-vim.o.smartindent = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.smartindent = true
 
-vim.wo.signcolumn = 'yes'
-vim.o.scrolloff = 8
+vim.opt.signcolumn = 'yes'
+vim.opt.scrolloff = 8
 
 -- Decrease update time
-vim.o.updatetime = 250
-vim.o.timeoutlen = 300
+vim.opt.updatetime = 250
+vim.opt.timeoutlen = 300
 
 -- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
+vim.opt.completeopt = 'menuone,noselect'
 
+-- visuals
 -- NOTE: You should make sure your terminal supports this
-vim.o.termguicolors = true
-vim.o.colorcolumn = "80"
+vim.opt.termguicolors = true
+
+vim.opt.colorcolumn = "80"
+vim.opt.cursorline = true
+vim.opt.winblend = 0
+vim.opt.wildoptions = "pum"
+vim.opt.pumblend = 5
+vim.opt.background = "dark"
+
+-- do not search into node_modules
+vim.opt.wildignore:append { '*/node_modules/*' }
 
 -- [[ Basic Keymaps ]]
 
