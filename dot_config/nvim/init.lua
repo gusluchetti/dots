@@ -6,7 +6,6 @@
 
   And then you can explore or search through `:help lua-guide`
   - https://neovim.io/doc/user/lua-guide.html
-
 --]]
 
 vim.g.mapleader = ' '
@@ -17,8 +16,6 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 -- [[ Install `lazy.nvim` plugin manager ]]
---    https://github.com/folke/lazy.nvim
---    `:help lazy.nvim.txt` for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system {
@@ -34,12 +31,11 @@ vim.opt.rtp:prepend(lazypath)
 
 -- [[ Configure plugins ]]
 -- NOTE: Here is where you install your plugins.
---  You can configure plugins using the `config` key or after the setup call, as
---  they will be available in your neovim runtime.
+--  You can configure plugins using the `config` key or after the setup call, as they will be available in your neovim runtime.
 require('lazy').setup({
   'tpope/vim-fugitive', -- git helper
   'tpope/vim-rhubarb',  -- fugitive extension
-  'tpope/vim-sleuth',   -- auto tabstop,shiftwidth
+  'tpope/vim-sleuth',   -- auto tabstop, shiftwidth
   {
     'ellisonleao/gruvbox.nvim',
     priority = 1000,
@@ -49,18 +45,36 @@ require('lazy').setup({
     end,
   },
   {
-    -- LSP Configuration & Plugins
-    'neovim/nvim-lspconfig',
+    'neovim/nvim-lspconfig', -- LSP configuration + plugins
     dependencies = {
       -- Automatically install LSPs to stdpath for neovim
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
       { 'j-hui/fidget.nvim', opts = {} },
       { 'folke/neodev.nvim', opts = {} },
-      -- NOTE: `opts = {}` == `require('fidget').setup({})`
+      -- NOTE: `opts = {}` same as `require('fidget').setup({})`
     },
   },
-
+  {
+    "nvimtools/none-ls.nvim",
+    opts = function(_, opts)
+      local nls = require("null-ls").builtins
+      opts.sources = vim.list_extend(opts.sources or {}, {
+        nls.formatting.biome,
+        -- or if you like to live dangerously like me:
+        nls.formatting.biome.with({
+          args = {
+            'check',
+            '--apply-unsafe',
+            '--formatter-enabled=true',
+            '--organize-imports-enabled=true',
+            '--skip-errors',
+            '$FILENAME',
+          },
+        }),
+      })
+    end,
+  },
   {
     'hrsh7th/nvim-cmp',               -- completion engine
     dependencies = {
@@ -73,9 +87,9 @@ require('lazy').setup({
   { 'folke/which-key.nvim',  opts = {} }, -- show pending keybinds
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
+    -- See `:help gitsigns.txt`
     'lewis6991/gitsigns.nvim',
     opts = {
-      -- See `:help gitsigns.txt`
       signs = {
         add = { text = '+' },
         change = { text = '~' },
@@ -148,20 +162,15 @@ require('lazy').setup({
     dependencies = { 'nvim-treesitter/nvim-treesitter-textobjects' },
     build = ':TSUpdate',
   },
-  -- NOTE: The import below can automatically add your own plugins, configuration,
-  -- etc from `lua/custom/plugins/*.lua`. You can use this folder to prevent any
-  -- conflicts with this init.lua if you're interested in keeping up-to-date with
-  -- whatever is in the kickstart repo.
-  --
-  -- For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
+  -- https://github.com/folke/lazy.nvim#-structuring-your-plugins
+  -- `lua/custom/plugins/*.lua`
   { import = 'custom.plugins' },
 }, {})
 
-require('keymaps')
-require('options')
+require('keymaps') -- custom keymaps
+require('options') -- custom options
 
 -- [[ Highlight on yank ]]
--- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function()
@@ -171,8 +180,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
--- [[ Configure Telescope ]]
--- See `:help telescope` and `:help telescope.setup()`
+-- [[ Configuring Telescope ]]
 require('telescope').setup {
   defaults = {
     mappings = {
@@ -186,7 +194,6 @@ require('telescope').setup {
 
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
-
 -- Telescope live_grep in git root
 -- Function to find the git root directory based on the current buffer's path
 local function find_git_root()
@@ -243,17 +250,13 @@ vim.keymap.set('n', '<leader>sG', ':LiveGrepGitRoot<cr>', { desc = '[S]earch by 
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]esume' })
 
--- [[ Configure Treesitter ]]
--- See `:help nvim-treesitter`
+-- [[ Configure Treesitter ]] `:help nvim-treesitter`
 -- Defer Treesitter setup after first render to improve startup time of 'nvim {filename}'
 vim.defer_fn(function()
   require('nvim-treesitter.configs').setup {
     -- Add languages to be installed here that you want installed for treesitter
     ensure_installed = { 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash' },
-
-    -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
-    auto_install = false,
-
+    auto_install = true,
     highlight = { enable = true },
     indent = { enable = true },
     incremental_selection = {
@@ -314,13 +317,13 @@ end, 0)
 
 -- [[ Configure LSP ]]
 --  This function gets run when an LSP connects to a particular buffer.
+-- NOTE: Remember that lua is a real programming language, and as such it is possible
+-- to define small helper and utility functions so you don't have to repeat yourself
+-- many times.
+--
+-- In this case, we create a function that lets us more easily define mappings specific
+-- for LSP related items. It sets the mode, buffer and description for us each time.
 local on_attach = function(_, bufnr)
-  -- NOTE: Remember that lua is a real programming language, and as such it is possible
-  -- to define small helper and utility functions so you don't have to repeat yourself
-  -- many times.
-  --
-  -- In this case, we create a function that lets us more easily define mappings specific
-  -- for LSP related items. It sets the mode, buffer and description for us each time.
   local nmap = function(keys, func, desc)
     if desc then
       desc = 'LSP: ' .. desc
@@ -369,19 +372,14 @@ require('which-key').register {
   ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
 }
 
--- mason-lspconfig requires that these setup functions are called in this order
--- before setting up the servers.
+-- mason-lspconfig requires that these setup functions are called in this order before setting up the servers.
 require('mason').setup()
 require('mason-lspconfig').setup()
 
 -- Enable the following language servers
 --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
---
 --  Add any additional override configuration in the following tables. They will be passed to
 --  the `settings` field of the server config. You must look up that documentation yourself.
---
---  If you want to override the default filetypes that your language server will attach to you can
---  define the property 'filetypes' to the map in question.
 local servers = {
   lua_ls = {
     Lua = {
@@ -391,7 +389,8 @@ local servers = {
   },
   html = { filetypes = { 'html', 'twig', 'hbs' } },
   rust_analyzer = {},
-  biome = {}, -- typescript analyser, linter, and formatter
+  tsserver = {}, -- typescript lsp server
+  biome = {}, -- js/ts analyser, linter, and formatter
 }
 
 -- Setup neovim lua configuration
@@ -401,7 +400,6 @@ require('neodev').setup()
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
--- Ensure the servers above are installed
 local mason_lspconfig = require('mason-lspconfig')
 
 mason_lspconfig.setup {
@@ -419,11 +417,10 @@ mason_lspconfig.setup_handlers {
   end,
 }
 -- After setting up mason-lspconfig you may set up servers via lspconfig
-require("lspconfig").biome.setup {}
+require 'lspconfig'.biome.setup {}
 
 -- [[ Configure nvim-cmp ]]
 -- See `:help cmp`
---
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
 require('luasnip.loaders.from_vscode').lazy_load()
@@ -473,5 +470,5 @@ cmp.setup {
   },
 }
 
--- The line beneath this is called `modeline`. See `:help modeline`
+-- `modeline` below, see `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
