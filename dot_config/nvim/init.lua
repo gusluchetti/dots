@@ -65,10 +65,7 @@ require('lazy').setup({
         nls.formatting.biome.with({
           args = {
             'check',
-            '--apply-unsafe',
-            '--formatter-enabled=true',
-            '--organize-imports-enabled=true',
-            '--skip-errors',
+            '--apply',
             '$FILENAME',
           },
         }),
