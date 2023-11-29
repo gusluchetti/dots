@@ -390,7 +390,7 @@ local servers = {
   html = { filetypes = { 'html', 'twig', 'hbs' } },
   rust_analyzer = {},
   tsserver = {}, -- typescript lsp server
-  biome = {}, -- js/ts analyser, linter, and formatter
+  biome = {},    -- js/ts analyser, linter, and formatter
 }
 
 -- Setup neovim lua configuration
@@ -409,15 +409,22 @@ mason_lspconfig.setup {
 mason_lspconfig.setup_handlers {
   function(server_name)
     require('lspconfig')[server_name].setup {
-      capabilities = capabilities,
       on_attach = on_attach,
       settings = servers[server_name],
+      capabilities = capabilities,
       filetypes = (servers[server_name] or {}).filetypes,
     }
   end,
+  ["tsserver"] = function()
+    local lspconfig = require("lspconfig")
+    lspconfig.tsserver.setup {
+      on_attach = function(client)
+        -- disable tsserver formatting
+        client.server_capabilities.documentFormattingProvider = false
+      end,
+    }
+  end,
 }
--- After setting up mason-lspconfig you may set up servers via lspconfig
-require 'lspconfig'.biome.setup {}
 
 -- [[ Configure nvim-cmp ]]
 -- See `:help cmp`
