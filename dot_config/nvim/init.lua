@@ -180,12 +180,13 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
--- [[ Configuring Colorizer ]]
 require('colorizer').setup {
-  css = { rgb_fn = true, hsl_fn = true },
+  '*',                      -- Highlight all files, but customize some others.
+  css = { css = true, },    -- Enable all css features.
+  scss = { css = true, },   -- Enable all css features.
+  html = { names = false, } -- Disable parsing "names" like Blue or Gray
 }
 
--- [[ Configuring Telescope ]]
 require('telescope').setup {
   defaults = {
     mappings = {
