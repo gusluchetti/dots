@@ -46,7 +46,6 @@ require('lazy').setup({
   },
   {
     'norcalli/nvim-colorizer.lua',
-    opts = { css = true }
   },
   {
     'neovim/nvim-lspconfig', -- LSP configuration + plugins
@@ -180,6 +179,11 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = highlight_group,
   pattern = '*',
 })
+
+-- [[ Configuring Colorizer ]]
+require('colorizer').setup {
+  css = { rgb_fn = true, hsl_fn = true },
+}
 
 -- [[ Configuring Telescope ]]
 require('telescope').setup {
