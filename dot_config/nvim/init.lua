@@ -45,6 +45,9 @@ require('lazy').setup({
     end,
   },
   {
+    'norcalli/nvim-colorizer.lua',
+  },
+  {
     'neovim/nvim-lspconfig', -- LSP configuration + plugins
     dependencies = {
       -- Automatically install LSPs to stdpath for neovim
