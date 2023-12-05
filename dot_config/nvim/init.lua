@@ -46,6 +46,7 @@ require('lazy').setup({
   },
   {
     'norcalli/nvim-colorizer.lua',
+    opts = { css = true }
   },
   {
     'neovim/nvim-lspconfig', -- LSP configuration + plugins
