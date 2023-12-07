@@ -1,6 +1,3 @@
--- [[ Setting options ]]
--- See `:help vim.o`
-
 vim.opt.title = true
 
 -- Search options
@@ -17,19 +14,17 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
--- Enable mouse mode
-vim.opt.mouse = 'a'
+vim.opt.mouse = 'a'               -- enable mouse on all modes
 
--- Sync clipboard between OS and Neovim.
---  Remove this option if you want your OS clipboard to remain independent.
---  See `:help 'clipboard'`
-vim.opt.clipboard = 'unnamedplus'
+vim.opt.clipboard = 'unnamedplus' -- sync OS and nvim clipboard
 
+vim.opt.textwidth = 84;
+vim.opt.colorcolumn = "+1"
+vim.opt.formatoptions = "tcqj"
 vim.opt.autoindent = true
 vim.opt.breakindent = true
 vim.opt.wrap = true;
-vim.opt.textwidth = 84;
-vim.opt.colorcolumn = "+1"
+vim.opt.linebreak = true;
 
 -- Save undo history
 vim.opt.undofile = true

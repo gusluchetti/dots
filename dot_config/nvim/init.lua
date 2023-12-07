@@ -397,6 +397,8 @@ local servers = {
   rust_analyzer = {},
   tsserver = {}, -- typescript lsp server
   biome = {},    -- js/ts analyser, linter, and formatter
+  marksman = {},
+  pyright = {},
 }
 
 -- Setup neovim lua configuration
