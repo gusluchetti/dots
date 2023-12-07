@@ -44,7 +44,7 @@ echo "`nInstalling qBitTorrent 4.5.2 (latest version whitelisted by bakabt.me)..
 scoop install qbittorrent@4.5.2
 echo "`nInstalling extras..."
 scoop install teamspeak3 logitech-omm obs-studio gimp franz flameshot vscode
-scoop install wiztree wizfile revouninstaller handbrake-cli ventoy
+scoop install wiztree wizfile revouninstaller handbrake-cli ventoy mkvtoolnix
 
 echo "`nInstalling global extras..."
 sudo scoop install ddu msiafterburner msikombustor rtss furmark -g
@@ -62,7 +62,7 @@ scoop install pandoc miktex
 
 echo "`nInstalling Rust/Cargo programs..."
 cargo install cargo-binstall
-cargo binstall speedtest-rs wiki-tui
+cargo binstall speedtest-rs wiki-tui watchexec-cli
 
 echo "`nInstalling nerd fonts (FiraCode)"
 scoop bucket add nerd-fonts
