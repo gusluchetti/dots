@@ -23,7 +23,7 @@ vim.opt.colorcolumn = "+1"
 vim.opt.formatoptions = "tcqj"
 vim.opt.autoindent = true
 vim.opt.breakindent = true
-vim.opt.wrap = true;
+vim.opt.wrap = false;
 vim.opt.linebreak = true;
 
 -- Save undo history
