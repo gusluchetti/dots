@@ -10,7 +10,10 @@ if wezterm.config_builder then
   config = wezterm.config_builder()
 end
 
-config.font = wezterm.font "BerkeleyMono Nerd Font"
+config.font = wezterm.font {
+  family = 'BerkeleyMono Nerd Font',
+  font_size = 15
+}
 config.color_scheme = 'Gruvbox dark, hard (base16)'
 
 -- and finally, return the configuration to wezterm
