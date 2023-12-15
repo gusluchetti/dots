@@ -12,7 +12,6 @@ end
 
 config.font = wezterm.font {
   family = 'BerkeleyMono Nerd Font',
-  font_size = 15
 }
 config.color_scheme = 'Gruvbox dark, hard (base16)'
 
