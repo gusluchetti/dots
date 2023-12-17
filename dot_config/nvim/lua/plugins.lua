@@ -54,16 +54,6 @@ return {
     end,
   },
 
-  {
-    'hrsh7th/nvim-cmp',               -- completion engine
-    dependencies = {
-      'L3MON4D3/LuaSnip',             -- snippet engine
-      'saadparwaiz1/cmp_luasnip',     -- lua snip completion source for cmp
-      'hrsh7th/cmp-nvim-lsp',         -- lsp completion capabilities
-      'rafamadriz/friendly-snippets', -- snippets
-    },
-  },
-
   { 'folke/which-key.nvim',  opts = {} }, -- show pending keybinds
 
   {
