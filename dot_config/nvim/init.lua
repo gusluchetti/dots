@@ -59,9 +59,9 @@ local lang_table = {
     vale_ls = {} -- markup-aware linter for prose
   },
   python = {
-    pyright = {}, -- static type checker
-    isort = {},   -- organize imports
-    black = {},   -- 'uncompromising' python code formatter
+    ruff = {},  -- python linter written in rust
+    isort = {}, -- organize imports
+    black = {}, -- 'uncompromising' python code formatter
   },
   rust = {
     rust_analyzer = {},
