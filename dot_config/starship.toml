@@ -1,6 +1,6 @@
 "$schema" = 'https://starship.rs/config-schema.json' # editor completions
 
-add_newline = true # between shell prompts
+add_newline = false # between shell prompts
 
 [os]
 disabled = false
