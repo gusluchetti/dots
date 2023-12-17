@@ -57,7 +57,6 @@ local lang_table = {
   typescript = {
     tsserver = {},
     biome = {}, -- js/ts analyser, linter, and formatter
-    prettier = {},
   },
   markdown = {
     vale_ls = {}
@@ -70,11 +69,11 @@ local lang_table = {
 local languages = {}
 local servers = {}
 
-for lang, content in pairs(lang_table) do
+for lang, LSPs in pairs(lang_table) do
   table.insert(languages, lang)
-  if content then
-    for server, lsps in pairs(content) do
-      servers[server] = lsps
+  if LSPs then
+    for server, settings in pairs(LSPs) do
+      servers[server] = settings
     end
   end
 end
@@ -82,7 +81,6 @@ end
 
 vim.defer_fn(function()
   -- setup deferred to improv startup time
-  print(languages)
   require('nvim-treesitter.configs').setup {
     ensure_installed = languages,
     auto_install = true,
@@ -203,8 +201,6 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 local mason_lspconfig = require('mason-lspconfig')
-
-print(servers)
 
 mason_lspconfig.setup {
   ensure_installed = vim.tbl_keys(servers)
