@@ -10,7 +10,7 @@ if wezterm.config_builder then
   config = wezterm.config_builder()
 end
 
-config.font_size = 15.0
+config.font_size = 17.0
 config.font = wezterm.font {
   family = 'BerkeleyMono Nerd Font',
 }
