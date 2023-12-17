@@ -158,9 +158,7 @@ local on_attach = function(_, bufnr)
   nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
   nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
   nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
-  nmap('<leader>cf', function()
-    require("conform").format({ async = true, lsp_fallback = true })
-  end, '[C]ode [F]ormat')
+  nmap('<leader>cf', vim.lsp.format , '[C]ode [F]ormat')
 
   local telescope_builtin = require 'telescope.builtin'
   -- lsp + telescope
