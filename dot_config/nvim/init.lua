@@ -41,40 +41,29 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 local lang_table = {
   lua = {
-    lsp = {
-      lua_ls = {
-        Lua = {
-          workspace = { checkThirdParty = false },
-          telemetry = { enable = false },
-        },
+    lua_ls = {
+      Lua = {
+        workspace = { checkThirdParty = false },
+        telemetry = { enable = false },
       },
-    }
-  },
-  html = {
-    lsp = {
-      html = { filetypes = { 'html', 'twig', 'hbs' } }
-    }
-  },
-  rust = {
-    lsp = {
-      rust_analyzer = {},
-    }
-  },
-  typescript = {
-    lsp = {
-      tsserver = {},
-      biome = {}, -- js/ts analyser, linter, and formatter
     },
   },
+  html = {
+    html = { filetypes = { 'html', 'twig', 'hbs' } }
+  },
+  rust = {
+    rust_analyzer = {},
+  },
+  typescript = {
+    tsserver = {},
+    biome = {}, -- js/ts analyser, linter, and formatter
+    prettier = {},
+  },
   markdown = {
-    lsp = {
-      marksman = {},
-    }
+    vale_ls = {}
   },
   python = {
-    lsp = {
-      pyright = {},
-    }
+    pyright = {},
   }
 }
 
@@ -83,9 +72,9 @@ local servers = {}
 
 for lang, content in pairs(lang_table) do
   table.insert(languages, lang)
-  if content.lsp then
-    for server, settings in pairs(content.lsp) do
-      servers[server] = settings
+  if content then
+    for server, lsps in pairs(content) do
+      servers[server] = lsps
     end
   end
 end
