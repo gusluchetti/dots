@@ -101,11 +101,13 @@ vim.keymap.set('n', '<leader><space>', telescope_builtin.buffers,
 )
 
 vim.keymap.set('n', '<leader>/', function()
-  -- You can pass additional configuration to telescope to change theme, layout, etc.
-  telescope_builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-    winblend = 10,
-    previewer = false,
-  })
+  local themes = require 'telescope.themes'
+  telescope_builtin.current_buffer_fuzzy_find(
+    themes.get_cursor {
+      winblend = 10,
+      previewer = false,
+    }
+  )
 end, { desc = '[/] Fuzzily search in current buffer' })
 
 vim.keymap.set('n', '<leader>gf', telescope_builtin.git_files, { desc = 'Search [G]it [F]iles' })
