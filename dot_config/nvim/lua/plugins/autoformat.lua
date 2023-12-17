@@ -1,16 +1,12 @@
 -- autoformat.lua
 -- Use your language server to automatically format your code on save.
--- Adds additional commands as well to manage the behavior
-
 return {
   'neovim/nvim-lspconfig',
   config = function()
-    -- Switch for controlling whether you want autoformatting.
-    --  Use :FormatBufToggle to toggle autoformatting on or off
-    local format_is_enabled = false
-    vim.api.nvim_create_user_command('FormatBufToggle', function()
-      format_is_enabled = not format_is_enabled
-      print('Setting autoformatting to: ' .. tostring(format_is_enabled))
+    local force_format = false
+    vim.api.nvim_create_user_command('ForceFormatOnSave', function()
+      force_format = not force_format
+      print('Force auto format on save to: ' .. tostring(force_format))
     end, {})
 
     -- Create an augroup that is used for managing our formatting autocmds.
@@ -19,7 +15,7 @@ return {
     local _augroups = {}
     local get_augroup = function(client)
       if not _augroups[client.id] then
-        local group_name = 'kickstart-lsp-format-' .. client.name
+        local group_name = 'lsp-format-' .. client.name
         local id = vim.api.nvim_create_augroup(group_name, { clear = true })
         _augroups[client.id] = id
       end
@@ -27,25 +23,16 @@ return {
       return _augroups[client.id]
     end
 
-    -- Whenever an LSP attaches to a buffer, we will run this function.
-    --
-    -- See `:help LspAttach` for more information about this autocmd event.
     vim.api.nvim_create_autocmd('LspAttach', {
-      group = vim.api.nvim_create_augroup('kickstart-lsp-attach-format', { clear = true }),
-      -- This is where we attach the autoformatting for reasonable clients
+      group = vim.api.nvim_create_augroup('lsp-attach-format', { clear = true }),
       callback = function(args)
         local client_id = args.data.client_id
         local client = vim.lsp.get_client_by_id(client_id)
         local bufnr = args.buf
 
-        -- Only attach to clients that support document formatting
-        if not client.server_capabilities.documentFormattingProvider then
+        if client.server_capabilities.documentFormattingProvider == false then
           return
-        end
-
-        -- Tsserver usually works poorly. Sorry you work with bad languages
-        -- You can remove this line if you know what you're doing :)
-        if client.name == 'tsserver' then
+        elseif client.name == 'tsserver' then
           return
         end
 
@@ -55,7 +42,7 @@ return {
           group = get_augroup(client),
           buffer = bufnr,
           callback = function()
-            if not format_is_enabled then
+            if not force_format then
               return
             end
 

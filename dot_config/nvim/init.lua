@@ -25,7 +25,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup("plugins")
-require('custom.plugins')
 require('keymaps')
 require('options')
 
@@ -279,15 +278,6 @@ mason_lspconfig.setup_handlers {
       settings = servers[server_name],
       capabilities = capabilities,
       filetypes = (servers[server_name] or {}).filetypes,
-    }
-  end,
-  ["tsserver"] = function()
-    local lspconfig = require("lspconfig")
-    lspconfig.tsserver.setup {
-      on_attach = function(client)
-        -- disable tsserver formatting
-        client.server_capabilities.documentFormattingProvider = false
-      end,
     }
   end,
 }
