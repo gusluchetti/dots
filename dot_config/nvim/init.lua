@@ -1,9 +1,6 @@
 --[[
   started off as kickstart-nvim
-
-  - lua guide: https://learnxinyminutes.com/docs/lua/
-
-  And then you can explore or search through `:help lua-guide`
+  - https://learnxinyminutes.com/docs/lua/
   - https://neovim.io/doc/user/lua-guide.html
 --]]
 
@@ -14,7 +11,6 @@ vim.g.maplocalleader = ' '
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
--- [[ Install `lazy.nvim` plugin manager ]]
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system {
@@ -22,182 +18,15 @@ if not vim.loop.fs_stat(lazypath) then
     'clone',
     '--filter=blob:none',
     'https://github.com/folke/lazy.nvim.git',
-    '--branch=stable', -- latest stable release
+    '--branch=stable',
     lazypath,
   }
 end
 vim.opt.rtp:prepend(lazypath)
 
--- [[ Configure plugins ]]
--- You can configure plugins using the `config` key or after the setup call, as
--- they will be available in your neovim runtime.
-require('lazy').setup({
-  'tpope/vim-sleuth', -- auto tabstop, shiftwidth
-
-  {
-    'ellisonleao/gruvbox.nvim',
-    priority = 1000,
-    opts = { contrast = "dark" },
-    config = function()
-      vim.cmd.colorscheme('gruvbox')
-    end,
-  },
-
-  { 'norcalli/nvim-colorizer.lua' },
-
-  {
-    'neovim/nvim-lspconfig', -- LSP configuration + plugins
-    dependencies = {
-      -- Automatically install LSPs to stdpath for neovim
-      'williamboman/mason.nvim',
-      'williamboman/mason-lspconfig.nvim',
-      { 'j-hui/fidget.nvim', opts = {} },
-      { 'folke/neodev.nvim', opts = {} },
-    },
-  },
-
-  {
-    "nvimtools/none-ls.nvim",
-    opts = function(_, opts)
-      local nls = require("null-ls").builtins
-      opts.sources = vim.list_extend(opts.sources or {}, {
-        nls.formatting.biome,
-      })
-    end,
-  },
-
-  {
-    'hrsh7th/nvim-cmp',               -- completion engine
-    dependencies = {
-      'L3MON4D3/LuaSnip',             -- snippet engine
-      'saadparwaiz1/cmp_luasnip',     -- lua snip completion source for cmp
-      'hrsh7th/cmp-nvim-lsp',         -- lsp completion capabilities
-      'rafamadriz/friendly-snippets', -- snippets
-    },
-  },
-
-  { 'folke/which-key.nvim',       opts = {} }, -- show pending keybinds
-
-  {
-    'lewis6991/gitsigns.nvim',
-    opts = {
-      signs = {
-        add = { text = '+' },
-        change = { text = '~' },
-        delete = { text = '_' },
-        topdelete = { text = '‾' },
-        changedelete = { text = '~' },
-      },
-      on_attach = function(bufnr)
-        vim.keymap.set('n', '<leader>hp', require('gitsigns').preview_hunk,
-          { buffer = bufnr, desc = 'Preview git hunk' }
-        )
-        -- don't override the built-in and fugitive keymaps
-        local gs = package.loaded.gitsigns
-        vim.keymap.set({ 'n', 'v' }, ']c', function()
-          if vim.wo.diff then
-            return ']c'
-          end
-          vim.schedule(function()
-            gs.next_hunk()
-          end)
-          return '<Ignore>'
-        end, { expr = true, buffer = bufnr, desc = 'Jump to next hunk' })
-        vim.keymap.set({ 'n', 'v' }, '[c', function()
-          if vim.wo.diff then
-            return '[c'
-          end
-          vim.schedule(function()
-            gs.prev_hunk()
-          end)
-          return '<Ignore>'
-        end, { expr = true, buffer = bufnr, desc = 'Jump to previous hunk' })
-      end,
-    },
-  },
-
-  {
-    'nvim-lualine/lualine.nvim', -- lualine as statusline
-    opts = {
-      options = {
-        icons_enabled = false,
-        component_separators = '|',
-        section_separators = '',
-        theme = 'gruvbox',
-      },
-    },
-  },
-
-  {
-    'lukas-reineke/indent-blankline.nvim', -- indentation guides
-    main = 'ibl',
-    opts = {
-      indent = {
-        highlight = {
-          "CursorColumn",
-          "Whitespace",
-        },
-        char = ""
-      },
-      whitespace = {
-        highlight = {
-          "CursorColumn",
-          "Whitespace",
-        },
-        remove_blankline_trail = false,
-      },
-      scope = { enabled = false },
-    },
-  },
-
-  -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim',  opts = {} },
-
-  {
-    "windwp/nvim-autopairs",
-    dependencies = { 'hrsh7th/nvim-cmp' },
-    config = function()
-      require("nvim-autopairs").setup {}
-      -- If you want to automatically add `(` after selecting a function or method
-      local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-      local cmp = require('cmp')
-      cmp.event:on(
-        'confirm_done',
-        cmp_autopairs.on_confirm_done()
-      )
-    end,
-  },
-
-  {
-    -- Fuzzy Finder (files, lsp, etc)
-    'nvim-telescope/telescope.nvim',
-    branch = '0.1.x',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      {
-        'nvim-telescope/telescope-fzf-native.nvim',
-        build = 'make',
-        cond = function()
-          return vim.fn.executable 'make' == 1
-        end,
-      },
-    },
-  },
-
-  {
-    'nvim-treesitter/nvim-treesitter',
-    dependencies = { 'nvim-treesitter/nvim-treesitter-textobjects' },
-    build = ':TSUpdate',
-  },
-
-  -- https://github.com/folke/lazy.nvim#-structuring-your-plugins
-  -- `lua/custom/plugins/*.lua`
-  { import = 'custom.plugins' },
-
-}, {})
-
-require('keymaps') -- custom keymaps
-require('options') -- custom options
+require('lazy').setup("plugins")
+require('keymaps')
+require('options')
 
 -- [[ Highlight on yank ]]
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
@@ -208,13 +37,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = highlight_group,
   pattern = '*',
 })
-
-require('colorizer').setup {
-  '*',                      -- Highlight all files, but customize some others.
-  css = { css = true, },    -- Enable all css features.
-  scss = { css = true, },   -- Enable all css features.
-  html = { names = false, } -- Disable parsing "names" like Blue or Gray
-}
 
 require('telescope').setup {
   defaults = {
