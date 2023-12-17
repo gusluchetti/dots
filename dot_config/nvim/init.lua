@@ -158,7 +158,7 @@ local on_attach = function(_, bufnr)
   nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
   nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
   nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
-  nmap('<leader>cf', vim.lsp.format , '[C]ode [F]ormat')
+  nmap('<leader>cf', vim.lsp.format() , '[C]ode [F]ormat')
 
   local telescope_builtin = require 'telescope.builtin'
   -- lsp + telescope
@@ -204,7 +204,6 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 local mason_lspconfig = require('mason-lspconfig')
 
-print(vim.tbl_keys(servers))
 mason_lspconfig.setup {
   ensure_installed = vim.tbl_keys(servers)
 }
