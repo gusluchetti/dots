@@ -166,9 +166,5 @@ return {
     'nvim-treesitter/nvim-treesitter',
     dependencies = { 'nvim-treesitter/nvim-treesitter-textobjects' },
     build = ':TSUpdate',
-  },
-
-  -- https://github.com/folke/lazy.nvim#-structuring-your-plugins
-  -- `lua/custom/plugins/*.lua`
-  { import = 'custom.plugins' },
+  }
 }

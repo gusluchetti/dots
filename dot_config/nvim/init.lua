@@ -1,7 +1,7 @@
 --[[
   started off as kickstart-nvim
-  - https://learnxinyminutes.com/docs/lua/
-  - https://neovim.io/doc/user/lua-guide.html
+  https://learnxinyminutes.com/docs/lua/
+  https://neovim.io/doc/user/lua-guide.html
 --]]
 
 vim.g.mapleader = ' '
@@ -25,6 +25,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup("plugins")
+require('custom.plugins')
 require('keymaps')
 require('options')
 
