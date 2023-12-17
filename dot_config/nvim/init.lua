@@ -39,52 +39,12 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
-local lang_table = {
-  typescript = {
-    tsserver = {},
-    biome = {}, -- js/ts analyser, linter, and formatter
-  },
-  lua = {
-    lua_ls = {
-      Lua = {
-        workspace = { checkThirdParty = false },
-        telemetry = { enable = false },
-      },
-    },
-  },
-  html = {
-    html = { filetypes = { 'html', 'twig', 'hbs' } }
-  },
-  markdown = {
-    vale_ls = {} -- markup-aware linter for prose
-  },
-  python = {
-    ruff = {}, -- python linter written in rust
-    -- isort = {}, -- organize imports
-    -- black = {}, -- 'uncompromising' python code formatter
-  },
-  rust = {
-    rust_analyzer = {},
-  },
-}
-
-local languages = {}
-local servers = {}
-
-for lang, LSPs in pairs(lang_table) do
-  table.insert(languages, lang)
-  if LSPs then
-    for server, settings in pairs(LSPs) do
-      servers[server] = settings
-    end
-  end
-end
-
-
 vim.defer_fn(function()
   -- setup deferred to improv startup time
   require('nvim-treesitter.configs').setup {
-    ensure_installed = languages,
+    ensure_installed = {
+      'lua', 'python', 'rust', 'typescript', 'markdown'
+    },
     auto_install = true,
     highlight = { enable = true },
     indent = { enable = true },
@@ -143,81 +103,5 @@ vim.defer_fn(function()
     },
   }
 end, 0)
-
-local on_attach = function(_, bufnr)
-  local nmap = function(keys, func, desc)
-    if desc then
-      desc = 'LSP: ' .. desc
-    end
-
-    vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
-  end
-
-  -- lsp buf
-  nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
-  nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
-  nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-  nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
-  nmap('<leader>cf', vim.lsp.format() , '[C]ode [F]ormat')
-
-  local telescope_builtin = require 'telescope.builtin'
-  -- lsp + telescope
-  nmap('gd', telescope_builtin.lsp_definitions, '[G]oto [D]efinition')
-  nmap('gr', telescope_builtin.lsp_references, '[G]oto [R]eferences')
-  nmap('gI', telescope_builtin.lsp_implementations, '[G]oto [I]mplementation')
-  nmap('<leader>D', telescope_builtin.lsp_type_definitions, 'Type [D]efinition')
-  nmap('<leader>ds', telescope_builtin.lsp_document_symbols, '[D]ocument [S]ymbols')
-  nmap('<leader>ws', telescope_builtin.lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
-
-  nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-  nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
-  nmap('<leader>wr', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove Folder')
-  nmap('<leader>wl', function()
-    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  end, '[W]orkspace [L]ist Folders')
-
-  -- Create a command `:Format` local to the LSP buffer
-  vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
-    vim.lsp.buf.format()
-  end, { desc = 'Format current buffer with LSP' })
-end
-
-require('which-key').register {
-  ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
-  ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
-  ['<leader>g'] = { name = '[G]it', _ = 'which_key_ignore' },
-  ['<leader>h'] = { name = '[H]arpoon', _ = 'which_key_ignore' },
-  ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
-  ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
-  ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
-}
-
--- mason-lspconfig requires that these setup functions are called in this order
-require('mason').setup()
-require('mason-lspconfig').setup()
-
--- Setup neovim lua configuration
-require('neodev').setup()
-
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
-
-local mason_lspconfig = require('mason-lspconfig')
-
-mason_lspconfig.setup {
-  ensure_installed = vim.tbl_keys(servers)
-}
-
-mason_lspconfig.setup_handlers {
-  function(server_name)
-    local lspconfig = require 'lspconfig'
-    lspconfig[server_name].setup {
-      on_attach = on_attach,
-      settings = servers[server_name],
-      capabilities = capabilities,
-      filetypes = (servers[server_name] or {}).filetypes,
-    }
-  end,
-}
 
 -- vim: ts=2 sts=2 sw=2 et

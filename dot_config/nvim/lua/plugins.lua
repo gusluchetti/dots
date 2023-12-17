@@ -34,19 +34,6 @@ return {
   },
 
   {
-    'neovim/nvim-lspconfig', -- LSP configuration + plugins
-    dependencies = {
-      -- Automatically install LSPs to stdpath for neovim
-      'williamboman/mason.nvim',
-      'williamboman/mason-lspconfig.nvim',
-      { 'j-hui/fidget.nvim', opts = {} },
-      { 'folke/neodev.nvim', opts = {} },
-    },
-  },
-
-  { 'folke/which-key.nvim',  opts = {} }, -- show pending keybinds
-
-  {
     'lewis6991/gitsigns.nvim',
     opts = {
       signs = {
