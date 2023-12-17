@@ -1,5 +1,3 @@
--- autoformat.lua
--- Use your language server to automatically format your code on save.
 return {
   'neovim/nvim-lspconfig',
   config = function()
@@ -36,8 +34,6 @@ return {
           return
         end
 
-        -- Create an autocmd that will run *before* we save the buffer.
-        --  Run the formatting command for the LSP that has just attached.
         vim.api.nvim_create_autocmd('BufWritePre', {
           group = get_augroup(client),
           buffer = bufnr,
