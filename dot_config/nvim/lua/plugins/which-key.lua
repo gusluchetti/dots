@@ -1,8 +1,8 @@
-return { 
- -- show pending keybinds
-  'folke/which-key.nvim',  
+return {
+  -- show pending keybinds
+  'folke/which-key.nvim',
   opts = {},
-  config = function ()
+  config = function()
     require('which-key').register {
       ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
       ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },

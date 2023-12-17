@@ -1,5 +1,5 @@
 return {
-    'neovim/nvim-lspconfig', -- LSP configuration + plugins
+    'neovim/nvim-lspconfig',
     dependencies = {
         'nvim-telescope/telescope.nvim',
         'williamboman/mason.nvim',
