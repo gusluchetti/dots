@@ -40,7 +40,12 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 local lang_table = {
+  typescript = {
+    tsserver = {},
+    biome = {}, -- js/ts analyser, linter, and formatter
+  },
   lua = {
+    selene = {},
     lua_ls = {
       Lua = {
         workspace = { checkThirdParty = false },
@@ -51,19 +56,17 @@ local lang_table = {
   html = {
     html = { filetypes = { 'html', 'twig', 'hbs' } }
   },
+  markdown = {
+    vale = {} -- markup-aware linter for prose
+  },
+  python = {
+    isort = {},  -- organize imports
+    black = {},  -- 'uncompromising' python code formatter
+    flake8 = {}, -- static type checker
+  },
   rust = {
     rust_analyzer = {},
   },
-  typescript = {
-    tsserver = {},
-    biome = {}, -- js/ts analyser, linter, and formatter
-  },
-  markdown = {
-    vale_ls = {}
-  },
-  python = {
-    pyright = {},
-  }
 }
 
 local languages = {}
@@ -154,9 +157,11 @@ local on_attach = function(_, bufnr)
   -- lsp buf
   nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
   nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
-  nmap('<leader>cf', vim.lsp.buf.format, '[C]ode [F]ormat')
   nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
   nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
+  nmap('<leader>cf', function()
+    require("conform").format({ async = true, lsp_fallback = true })
+  end, '[C]ode [F]ormat')
 
   local telescope_builtin = require 'telescope.builtin'
   -- lsp + telescope
