@@ -1,8 +1,7 @@
 --[[
   started off as kickstart-nvim
 
-  - lua guide when in trouble:
-  - https://learnxinyminutes.com/docs/lua/
+  - lua guide: https://learnxinyminutes.com/docs/lua/
 
   And then you can explore or search through `:help lua-guide`
   - https://neovim.io/doc/user/lua-guide.html
@@ -30,12 +29,11 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- [[ Configure plugins ]]
--- NOTE: Here is where you install your plugins.
---  You can configure plugins using the `config` key or after the setup call, as they will be available in your neovim runtime.
+-- You can configure plugins using the `config` key or after the setup call, as
+-- they will be available in your neovim runtime.
 require('lazy').setup({
-  'tpope/vim-fugitive', -- git helper
-  'tpope/vim-rhubarb',  -- fugitive extension
-  'tpope/vim-sleuth',   -- auto tabstop, shiftwidth
+  'tpope/vim-sleuth', -- auto tabstop, shiftwidth
+
   {
     'ellisonleao/gruvbox.nvim',
     priority = 1000,
@@ -44,9 +42,9 @@ require('lazy').setup({
       vim.cmd.colorscheme('gruvbox')
     end,
   },
-  {
-    'norcalli/nvim-colorizer.lua',
-  },
+
+  { 'norcalli/nvim-colorizer.lua' },
+
   {
     'neovim/nvim-lspconfig', -- LSP configuration + plugins
     dependencies = {
@@ -55,26 +53,19 @@ require('lazy').setup({
       'williamboman/mason-lspconfig.nvim',
       { 'j-hui/fidget.nvim', opts = {} },
       { 'folke/neodev.nvim', opts = {} },
-      -- NOTE: `opts = {}` same as `require('fidget').setup({})`
     },
   },
+
   {
     "nvimtools/none-ls.nvim",
     opts = function(_, opts)
       local nls = require("null-ls").builtins
       opts.sources = vim.list_extend(opts.sources or {}, {
         nls.formatting.biome,
-        -- or if you like to live dangerously like me:
-        nls.formatting.biome.with({
-          args = {
-            'check',
-            '--apply',
-            '$FILENAME',
-          },
-        }),
       })
     end,
   },
+
   {
     'hrsh7th/nvim-cmp',               -- completion engine
     dependencies = {
@@ -84,10 +75,10 @@ require('lazy').setup({
       'rafamadriz/friendly-snippets', -- snippets
     },
   },
-  { 'folke/which-key.nvim',  opts = {} }, -- show pending keybinds
+
+  { 'folke/which-key.nvim',       opts = {} }, -- show pending keybinds
+
   {
-    -- Adds git related signs to the gutter, as well as utilities for managing changes
-    -- See `:help gitsigns.txt`
     'lewis6991/gitsigns.nvim',
     opts = {
       signs = {
@@ -98,8 +89,9 @@ require('lazy').setup({
         changedelete = { text = '~' },
       },
       on_attach = function(bufnr)
-        vim.keymap.set('n', '<leader>hp', require('gitsigns').preview_hunk, { buffer = bufnr, desc = 'Preview git hunk' })
-
+        vim.keymap.set('n', '<leader>hp', require('gitsigns').preview_hunk,
+          { buffer = bufnr, desc = 'Preview git hunk' }
+        )
         -- don't override the built-in and fugitive keymaps
         local gs = package.loaded.gitsigns
         vim.keymap.set({ 'n', 'v' }, ']c', function()
@@ -135,13 +127,32 @@ require('lazy').setup({
       },
     },
   },
+
   {
     'lukas-reineke/indent-blankline.nvim', -- indentation guides
     main = 'ibl',
-    opts = {},
+    opts = {
+      indent = {
+        highlight = {
+          "CursorColumn",
+          "Whitespace",
+        },
+        char = ""
+      },
+      whitespace = {
+        highlight = {
+          "CursorColumn",
+          "Whitespace",
+        },
+        remove_blankline_trail = false,
+      },
+      scope = { enabled = false },
+    },
   },
+
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
+  { 'numToStr/Comment.nvim',  opts = {} },
+
   {
     -- Fuzzy Finder (files, lsp, etc)
     'nvim-telescope/telescope.nvim',
@@ -157,14 +168,17 @@ require('lazy').setup({
       },
     },
   },
+
   {
     'nvim-treesitter/nvim-treesitter',
     dependencies = { 'nvim-treesitter/nvim-treesitter-textobjects' },
     build = ':TSUpdate',
   },
+
   -- https://github.com/folke/lazy.nvim#-structuring-your-plugins
   -- `lua/custom/plugins/*.lua`
   { import = 'custom.plugins' },
+
 }, {})
 
 require('keymaps') -- custom keymaps
