@@ -6,14 +6,10 @@ return {
   config = function()
     local null_ls = require("null-ls")
 
-    local formatting = {
-      null_ls.builtins.formatting.black
-    }
-
-    local diagnostics = {}
-
     null_ls.setup({
-      sources = formatting .. diagnostics,
+      sources = {
+        null_ls.builtins.formatting.black
+      },
     })
   end
 }
