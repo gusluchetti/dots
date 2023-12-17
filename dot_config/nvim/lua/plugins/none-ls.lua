@@ -8,9 +8,11 @@ return {
 
     null_ls.setup({
       sources = {
+        -- python
         null_ls.builtins.diagnostics.ruff,
-        null_ls.builtins.formatting.isort,
         null_ls.builtins.formatting.black,
+        null_ls.builtins.formatting.isort,
+        -- node.js
       },
     })
   end
