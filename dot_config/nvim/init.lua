@@ -24,8 +24,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-local lazy = require 'lazy'
-lazy.setup("plugins")
+require('lazy').setup("plugins")
 require('keymaps')
 require('options')
 
@@ -40,9 +39,61 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
-local languages = { 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash' }
+local lang_table = {
+  lua = {
+    lsp = {
+      lua_ls = {
+        Lua = {
+          workspace = { checkThirdParty = false },
+          telemetry = { enable = false },
+        },
+      },
+    }
+  },
+  html = {
+    lsp = {
+      html = { filetypes = { 'html', 'twig', 'hbs' } }
+    }
+  },
+  rust = {
+    lsp = {
+      rust_analyzer = {},
+    }
+  },
+  typescript = {
+    lsp = {
+      tsserver = {},
+      biome = {}, -- js/ts analyser, linter, and formatter
+    },
+  },
+  markdown = {
+    lsp = {
+      marksman = {},
+    }
+  },
+  python = {
+    lsp = {
+      pyright = {},
+    }
+  }
+}
+
+local languages = {}
+local servers = {}
+
+for lang, content in pairs(lang_table) do
+  table.insert(languages, lang)
+  if content.lsp then
+    for server, settings in pairs(content.lsp) do
+      servers[server] = settings
+    end
+  end
+end
+
+
 vim.defer_fn(function()
   -- setup deferred to improv startup time
+  print(languages)
   require('nvim-treesitter.configs').setup {
     ensure_installed = languages,
     auto_install = true,
@@ -120,6 +171,7 @@ local on_attach = function(_, bufnr)
   nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
   nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
 
+  local telescope_builtin = require 'telescope.builtin'
   -- lsp + telescope
   nmap('gd', telescope_builtin.lsp_definitions, '[G]oto [D]efinition')
   nmap('gr', telescope_builtin.lsp_references, '[G]oto [R]eferences')
@@ -127,7 +179,6 @@ local on_attach = function(_, bufnr)
   nmap('<leader>D', telescope_builtin.lsp_type_definitions, 'Type [D]efinition')
   nmap('<leader>ds', telescope_builtin.lsp_document_symbols, '[D]ocument [S]ymbols')
   nmap('<leader>ws', telescope_builtin.lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
-
 
   nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
   nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
@@ -153,36 +204,18 @@ require('which-key').register {
 }
 
 -- mason-lspconfig requires that these setup functions are called in this order
--- before setting up the servers.
 require('mason').setup()
 require('mason-lspconfig').setup()
-
--- Enable the following language servers
---  Add any additional override configuration in the following tables. They will be passed to
---  the `settings` field of the server config. You must look up that documentation yourself.
-local servers = {
-  lua_ls = {
-    Lua = {
-      workspace = { checkThirdParty = false },
-      telemetry = { enable = false },
-    },
-  },
-  html = { filetypes = { 'html', 'twig', 'hbs' } },
-  rust_analyzer = {},
-  tsserver = {}, -- typescript lsp server
-  biome = {},    -- js/ts analyser, linter, and formatter
-  marksman = {},
-  pyright = {},
-}
 
 -- Setup neovim lua configuration
 require('neodev').setup()
 
--- nvim-cmp supports additional completion capabilities, so broadcast that to servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 local mason_lspconfig = require('mason-lspconfig')
+
+print(servers)
 
 mason_lspconfig.setup {
   ensure_installed = vim.tbl_keys(servers)
@@ -190,7 +223,8 @@ mason_lspconfig.setup {
 
 mason_lspconfig.setup_handlers {
   function(server_name)
-    require('lspconfig')[server_name].setup {
+    local lspconfig = require 'lspconfig'
+    lspconfig[server_name].setup {
       on_attach = on_attach,
       settings = servers[server_name],
       capabilities = capabilities,
