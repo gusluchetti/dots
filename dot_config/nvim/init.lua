@@ -45,7 +45,6 @@ local lang_table = {
     biome = {}, -- js/ts analyser, linter, and formatter
   },
   lua = {
-    selene = {},
     lua_ls = {
       Lua = {
         workspace = { checkThirdParty = false },
@@ -57,12 +56,12 @@ local lang_table = {
     html = { filetypes = { 'html', 'twig', 'hbs' } }
   },
   markdown = {
-    vale = {} -- markup-aware linter for prose
+    vale_ls = {} -- markup-aware linter for prose
   },
   python = {
-    isort = {},  -- organize imports
-    black = {},  -- 'uncompromising' python code formatter
-    flake8 = {}, -- static type checker
+    pyright = {}, -- static type checker
+    isort = {},   -- organize imports
+    black = {},   -- 'uncompromising' python code formatter
   },
   rust = {
     rust_analyzer = {},
