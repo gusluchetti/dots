@@ -6,7 +6,6 @@ return {
     'hrsh7th/cmp-nvim-lsp',         -- lsp completion capabilities
     'rafamadriz/friendly-snippets', -- snippets
   },
-
   config = function()
     local cmp = require 'cmp'
     local luasnip = require 'luasnip'
