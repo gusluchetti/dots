@@ -88,9 +88,9 @@ local servers = {
     clangd = {},
     -- python tools
     pyright = {},
-    isort = {},
-    black = {},
-    ruff = {},
+    -- isort = {},
+    -- black = {},
+    -- ruff = {},
 }
 
 local mason_lspconfig = require('mason-lspconfig')
