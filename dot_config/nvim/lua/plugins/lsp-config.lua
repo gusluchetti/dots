@@ -8,6 +8,9 @@ return {
         { 'folke/neodev.nvim', opts = {} },
     },
     config = function()
+        require('mason').setup()
+        require('mason-lspconfig').setup()
+
         local on_attach = function(_, bufnr)
             local nmap = function(keys, func, desc)
                 if desc then
@@ -56,8 +59,6 @@ return {
             -- clangd = {},
             -- gopls = {},
         }
-
-        require('mason').setup()
 
         local mason_lspconfig = require('mason-lspconfig')
         mason_lspconfig.setup {
