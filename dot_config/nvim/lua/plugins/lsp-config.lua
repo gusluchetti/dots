@@ -57,6 +57,7 @@ return {
             rust_analyzer = {},
             tsserver = {},
             html = { filetypes = { 'html', 'twig', 'hbs' } },
+            ruff = {},
             -- clangd = {},
             -- gopls = {},
         }
