@@ -2,15 +2,12 @@ return {
     'neovim/nvim-lspconfig',
     dependencies = {
         'nvim-telescope/telescope.nvim',
-        'williamboman/mason.nvim',
-        'williamboman/mason-lspconfig.nvim',
-        { 'j-hui/fidget.nvim', opts = {} },
-        { 'folke/neodev.nvim', opts = {} },
+        { 'williamboman/mason.nvim',           opts = {} },
+        { 'williamboman/mason-lspconfig.nvim', opts = {} },
+        { 'j-hui/fidget.nvim',                 opts = {} },
+        { 'folke/neodev.nvim',                 opts = {} },
     },
     config = function()
-        require('mason').setup()
-        require('mason-lspconfig').setup()
-
         local on_attach = function(_, bufnr)
             local nmap = function(keys, func, desc)
                 if desc then

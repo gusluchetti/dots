@@ -9,18 +9,6 @@ return {
   },
 
   {
-    'williamboman/mason-lspconfig.nvim',
-    dependencies = {
-      'williamboman/mason.nvim',
-    },
-    lazy = false,
-    config = function()
-      require('mason').setup()
-      require('mason-lspconfig').setup()
-    end
-  },
-
-  {
     'norcalli/nvim-colorizer.lua',
     opts = {
       '*',                   -- Highlight all files, but customize some others.
