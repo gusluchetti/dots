@@ -21,7 +21,7 @@ return {
             nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
             nmap('<leader>cf', vim.lsp.buf.format, '[C]ode [F]ormat')
             nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-            nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
+            nmap('<C-K>', vim.lsp.buf.signature_help, 'Signature Documentation')
 
             -- lsp + telescope
             local telescope_builtin = require 'telescope.builtin'
