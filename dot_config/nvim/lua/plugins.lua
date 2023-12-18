@@ -18,6 +18,16 @@ return {
   },
 
   {
+    'neovim/nvim-lspconfig',
+    dependencies = {
+      'williamboman/mason.nvim',
+      'williamboman/mason-lspconfig.nvim',
+      'folke/neodev.nvim',
+      { 'j-hui/fidget.nvim', opts = {} },
+    },
+  },
+
+  {
     "nvim-tree/nvim-tree.lua",
     version = "*",
     lazy = false,
@@ -93,8 +103,6 @@ return {
 
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
-
-  { 'tpope/vim-sleuth',      opts = {} },
 
   {
     "windwp/nvim-autopairs",
