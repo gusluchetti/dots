@@ -1,6 +1,4 @@
 return {
-  'tpope/vim-sleuth', -- auto tabstop, shiftwidth
-
   {
     'ellisonleao/gruvbox.nvim',
     priority = 1000,
@@ -8,6 +6,18 @@ return {
     config = function()
       vim.cmd.colorscheme('gruvbox')
     end,
+  },
+
+  {
+    'williamboman/mason-lspconfig.nvim',
+    dependencies = {
+      'williamboman/mason.nvim',
+    },
+    lazy = false,
+    config = function()
+      require('mason').setup()
+      require('mason-lspconfig').setup()
+    end
   },
 
   {
@@ -95,6 +105,8 @@ return {
 
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
+
+  { 'tpope/vim-sleuth',      opts = {} },
 
   {
     "windwp/nvim-autopairs",
