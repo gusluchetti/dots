@@ -159,5 +159,13 @@ return {
             vim.keymap.set("n", "<C-k>", function() harpoon:list():select(3) end)
             vim.keymap.set("n", "<C-l>", function() harpoon:list():select(4) end)
         end
+    },
+
+    {
+        'akinsho/toggleterm.nvim',
+        version = "*",
+        opts = {
+            direction = 'float'
+        }
     }
 }
