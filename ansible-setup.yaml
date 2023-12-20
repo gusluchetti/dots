@@ -1,6 +1,13 @@
-- name: "Init machine"
+- name: "New Machine Setup"
   hosts: localhost
   connection: local 
+
+  vars:
+    programs:
+      - name: neovim
+        flags: []
+      - name: git
+        flags: []
 
   tasks:
     - name: Update and upgrade homebrew
@@ -8,6 +15,7 @@
         use: homebrew
         update_homebrew: true
         upgrade: true
+        when: os == 'Darwin'
 
     - name: Install dev tools
       ansible.builtin.package:
