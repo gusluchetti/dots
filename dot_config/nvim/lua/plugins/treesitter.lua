@@ -6,6 +6,9 @@ return {
         -- setup deferred to improv startup time
         vim.defer_fn(function()
             require('nvim-treesitter.configs').setup {
+                autotag = {
+                    enable = true
+                },
                 ensure_installed = {
                     'lua', 'python', 'rust', 'typescript', 'markdown'
                 },
