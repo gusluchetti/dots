@@ -1,8 +1,16 @@
 -- Pull in the wezterm API
 local wezterm = require 'wezterm'
-
--- This table will hold the configuration.
 local config = {}
+
+local launch_menu = {}
+if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
+  table.insert(launch_menu, {
+    label = 'PowerShell',
+    args = { 'powershell.exe', '-NoLogo' },
+  })
+end
+
+config.launch_menu = launch_menu
 
 -- In newer versions of wezterm, use the config_builder which will
 -- help provide clearer error messages
