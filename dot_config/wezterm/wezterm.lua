@@ -7,12 +7,9 @@ if wezterm.config_builder then
     config = wezterm.config_builder()
 end
 
-config.launch_menu = {
-    {
-        label = 'Powershell 7',
-        args = { 'pwsh.exe' }
-    }
-}
+if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
+    config.default_prog = { 'pwsh' }
+end
 
 config.font_size = 15.0
 config.font = wezterm.font {
