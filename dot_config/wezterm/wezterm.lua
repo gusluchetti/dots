@@ -16,6 +16,13 @@ config.font = wezterm.font {
     family = 'BerkeleyMono Nerd Font',
 }
 config.color_scheme = 'Gruvbox dark, hard (base16)'
-config.window_background_opacity = 0.95
+
+config.window_background_image = '../../extras/wallpapers/lockscreen.jpg'
+config.window_background_image_hsb = {
+  brightness = 0.5,
+  hue = 1.0,
+  saturation = 1.0,
+}
+
 
 return config
