@@ -9,6 +9,14 @@ end
 
 if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
     config.default_prog = { 'pwsh' }
+    config.window_background_image = "C:\\Users\\Gustavo\\extras\\wallpapers\\lockscreen.jpeg"
+    config.window_background_image_hsb = {
+        brightness = 0.5,
+        hue = 1.0,
+        saturation = 1.0,
+    }
+else
+    config.window_background_opacity = 0.9
 end
 
 config.font_size = 15.0
@@ -16,13 +24,5 @@ config.font = wezterm.font {
     family = 'BerkeleyMono Nerd Font',
 }
 config.color_scheme = 'Gruvbox dark, hard (base16)'
-
-config.window_background_image = '~/extras/wallpapers/lockscreen.jpg'
-config.window_background_image_hsb = {
-  brightness = 0.5,
-  hue = 1.0,
-  saturation = 1.0,
-}
-
 
 return config
