@@ -9,17 +9,11 @@ end
 
 if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
     config.default_prog = { 'pwsh' }
-    config.window_background_image = "%HOME%/.config/extras/wallpapers/anime.png"
-    -- config.window_background_image = "%HOME%\\.config\\extras\\wallpapers\\anime.png"
-    config.window_background_image_hsb = {
-        brightness = 0.5,
-        hue = 1.0,
-        saturation = 1.0,
-    }
 else
-    config.window_background_opacity = 0.9
+    -- do something diff?
 end
 
+config.window_background_opacity = 0.925
 config.font_size = 15.0
 config.font = wezterm.font {
     family = 'BerkeleyMono Nerd Font',
