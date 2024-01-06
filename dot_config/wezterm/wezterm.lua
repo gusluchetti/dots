@@ -16,5 +16,6 @@ config.font = wezterm.font {
     family = 'BerkeleyMono Nerd Font',
 }
 config.color_scheme = 'Gruvbox dark, hard (base16)'
+config.window_background_opacity = 0.95
 
 return config
