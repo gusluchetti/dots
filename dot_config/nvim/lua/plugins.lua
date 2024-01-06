@@ -1,181 +1,183 @@
 return {
-    {
-        'ellisonleao/gruvbox.nvim',
-        priority = 1000,
-        opts = { contrast = "dark" },
-        config = function()
-            vim.cmd.colorscheme('gruvbox')
-        end,
-    },
+  {
+    'ellisonleao/gruvbox.nvim',
+    priority = 1000,
+    opts = { contrast = "dark" },
+    config = function()
+      vim.cmd.colorscheme('gruvbox')
+      vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+      vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+    end,
+  },
 
-    {
-        'norcalli/nvim-colorizer.lua',
-        opts = {
-            '*',                   -- Highlight all files, but customize some others.
-            css = { css = true, }, -- Enable all css features.
-            scss = { css = true, },
+  {
+    'norcalli/nvim-colorizer.lua',
+    opts = {
+      '*',                   -- Highlight all files, but customize some others.
+      css = { css = true, }, -- Enable all css features.
+      scss = { css = true, },
+    },
+  },
+
+  {
+    'neovim/nvim-lspconfig',
+    dependencies = {
+      'williamboman/mason.nvim',
+      'williamboman/mason-lspconfig.nvim',
+      'folke/neodev.nvim',
+      { 'j-hui/fidget.nvim', opts = {} },
+    },
+  },
+
+  {
+    "nvim-tree/nvim-tree.lua",
+    version = "*",
+    lazy = false,
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      require("nvim-tree").setup({
+        update_focused_file = {
+          enable = true,
+        }
+      })
+    end,
+  },
+
+  {
+    'lewis6991/gitsigns.nvim',
+    opts = {
+      signs = {
+        add = { text = '+' },
+        change = { text = '~' },
+        delete = { text = '_' },
+        topdelete = { text = '‾' },
+        changedelete = { text = '~' },
+      },
+      on_attach = function(bufnr)
+        vim.keymap.set('n', '<leader>gp', require('gitsigns').preview_hunk,
+          { buffer = bufnr, desc = '[Git] Hunk [P]review' }
+        )
+        -- don't override the built-in and fugitive keymaps
+        local gs = package.loaded.gitsigns
+        vim.keymap.set({ 'n', 'v' }, ']c', function()
+          if vim.wo.diff then
+            return ']c'
+          end
+          vim.schedule(function()
+            gs.next_hunk()
+          end)
+          return '<Ignore>'
+        end, { expr = true, buffer = bufnr, desc = 'Jump to next hunk' })
+        vim.keymap.set({ 'n', 'v' }, '[c', function()
+          if vim.wo.diff then
+            return '[c'
+          end
+          vim.schedule(function()
+            gs.prev_hunk()
+          end)
+          return '<Ignore>'
+        end, { expr = true, buffer = bufnr, desc = 'Jump to previous hunk' })
+      end,
+    },
+  },
+
+  {
+    'lukas-reineke/indent-blankline.nvim', -- indentation guides
+    main = 'ibl',
+    opts = {
+      indent = {
+        highlight = {
+          "CursorColumn",
+          "Whitespace",
         },
-    },
-
-    {
-        'neovim/nvim-lspconfig',
-        dependencies = {
-            'williamboman/mason.nvim',
-            'williamboman/mason-lspconfig.nvim',
-            'folke/neodev.nvim',
-            { 'j-hui/fidget.nvim', opts = {} },
+        char = ""
+      },
+      whitespace = {
+        highlight = {
+          "CursorColumn",
+          "Whitespace",
         },
+        remove_blankline_trail = false,
+      },
+      scope = { enabled = false },
     },
+  },
 
-    {
-        "nvim-tree/nvim-tree.lua",
-        version = "*",
-        lazy = false,
-        dependencies = { "nvim-tree/nvim-web-devicons" },
-        config = function()
-            require("nvim-tree").setup({
-                update_focused_file = {
-                    enable = true,
-                }
-            })
-        end,
+  -- "gc" to comment visual regions/lines
+  { 'numToStr/Comment.nvim', opts = {} },
+
+  {
+    "windwp/nvim-autopairs",
+    dependencies = { 'hrsh7th/nvim-cmp' },
+    config = function()
+      require("nvim-autopairs").setup {}
+      -- If you want to automatically add `(` after selecting a function or method
+      local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+      local cmp = require('cmp')
+      cmp.event:on(
+        'confirm_done',
+        cmp_autopairs.on_confirm_done()
+      )
+    end,
+  },
+
+  {
+    'linux-cultist/venv-selector.nvim',
+    dependencies = {
+      'neovim/nvim-lspconfig',
+      'nvim-telescope/telescope.nvim',
+      'mfussenegger/nvim-dap-python'
     },
-
-    {
-        'lewis6991/gitsigns.nvim',
-        opts = {
-            signs = {
-                add = { text = '+' },
-                change = { text = '~' },
-                delete = { text = '_' },
-                topdelete = { text = '‾' },
-                changedelete = { text = '~' },
-            },
-            on_attach = function(bufnr)
-                vim.keymap.set('n', '<leader>gp', require('gitsigns').preview_hunk,
-                    { buffer = bufnr, desc = '[Git] Hunk [P]review' }
-                )
-                -- don't override the built-in and fugitive keymaps
-                local gs = package.loaded.gitsigns
-                vim.keymap.set({ 'n', 'v' }, ']c', function()
-                    if vim.wo.diff then
-                        return ']c'
-                    end
-                    vim.schedule(function()
-                        gs.next_hunk()
-                    end)
-                    return '<Ignore>'
-                end, { expr = true, buffer = bufnr, desc = 'Jump to next hunk' })
-                vim.keymap.set({ 'n', 'v' }, '[c', function()
-                    if vim.wo.diff then
-                        return '[c'
-                    end
-                    vim.schedule(function()
-                        gs.prev_hunk()
-                    end)
-                    return '<Ignore>'
-                end, { expr = true, buffer = bufnr, desc = 'Jump to previous hunk' })
-            end,
-        },
+    opts = {
+      auto_refresh = true
     },
-
-    {
-        'lukas-reineke/indent-blankline.nvim', -- indentation guides
-        main = 'ibl',
-        opts = {
-            indent = {
-                highlight = {
-                    "CursorColumn",
-                    "Whitespace",
-                },
-                char = ""
-            },
-            whitespace = {
-                highlight = {
-                    "CursorColumn",
-                    "Whitespace",
-                },
-                remove_blankline_trail = false,
-            },
-            scope = { enabled = false },
-        },
+    event = 'VeryLazy', -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
+    keys = {
+      -- Keymap to open VenvSelector to pick a venv.
+      { '<leader>vs', '<cmd>VenvSelect<cr>' },
+      -- Keymap to retrieve the venv from a cache (the one previously used for the same project directory).
+      { '<leader>vc', '<cmd>VenvSelectCached<cr>' },
     },
+  },
 
-    -- "gc" to comment visual regions/lines
-    { 'numToStr/Comment.nvim', opts = {} },
+  {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    dependecies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      local harpoon = require 'harpoon'
+      harpoon.setup()
 
-    {
-        "windwp/nvim-autopairs",
-        dependencies = { 'hrsh7th/nvim-cmp' },
-        config = function()
-            require("nvim-autopairs").setup {}
-            -- If you want to automatically add `(` after selecting a function or method
-            local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-            local cmp = require('cmp')
-            cmp.event:on(
-                'confirm_done',
-                cmp_autopairs.on_confirm_done()
-            )
-        end,
-    },
+      vim.keymap.set("n", "<leader>ha",
+        function() harpoon:list():append() end,
+        { desc = '[H]arpoon [A]dd' })
 
-    {
-        'linux-cultist/venv-selector.nvim',
-        dependencies = {
-            'neovim/nvim-lspconfig',
-            'nvim-telescope/telescope.nvim',
-            'mfussenegger/nvim-dap-python'
-        },
-        opts = {
-            auto_refresh = true
-        },
-        event = 'VeryLazy', -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
-        keys = {
-            -- Keymap to open VenvSelector to pick a venv.
-            { '<leader>vs', '<cmd>VenvSelect<cr>' },
-            -- Keymap to retrieve the venv from a cache (the one previously used for the same project directory).
-            { '<leader>vc', '<cmd>VenvSelectCached<cr>' },
-        },
-    },
+      vim.keymap.set("n", "<C-e>",
+        function() harpoon.ui:toggle_quick_menu(harpoon:list()) end
+        , { desc = 'Toggle Harpoon Menu' })
 
-    {
-        "ThePrimeagen/harpoon",
-        branch = "harpoon2",
-        dependecies = { "nvim-lua/plenary.nvim" },
-        config = function()
-            local harpoon = require 'harpoon'
-            harpoon.setup()
+      vim.keymap.set("n", "<C-h>", function() harpoon:list():select(1) end)
+      vim.keymap.set("n", "<C-j>", function() harpoon:list():select(2) end)
+      vim.keymap.set("n", "<C-k>", function() harpoon:list():select(3) end)
+      vim.keymap.set("n", "<C-l>", function() harpoon:list():select(4) end)
+    end
+  },
 
-            vim.keymap.set("n", "<leader>ha",
-                function() harpoon:list():append() end,
-                { desc = '[H]arpoon [A]dd' })
+  {
+    'akinsho/toggleterm.nvim',
+    version = "*",
+    opts = {},
+    config = function()
+      local Terminal = require('toggleterm.terminal').Terminal
+      local lazygit  = Terminal:new({ cmd = "lazygit", direction = "float", hidden = true })
 
-            vim.keymap.set("n", "<C-e>",
-                function() harpoon.ui:toggle_quick_menu(harpoon:list()) end
-                , { desc = 'Toggle Harpoon Menu' })
+      function _lazygit_toggle()
+        lazygit:toggle()
+      end
 
-            vim.keymap.set("n", "<C-h>", function() harpoon:list():select(1) end)
-            vim.keymap.set("n", "<C-j>", function() harpoon:list():select(2) end)
-            vim.keymap.set("n", "<C-k>", function() harpoon:list():select(3) end)
-            vim.keymap.set("n", "<C-l>", function() harpoon:list():select(4) end)
-        end
-    },
-
-    {
-        'akinsho/toggleterm.nvim',
-        version = "*",
-        opts = {},
-        config = function()
-            local Terminal = require('toggleterm.terminal').Terminal
-            local lazygit  = Terminal:new({ cmd = "lazygit", direction = "float", hidden = true })
-
-            function _lazygit_toggle()
-                lazygit:toggle()
-            end
-
-            vim.api.nvim_set_keymap("n", "<leader>gg", "<cmd>lua _lazygit_toggle()<CR>",
-                { noremap = true, silent = true }
-            )
-        end
-    }
+      vim.api.nvim_set_keymap("n", "<leader>gg", "<cmd>lua _lazygit_toggle()<CR>",
+        { noremap = true, silent = true }
+      )
+    end
+  }
 }
