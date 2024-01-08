@@ -9,14 +9,13 @@ end
 
 if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
     config.default_prog = { 'pwsh' }
+    config.launch_menu.insert(
+        {
+            label = 'SSH Homeserver',
+            args = { "pwsh -c 'ssh sushii@192.168.0.173'" },
+        }
+    )
 end
-
-config.launch_menu = {
-    {
-        label = 'ssh - homeserver',
-        args = { 'ssh sushii@192.168.0.173' },
-    }
-}
 
 config.keys = {
     { key = 'l', mods = 'ALT', action = wezterm.action.ShowLauncher },
