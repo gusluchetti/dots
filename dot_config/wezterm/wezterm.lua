@@ -14,7 +14,7 @@ if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
     config.launch_menu.insert(
         {
             label = 'SSH Homeserver',
-            args = { "pwsh -c 'ssh sushii@192.168.0.173'" },
+            args = { 'pwsh', '-c', 'ssh sushii@192.168.0.173' },
         }
     )
 end
