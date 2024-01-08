@@ -7,6 +7,8 @@ if wezterm.config_builder then
     config = wezterm.config_builder()
 end
 
+config.launch_menu = {}
+
 if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
     config.default_prog = { 'pwsh' }
     config.launch_menu.insert(
