@@ -9,9 +9,18 @@ end
 
 if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
     config.default_prog = { 'pwsh' }
-else
-    -- do something diff?
 end
+
+config.launch_menu = {
+    {
+        label = 'ssh - homeserver',
+        args = { 'ssh sushii@192.168.0.173' },
+    }
+}
+
+config.keys = {
+    { key = 'l', mods = 'ALT', action = wezterm.action.ShowLauncher },
+}
 
 config.window_background_opacity = 0.925
 config.font_size = 15.0
