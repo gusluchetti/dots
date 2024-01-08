@@ -11,7 +11,7 @@ config.launch_menu = {}
 
 if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
     config.default_prog = { 'pwsh' }
-    config.launch_menu.insert(
+    table.insert(config.launch_menu,
         {
             label = 'SSH Homeserver',
             args = { 'pwsh', '-c', 'ssh sushii@192.168.0.173' },
