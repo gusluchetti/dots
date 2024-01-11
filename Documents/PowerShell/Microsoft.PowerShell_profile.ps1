@@ -1,3 +1,5 @@
+Set-Alias -Name ls -Value eza
+
 $prompt = ""
 function Invoke-Starship-PreCommand {
     $current_location = $executionContext.SessionState.Path.CurrentLocation
