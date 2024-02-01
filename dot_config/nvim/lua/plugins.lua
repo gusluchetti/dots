@@ -81,14 +81,6 @@ return {
     },
   },
 
-  {
-    'lukas-reineke/indent-blankline.nvim', -- indentation guides
-    main = 'ibl',
-    opts = {
-      scope = { enabled = true },
-    },
-  },
-
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
 
