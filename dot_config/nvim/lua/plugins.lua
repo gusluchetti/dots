@@ -12,11 +12,11 @@ return {
 
   {
     'norcalli/nvim-colorizer.lua',
-    opts = {
-      '*',                   -- Highlight all files, but customize some others.
-      css = { css = true, }, -- Enable all css features.
-      scss = { css = true, },
-    },
+    config = function()
+      require 'colorizer'.setup({
+        html = { mode = 'background' },
+      }, { css = true })
+    end,
   },
 
   {
