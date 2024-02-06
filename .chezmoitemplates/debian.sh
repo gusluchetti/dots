@@ -3,7 +3,7 @@ sudo apt update && sudo apt upgrade
 sudo apt install zsh git
 
 echo "'.chezmoiexternal' installs oh-my-zsh and asdf"
-zsh
+(
 chsh -s $(which zsh) # change shell
 
 sudo apt install build-essentials net-tools git
@@ -34,3 +34,4 @@ rm -rf lazygit lazygit.tar.gz
 curl -fsSL https://bun.sh/install | bash
 
 source ~/.zshrc
+)
