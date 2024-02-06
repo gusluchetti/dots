@@ -1,14 +1,13 @@
 # !/bin/bash
 sudo apt update && sudo apt upgrade
-sudo apt install zsh git
+
+echo "installing programs"
+sudo apt install zsh git build-essentials net-tools \
+gh curl wget unzip gcc cmake ffmpeg neofetch
 
 echo "\n'.chezmoiexternal' installs oh-my-zsh and asdf"
 (
 chsh -s $(which zsh) # change shell
-
-sudo apt install build-essentials net-tools git
-sudo apt install gh curl wget unzip gcc cmake
-sudo apt install ffmpeg neofetch
 
 if gh auth status | grep -q "Logged in"; then
     echo "already logged on Github CLI"
@@ -22,6 +21,8 @@ echo "\nsetting up asdf rust"
 asdf plugin add rust https://github.com/asdf-community/asdf-rust.git
 asdf install rust latest
 asdf global rust latest
+
+echo "\ninstalling rust programs with cargo"
 cargo install cargo-binstall
 cargo binstall --locked starship zoxide
 
