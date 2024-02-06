@@ -1,6 +1,6 @@
 "$schema" = 'https://starship.rs/config-schema.json' # editor completions
 
-format = """$username@$hostname\
+format = """$username@$hostname \
 $git_branch\
 $git_commit\
 $git_state\
