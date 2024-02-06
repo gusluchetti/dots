@@ -5,9 +5,6 @@ sudo apt install zsh git
 zsh
 chsh -s $(which zsh) # change shell
 
-# install oh-my-zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
 sudo apt install build-essentials net-tools git
 sudo apt install gh curl wget unzip gcc clang
 sudo apt install ffmpeg neofetch

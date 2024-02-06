@@ -12,9 +12,9 @@
         type = "git-repo"
         url = "https://github.com/zsh-users/zsh-completions.git"
         exact = true
-    [".oh-my-zsh/custom/themes/powerlevel10k"]
+
+    [".asdf"]
         type = "git-repo"
-        url = "https://github.com/romkatv/powerlevel10k.git"
-        clone.args = ["--depth", "1"]
+        url = "https://github.com/asdf-vm/asdf.git"
         exact = true
 {{- end }}
