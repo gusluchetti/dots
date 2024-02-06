@@ -7,7 +7,7 @@ echo "\n'.chezmoiexternal' installs oh-my-zsh and asdf"
 chsh -s $(which zsh) # change shell
 
 sudo apt install build-essentials net-tools git
-sudo apt install gh curl wget unzip gcc clang
+sudo apt install gh curl wget unzip gcc cmake
 sudo apt install ffmpeg neofetch
 
 if gh auth status | grep -q "Logged in"; then
