@@ -2,7 +2,8 @@
 sudo apt update && sudo apt upgrade
 sudo apt install zsh git
 
-zsh
+echo "'.chezmoiexternal' installs oh-my-zsh and asdf"
+exec zsh
 chsh -s $(which zsh) # change shell
 
 sudo apt install build-essentials net-tools git
@@ -11,11 +12,8 @@ sudo apt install ffmpeg neofetch
 
 gh auth login # setup git with ssh
 
-# install asdf
-git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.0
-
 # rust + cargo programs
-asdf plugin-add rust https://github.com/asdf-community/asdf-rust.git
+asdf pluginadd rust https://github.com/asdf-community/asdf-rust.git
 asdf install rust latest
 asdf global rust latest
 cargo install --locked starship zoxide
@@ -31,3 +29,8 @@ curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/lates
 tar xf lazygit.tar.gz lazygit
 sudo install lazygit /usr/local/bin
 rm -rf lazygit lazygit.tar.gz
+
+# bun
+curl -fsSL https://bun.sh/install | bash
+
+source ~/.zshrc
