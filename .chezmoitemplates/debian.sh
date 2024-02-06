@@ -11,7 +11,13 @@ sudo apt install gh curl wget unzip gcc clang
 sudo apt install ffmpeg neofetch
 
 echo "logging in into Github CLI"
-gh auth login # setup git with ssh
+
+if gh auth status | grep -q "Logged in"; then
+    echo "already logged on Github CLI"
+else
+    echo "logging in Github CLI"
+    gh auth login # interactive
+fi
 
 echo "setting up asdf rust"
 # rust + cargo programs
