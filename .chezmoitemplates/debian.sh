@@ -22,7 +22,8 @@ echo "\nsetting up asdf rust"
 asdf plugin add rust https://github.com/asdf-community/asdf-rust.git
 asdf install rust latest
 asdf global rust latest
-cargo install --locked starship zoxide
+cargo install cargo-binstall
+cargo binstall --locked starship zoxide
 
 echo "\nsetting up asdf node.js"
 # node.js
@@ -41,6 +42,6 @@ rm -rf lazygit lazygit.tar.gz
 echo "\ninstalling bun"
 # bun
 curl -fsSL https://bun.sh/install | bash
+)
 
 source ~/.zshrc
-)
