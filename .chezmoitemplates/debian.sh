@@ -3,7 +3,7 @@ sudo apt update && sudo apt upgrade
 sudo apt install zsh git
 
 echo "'.chezmoiexternal' installs oh-my-zsh and asdf"
-exec zsh
+zsh
 chsh -s $(which zsh) # change shell
 
 sudo apt install build-essentials net-tools git
