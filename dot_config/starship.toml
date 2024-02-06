@@ -23,6 +23,12 @@ diverged = "<>"
 renamed = "r"
 deleted = "x"
 
+[username]
+format = '[$user]($style)'
+
+[hostname]
+format = '[$ssh_symbol$hostname]($style)'
+
 [aws]
 symbol = "aws "
 
