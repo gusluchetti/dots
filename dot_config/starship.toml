@@ -1,5 +1,8 @@
 "$schema" = 'https://starship.rs/config-schema.json' # editor completions
 
+format = '$username@$hostname'
+
+scan_timeout = 10
 add_newline = false # between shell prompts
 
 [os]
