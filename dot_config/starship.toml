@@ -28,7 +28,7 @@ format = '[$user]($style)'
 
 [hostname]
 format = '[$ssh_symbol$hostname]($style)'
-ssh_symbol = '(ssh) '
+ssh_symbol = '(ssh)'
 
 [aws]
 symbol = "aws "
