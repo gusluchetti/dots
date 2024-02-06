@@ -44,5 +44,3 @@ echo "\ninstalling bun"
 # bun
 curl -fsSL https://bun.sh/install | bash
 )
-
-source ~/.zshrc
