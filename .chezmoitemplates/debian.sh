@@ -32,15 +32,22 @@ sudo apt install dirmngr gpg curl gawk
 asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
 asdf install nodejs latest
 
-echo "\ninstalling lazygit"
-# lazygit
-LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
-curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
-tar xf lazygit.tar.gz lazygit
-sudo install lazygit /usr/local/bin
-rm -rf lazygit lazygit.tar.gz
+if which lazygit; then
+    echo "lazygit already installed"
+else
+    echo "\ninstalling lazygit"
+    LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
+    curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+    tar xf lazygit.tar.gz lazygit
+    sudo install lazygit /usr/local/bin
+    rm -rf lazygit lazygit.tar.gz
+fi
 
-echo "\ninstalling bun"
-# bun
-curl -fsSL https://bun.sh/install | bash
+if which bun; then
+    echo "bun already installed"
+else
+    echo "\ninstalling bun"
+    # bun
+    curl -fsSL https://bun.sh/install | bash
+fi
 )
