@@ -2,7 +2,7 @@
 sudo apt update && sudo apt upgrade
 
 echo "installing programs"
-sudo apt install zsh git build-essentials net-tools \
+sudo apt install zsh git build-essential net-tools \
 gh curl wget unzip gcc cmake ffmpeg neofetch
 
 echo "\n'.chezmoiexternal' installs oh-my-zsh and asdf"
