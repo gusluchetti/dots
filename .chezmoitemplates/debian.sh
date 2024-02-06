@@ -13,7 +13,7 @@ sudo apt install ffmpeg neofetch
 gh auth login # setup git with ssh
 
 # rust + cargo programs
-asdf pluginadd rust https://github.com/asdf-community/asdf-rust.git
+asdf plugin add rust https://github.com/asdf-community/asdf-rust.git
 asdf install rust latest
 asdf global rust latest
 cargo install --locked starship zoxide
