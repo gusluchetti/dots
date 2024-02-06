@@ -1,12 +1,12 @@
 "$schema" = 'https://starship.rs/config-schema.json' # editor completions
 
-format = """$username@$hostname
+format = """$username@$hostname\
 $git_branch\
 $git_commit\
 $git_state\
 $git_metrics\
 $git_status\
-: """
+> """
 
 scan_timeout = 10
 add_newline = false # between shell prompts
