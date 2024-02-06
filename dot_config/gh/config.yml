@@ -1,6 +1,0 @@
-prompt: enabled
-
-git_protocol: ssh
-editor: nvim
-pager: less
-browser: firefox
