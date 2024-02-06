@@ -1,3 +1,4 @@
+# !/bin/bash
 sudo apt update && sudo apt upgrade
 sudo apt install zsh
 zsh
@@ -14,17 +15,17 @@ chsh -s $(which zsh) # change shell
 
 # install asdf
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.0
-# rust
+
+# rust + cargo programs
 asdf plugin-add rust https://github.com/asdf-community/asdf-rust.git
 asdf install rust latest
 asdf global rust latest
+cargo install --locked starship zoxide
+
 # node.js
 sudo apt install dirmngr gpg curl gawk
 asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
 asdf install nodejs latest
-
-cargo install --locked starship zoxide
-
 
 # lazygit
 LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
