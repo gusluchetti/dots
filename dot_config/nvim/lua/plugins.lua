@@ -93,6 +93,13 @@ return {
     },
 
     {
+        'windwp/nvim-ts-autotag',
+        config = function()
+            require('nvim-ts-autotag').setup()
+        end
+    },
+
+    {
         'linux-cultist/venv-selector.nvim',
         dependencies = {
             'neovim/nvim-lspconfig',
