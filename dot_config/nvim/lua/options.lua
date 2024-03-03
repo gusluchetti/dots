@@ -8,10 +8,10 @@ vim.opt.incsearch = true
 vim.opt.number = true
 vim.opt.relativenumber = true
 
--- Tab (as 4 spaces) global options
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
+-- Tab (as 2 spaces) global options
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 
 vim.opt.mouse = 'a'               -- enable mouse on all modes
