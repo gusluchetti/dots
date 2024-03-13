@@ -2,6 +2,10 @@ local has_py_config = function(utils)
   return utils.root_has_file({ "pyproject.toml" })
 end
 
+local has_prettierrc = function(utils)
+  return utils.root_has_file({ ".prettierrc" })
+end
+
 return {
   'nvimtools/none-ls.nvim',
   dependencies = {
@@ -13,7 +17,9 @@ return {
 
     null_ls.setup({
       sources = {
-        null_ls.builtins.formatting.prettier,
+        null_ls.builtins.formatting.prettier.with({
+          condition = has_prettierrc,
+        }),
         -- python
         null_ls.builtins.formatting.isort.with({
           condition = has_py_config,
