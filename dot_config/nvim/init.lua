@@ -86,9 +86,11 @@ local servers = {
   tsserver = {},
   html = { filetypes = { 'html', 'twig', 'hbs' } },
   clangd = {},
-  -- python tools
   pyright = {},
   svelte = {},
+  prettier = {},
+
+  -- python tools
   -- isort = {},
   -- black = {},
   -- ruff = {},
