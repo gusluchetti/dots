@@ -88,7 +88,7 @@ local servers = {
   clangd = {},
   pyright = {},
   svelte = {},
-  prettier = {},
+  cssls = {},
 
   -- python tools
   -- isort = {},
