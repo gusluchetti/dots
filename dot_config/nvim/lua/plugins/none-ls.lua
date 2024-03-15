@@ -20,16 +20,6 @@ return {
         null_ls.builtins.formatting.prettier.with({
           condition = has_prettierrc,
         }),
-        -- python
-        null_ls.builtins.formatting.isort.with({
-          condition = has_py_config,
-        }),
-        null_ls.builtins.formatting.black.with({
-          condition = has_py_config,
-        }),
-        null_ls.builtins.diagnostics.ruff.with({
-          condition = has_py_config,
-        }),
       },
 
       on_attach = function(client, bufnr)
