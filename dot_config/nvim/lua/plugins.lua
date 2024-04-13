@@ -25,22 +25,7 @@ return {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
       'folke/neodev.nvim',
-      { 'j-hui/fidget.nvim', opts = {} },
     },
-  },
-
-  {
-    "nvim-tree/nvim-tree.lua",
-    version = "*",
-    lazy = false,
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-      require("nvim-tree").setup({
-        update_focused_file = {
-          enable = true,
-        }
-      })
-    end,
   },
 
   {
@@ -87,9 +72,7 @@ return {
   {
     'windwp/nvim-autopairs',
     event = "InsertEnter",
-    config = true
-    -- use opts = {} for passing setup options
-    -- this is equalent to setup({}) function
+    opts = {}
   },
 
   {
@@ -97,25 +80,6 @@ return {
     config = function()
       require('nvim-ts-autotag').setup()
     end
-  },
-
-  {
-    'linux-cultist/venv-selector.nvim',
-    dependencies = {
-      'neovim/nvim-lspconfig',
-      'nvim-telescope/telescope.nvim',
-      'mfussenegger/nvim-dap-python'
-    },
-    opts = {
-      auto_refresh = true
-    },
-    event = 'VeryLazy', -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
-    keys = {
-      -- Keymap to open VenvSelector to pick a venv.
-      { '<leader>vs', '<cmd>VenvSelect<cr>' },
-      -- Keymap to retrieve the venv from a cache (the one previously used for the same project directory).
-      { '<leader>vc', '<cmd>VenvSelectCached<cr>' },
-    },
   },
 
   {
@@ -149,19 +113,13 @@ return {
       local Terminal = require('toggleterm.terminal').Terminal
       local lazygit  = Terminal:new({ cmd = "lazygit", direction = "float", hidden = true })
 
-      function _lazygit_toggle()
+      function Lazygit_toggle()
         lazygit:toggle()
       end
 
-      vim.api.nvim_set_keymap("n", "<leader>gg", "<cmd>lua _lazygit_toggle()<CR>",
+      vim.api.nvim_set_keymap("n", "<leader>gg", "<cmd>lua Lazygit_toggle()<CR>",
         { noremap = true, silent = true }
       )
     end
   },
-
-  {
-    "davidmh/mdx.nvim",
-    config = true,
-    dependencies = { "nvim-treesitter/nvim-treesitter" }
-  }
 }

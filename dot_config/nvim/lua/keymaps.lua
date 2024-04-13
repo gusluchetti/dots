@@ -34,4 +34,4 @@ vim.keymap.set("n", "<leader>wl", "<cmd>wincmd l<CR>")
 vim.keymap.set("n", "<leader>tt", "<cmd>NvimTreeToggle<CR>")
 
 -- select all
-vim.keymap.set("n", "C-a", "G<S-v>gg")
+vim.keymap.set("n", "<C-a>", "G<S-v>gg")

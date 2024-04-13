@@ -15,7 +15,6 @@ vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 
 vim.opt.mouse = 'a'               -- enable mouse on all modes
-
 vim.opt.clipboard = 'unnamedplus' -- sync OS and nvim clipboard
 
 vim.opt.textwidth = 84;
