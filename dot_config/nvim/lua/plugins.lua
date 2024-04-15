@@ -105,7 +105,7 @@ return {
       harpoon.setup()
 
       vim.keymap.set("n", "<leader>ha",
-        function() harpoon:list():append() end,
+        function() harpoon:list():add() end,
         { desc = '[H]arpoon [A]dd' })
 
       vim.keymap.set("n", "<C-e>",
