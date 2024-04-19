@@ -1,4 +1,3 @@
-set
 zstyle ':omz:update' mode disabled  # disable automatic updates
 HIST_STAMPS="yyyy-mm-dd"
 
