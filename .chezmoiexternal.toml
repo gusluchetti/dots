@@ -12,6 +12,10 @@
         type = "git-repo"
         url = "https://github.com/zsh-users/zsh-completions.git"
         exact = true
+    [".oh-my-zsh/custom/plugins/zsh-vi-mode"]
+        type = "git-repo"
+        url = "https://github.com/jeffreytse/zsh-vi-mode.git"
+        exact = true
 
     [".asdf"]
         type = "git-repo"
