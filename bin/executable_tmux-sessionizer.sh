@@ -12,7 +12,7 @@ fi
 
 s_name=$(basename "$s_path" | tr . _)
 
-if [[ -z $TMUX ]]; then
+if ! [[ -z $TMUX ]]; then
     tmux new-session -s $s_name -c $s_path
     exit 0
 fi
