@@ -41,5 +41,5 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 # flyctl
--export FLYCTL_INSTALL="/home/sushii/.fly"
--export PATH="$FLYCTL_INSTALL/bin:$PATH"
+export FLYCTL_INSTALL="/home/sushii/.fly"
+export PATH="$FLYCTL_INSTALL/bin:$PATH"
