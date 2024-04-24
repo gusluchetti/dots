@@ -3,7 +3,7 @@
 if [[ $# -eq 1 ]]; then
     s_path=$1
 else
-    s_path=$(find ~ -name '.git' | xargs -I{} dirname {} | fzf --height 50% --reverse)
+    s_path=$(find '~/Github' -name '.git' | xargs -I{} dirname {} | fzf --height 50% --reverse)
 fi
 
 if [[ -z $s_path ]]; then
