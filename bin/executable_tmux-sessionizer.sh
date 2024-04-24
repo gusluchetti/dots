@@ -3,7 +3,7 @@
 if [[ $# -eq 1 ]]; then
     s_path=$1
 else
-    s_path=$(find '~/Github' -name '.git' | xargs -I{} dirname {} | fzf --height 50% --reverse)
+    s_path=$(find ~/Github -name '.git' | xargs -I{} dirname {} | fzf --height 50% --reverse)
 fi
 
 if [[ -z $s_path ]]; then
@@ -22,4 +22,5 @@ if ! tmux has-session -t $s_name 2> /dev/null; then
     tmux new-session -ds $s_name -c $s_path
 fi
 
-tmux switch-client -t $s_name
+# either goes to client, or attaches to tmux
+tmux attach -t $s_name
