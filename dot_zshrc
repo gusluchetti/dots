@@ -21,11 +21,11 @@ export MANPATH="/usr/local/man:$MANPATH"
 # rust (cargo) path
 export PATH=$HOME/.cargo/bin:$PATH
 
- if [[ -n $SSH_CONNECTION ]]; then
-   export EDITOR='vi'
- else
-   export EDITOR='nvim'
- fi
+if command -v nvim &> /dev/null; then
+  export EDITOR='nvim'
+else
+  export EDITOR='vi'
+fi
 
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
