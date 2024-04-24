@@ -27,7 +27,6 @@ else
   export EDITOR='vi'
 fi
 
-eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
