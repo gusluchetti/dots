@@ -23,4 +23,4 @@ if ! tmux has-session -t $s_name 2> /dev/null; then
 fi
 
 # either goes to client, or attaches to tmux
-tmux attach -t $s_name
+tmux attach -dt $s_name
