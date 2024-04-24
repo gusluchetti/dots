@@ -16,11 +16,9 @@ tmux_running=$(pgrep tmux)
 if [[ -z $tmux_running ]]; then
     tmux new-session -s $s_name -c $s_path
     exit 0
-else
-    tmux start
 fi
 
-if ! tmux has-session -t=$s_name 2> /dev/null; then
+if ! tmux has-session -t $s_name 2> /dev/null; then
     tmux new-session -ds $s_name -c $s_path
 fi
 
