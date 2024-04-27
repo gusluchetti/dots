@@ -35,6 +35,8 @@ eval "$(zoxide init zsh)"
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
+alias nixcfg="sudo nvim /etc/nixos/configuration.nix"
+
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"

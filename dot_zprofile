@@ -1,3 +1,1 @@
 bindkey -s ^f "bin/tmux-sessionizer.sh\n"
-export EMSDK_QUIET=1
-source "/home/sushii/Github/personal/gamedev-webassembly/emsdk/emsdk_env.sh"
