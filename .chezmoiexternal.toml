@@ -12,9 +12,4 @@
         type = "git-repo"
         url = "https://github.com/zsh-users/zsh-completions.git"
         exact = true
-
-    [".asdf"]
-        type = "git-repo"
-        url = "https://github.com/asdf-vm/asdf.git"
-        exact = true
 {{- end }}
