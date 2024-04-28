@@ -1,2 +1,2 @@
-bindkey ^F "~/bin/tmux-sessionizer.sh >/dev/null 2>&1"
-bindkey -s ^E^N "sudoedit /etc/nixos/configuration.nix"
+bindkey -s ''^F' "~/bin/tmux-sessionizer.sh >/dev/null 2>&1"
+bindkey -s ''^E^N' "sudoedit /etc/nixos/configuration.nix"
