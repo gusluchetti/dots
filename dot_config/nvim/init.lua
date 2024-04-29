@@ -90,27 +90,28 @@ local servers = {
   cssls = {},
 }
 
-local mason_lspconfig = require('mason-lspconfig')
-
-mason_lspconfig.setup {
+require('mason-lspconfig').setup {
   ensure_installed = vim.tbl_keys(servers)
 }
 
-servers.clangd = {}
-
 require('neodev').setup()
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+capabilities = require('cmp_nvim_lsp').default_capabilities(
+  vim.lsp.protocol.make_client_capabilities()
+)
 
-mason_lspconfig.setup_handlers {
-  function(server_name)
-    local lspconfig = require 'lspconfig'
-    lspconfig[server_name].setup {
-      on_attach = on_attach,
-      settings = servers[server_name],
-      capabilities = capabilities,
-      filetypes = (servers[server_name] or {}).filetypes,
-    }
-  end,
+require('mason-lspconfig').setup {
+  handlers = {
+    function(server_name)
+        require('lspconfig')[server_name].setup {
+          on_attach = on_attach,
+          capabilities = capabilities,
+          settings = servers[server_name],
+          filetypes = (servers[server_name] or {}).filetypes,
+        }
+      end,
+  }
 }
+
+-- HACK: just so clangd gets setup on nixos
+require'lspconfig'.clangd.setup{}
