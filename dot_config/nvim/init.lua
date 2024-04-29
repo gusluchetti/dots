@@ -96,6 +96,8 @@ mason_lspconfig.setup {
   ensure_installed = vim.tbl_keys(servers)
 }
 
+table.insert(servers, "clangd");
+
 require('neodev').setup()
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
