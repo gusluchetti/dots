@@ -18,11 +18,6 @@ pkgs=(
   vlc # video player
   ffmpeg # convert/stream media
 
-  # fonts
-  noto-fonts # An expansive font package
-  noto-fonts-emoji # Emojis 
-  noto-fonts-cjk # Font support for Chinese, Japanese and Korean characters
-
   # dev tools
   rustup # rust toolchain manager
   tmux # terminal multiplexer
