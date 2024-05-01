@@ -31,7 +31,7 @@ pkgs=(
   npm # node package manager
   lazygit # git inside neovim (for lazy people)
   fzf # fuzzy finder
-  find # find things!
+  findutils # find things!
   ripgrep # grep but blazingly fast
   neovim # THE text editor
 
@@ -47,12 +47,6 @@ pkgs=(
   flameshot # screenshot tool
   syncthing # continuous file synchronization (personal cloud)
 )
-
-# for value in "${pkgs[@]}"; do
-#   printf "installing $value"
-#   eval yay -S "$value" --noconfirm || sendError "Error on package install, exiting"
-#   printf "done installing packages"
-# done
 
 printed=$(echo "${pkgs[@]}")
 yay -S $printed --noconfirm
