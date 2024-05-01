@@ -28,9 +28,6 @@ export MANPATH="/usr/local/man:$MANPATH"
 
 # Custom tooling paths
 
-# rust (cargo) path
-export PATH=$HOME/.cargo/bin:$PATH
-
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
