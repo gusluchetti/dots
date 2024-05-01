@@ -44,5 +44,12 @@ pkgs=(
   syncthing # continuous file synchronization (personal cloud)
 )
 
-printed=$(echo "${pkgs[@]}")
-yay -S --noconfirm $printed
+# building yay from source
+pacman -S --needed git base-devel
+git clone https://aur.archlinux.org/yay.git 
+cd yay 
+makepkg -si
+cd .. && rm -rf yay/
+
+# installing all packages from list
+yay -S --noconfirm $(echo "${pkgs[@]}") # install all packages
