@@ -55,6 +55,4 @@ pkgs=(
 # done
 
 printed=$(echo "${pkgs[@]}")
-echo $printed
-
-# yay -S $printed --noconfirm
+yay -S $printed --noconfirm
