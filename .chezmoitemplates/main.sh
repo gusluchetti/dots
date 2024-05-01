@@ -54,7 +54,7 @@ pkgs=(
 #   printf "done installing packages"
 # done
 
-printed = $(echo "${pkgs[@]}")
+printed=$(echo "${pkgs[@]}")
 prinf "$printed"
 
 # yay -S $printed --noconfirm
