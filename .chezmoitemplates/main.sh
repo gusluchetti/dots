@@ -48,8 +48,10 @@ pkgs=(
   syncthing # continuous file synchronization (personal cloud)
 )
 
-for value in "${pkgs[@]}"; do
-  printf "installing $value"
-  eval yay -S "$value" --noconfirm || sendError "Error on package install, exiting"
-  printf "done installing packages"
-done
+# for value in "${pkgs[@]}"; do
+#   printf "installing $value"
+#   eval yay -S "$value" --noconfirm || sendError "Error on package install, exiting"
+#   printf "done installing packages"
+# done
+
+eval $(yay -S echo ${pkgs[*]} --noconfirm)
