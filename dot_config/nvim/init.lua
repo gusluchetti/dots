@@ -86,7 +86,6 @@ local servers = {
   tsserver = {},
   html = { filetypes = { 'html', 'twig', 'hbs' } },
   pyright = {},
-  svelte = {},
   cssls = {},
 }
 
@@ -96,7 +95,7 @@ require('mason-lspconfig').setup {
 
 require('neodev').setup()
 
-capabilities = require('cmp_nvim_lsp').default_capabilities(
+local capabilities = require('cmp_nvim_lsp').default_capabilities(
   vim.lsp.protocol.make_client_capabilities()
 )
 
@@ -112,6 +111,3 @@ require('mason-lspconfig').setup {
       end,
   }
 }
-
--- HACK: just so clangd gets setup on nixos
-require'lspconfig'.clangd.setup{}
