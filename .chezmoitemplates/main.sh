@@ -28,7 +28,7 @@ pkgs=(
   tmux # terminal multiplexer
 
   # neovim
-  nodejs-lts-iron # nodejs LTS 20.x
+  npm # node package manager
   lazygit # git inside neovim (for lazy people)
   fzf # fuzzy finder
   find # find things!
