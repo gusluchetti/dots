@@ -36,6 +36,7 @@ pkgs=(
   neovim # THE text editor
 
   # misc
+  eza # modern ls replacement
   tldr # too long, didn't read man pages
   unzip # unzip files
   rofi-calc # rofi as calculator
@@ -49,4 +50,4 @@ pkgs=(
 )
 
 printed=$(echo "${pkgs[@]}")
-yay -S $printed --noconfirm
+yay -S --noconfirm $printed
