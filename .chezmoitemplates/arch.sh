@@ -42,14 +42,17 @@ pkgs=(
   firefox-developer-edition # firefox dev edition
   flameshot # screenshot tool
   syncthing # continuous file synchronization (personal cloud)
+  rate-mirrors-bin # rating arch package mirrors
 )
 
-# building yay from source
-pacman -S --needed git base-devel
-git clone https://aur.archlinux.org/yay.git 
-cd yay 
-makepkg -si
-cd .. && rm -rf yay/
+if ! [ -x "$(type -p yay)" ]; then
+  # building yay from source
+  pacman -S --needed git base-devel
+  git clone https://aur.archlinux.org/yay.git 
+  cd yay 
+  makepkg -si
+  cd .. && rm -rf yay/
+fi
 
 # installing all packages from list
 yay -S --noconfirm $(echo "${pkgs[@]}") # install all packages
