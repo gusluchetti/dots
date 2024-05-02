@@ -17,6 +17,7 @@ pkgs=(
   dunst # lightweight notification daemon
   vlc # video player
   ffmpeg # convert/stream media
+  unzip # unzip files
 
   # dev tools
   rustup # rust toolchain manager
@@ -33,7 +34,6 @@ pkgs=(
   # misc
   eza # modern ls replacement
   tldr # too long, didn't read man pages
-  unzip # unzip files
   rofi-calc # rofi as calculator
   mpv # another useful media player
   alacritty # terminal emulator
