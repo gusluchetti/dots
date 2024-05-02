@@ -37,12 +37,16 @@ pkgs=(
   rofi-calc # rofi as calculator
   mpv # another useful media player
   alacritty # terminal emulator
-  hledger # manage your finances
-  hledger-iadd # interactively create hledger entries
   firefox-developer-edition # firefox dev edition
   flameshot # screenshot tool
   syncthing # continuous file synchronization (personal cloud)
   rate-mirrors-bin # rating arch package mirrors
+
+  # finances
+  hledger # manage your finances
+  hledger-ui # TUI for hledger
+  hledger-web # web interface for hledger
+  hledger-iadd # interactively create hledger entries
 )
 
 if ! [ -x "$(type -p yay)" ]; then
