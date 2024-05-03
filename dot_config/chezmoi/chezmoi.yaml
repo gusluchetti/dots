@@ -1,4 +1,5 @@
 git:
   autoCommit: true
 edit:
+  watch: true
   command: nvim
