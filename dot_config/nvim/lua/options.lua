@@ -17,7 +17,7 @@ vim.opt.expandtab = true
 vim.opt.mouse = 'a'               -- enable mouse on all modes
 vim.opt.clipboard = 'unnamedplus' -- sync OS and nvim clipboard
 
-vim.opt.textwidth = 84;
+vim.opt.textwidth = 90;
 vim.opt.colorcolumn = "+1"
 vim.opt.formatoptions = "tcqj"
 vim.opt.autoindent = true
