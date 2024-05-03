@@ -19,11 +19,11 @@ vim.opt.clipboard = 'unnamedplus' -- sync OS and nvim clipboard
 
 vim.opt.textwidth = 90;
 vim.opt.colorcolumn = "+1"
-vim.opt.formatoptions = "tcqj"
+vim.opt.wrap = true;
+vim.opt.linebreak = true;
+vim.opt.formatoptions = "tqjv"
 vim.opt.autoindent = true
 vim.opt.breakindent = true
-vim.opt.wrap = false;
-vim.opt.linebreak = true;
 
 -- Save undo history
 vim.opt.undofile = true
