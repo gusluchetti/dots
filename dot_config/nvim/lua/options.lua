@@ -21,7 +21,7 @@ vim.opt.textwidth = 95;
 vim.opt.colorcolumn = "+1"
 vim.opt.wrap = true;
 vim.opt.linebreak = true;
-vim.opt.formatoptions = "tqjv"
+vim.opt.formatoptions = "atcqjv"
 vim.opt.autoindent = true
 vim.opt.breakindent = true
 
