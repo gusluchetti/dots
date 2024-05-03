@@ -7,7 +7,7 @@ return {
         'rafamadriz/friendly-snippets', -- snippets
     },
     config = function()
-        local cmp = require 'cmp'
+        local cmp = require 'cmp' -- test comment
         local luasnip = require 'luasnip'
         require('luasnip.loaders.from_vscode').lazy_load()
         luasnip.config.setup {}
