@@ -17,7 +17,7 @@ vim.opt.expandtab = true
 vim.opt.mouse = 'a'               -- enable mouse on all modes
 vim.opt.clipboard = 'unnamedplus' -- sync OS and nvim clipboard
 
-vim.opt.textwidth = 90;
+vim.opt.textwidth = 95;
 vim.opt.colorcolumn = "+1"
 vim.opt.wrap = true;
 vim.opt.linebreak = true;
