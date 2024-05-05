@@ -22,6 +22,7 @@ pkgs=(
   # dev tools
   rustup # rust toolchain manager
   tmux # terminal multiplexer
+  direnv # per directory env variables
 
   # neovim
   npm # node package manager
