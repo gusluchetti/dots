@@ -20,7 +20,7 @@ vim.opt.clipboard = 'unnamedplus' -- sync OS and nvim clipboard
 
 vim.opt.textwidth = 99
 vim.opt.colorcolumn = "+1"
-vim.opt.wrap = true
+vim.opt.wrap = false
 vim.opt.linebreak = false
 vim.opt.formatoptions = "tcqj"
 vim.opt.autoindent = true
