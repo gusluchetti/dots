@@ -20,6 +20,14 @@ return {
   },
 
   {
+    "mbbill/undotree",
+
+    config = function()
+      vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
+    end
+  },
+
+  {
     'nvim-lualine/lualine.nvim', -- lualine as statusline
     opts = {
       options = {
