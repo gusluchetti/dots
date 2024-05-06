@@ -1,3 +1,4 @@
+vim.opt.guicursor = ""
 vim.opt.title = true
 
 -- Search options
@@ -26,6 +27,9 @@ vim.opt.autoindent = true
 vim.opt.breakindent = true
 
 -- Save undo history
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.undodir = os.getenv("HOME") .. "/.undodir"
 vim.opt.undofile = true
 
 -- Case-insensitive searching UNLESS \C or capital in search
@@ -37,14 +41,14 @@ vim.opt.signcolumn = 'yes'
 vim.opt.scrolloff = 8
 
 -- Decrease update time
-vim.opt.updatetime = 250
+vim.opt.updatetime = 100
 vim.opt.timeoutlen = 300
 
 -- Set completeopt to have a better completion experience
 vim.opt.completeopt = 'menuone,noselect'
 
 vim.opt.termguicolors = true
-vim.opt.cursorline = true
+vim.opt.cursorline = false
 vim.opt.winblend = 0
 vim.opt.wildoptions = "pum"
 vim.opt.pumblend = 5
