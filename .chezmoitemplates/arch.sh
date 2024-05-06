@@ -42,6 +42,7 @@ pkgs=(
   flameshot # screenshot tool
   syncthing # continuous file synchronization (personal cloud)
   rate-mirrors-bin # rating arch package mirrors
+  udiskie # removable media automounter
 
   # finances
   hledger # manage your finances
