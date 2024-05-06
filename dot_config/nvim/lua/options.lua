@@ -17,11 +17,10 @@ vim.opt.expandtab = true
 vim.opt.mouse = 'a'               -- enable mouse on all modes
 vim.opt.clipboard = 'unnamedplus' -- sync OS and nvim clipboard
 
-vim.opt.textwidth = 95;
+vim.opt.textwidth = 99;
 vim.opt.colorcolumn = "+1"
 vim.opt.wrap = true;
 vim.opt.linebreak = false;
-vim.opt.formatoptions = "tcqjv"
 vim.opt.autoindent = true
 vim.opt.breakindent = true
 
@@ -43,10 +42,7 @@ vim.opt.timeoutlen = 300
 -- Set completeopt to have a better completion experience
 vim.opt.completeopt = 'menuone,noselect'
 
--- visuals
--- NOTE: You should make sure your terminal supports this
 vim.opt.termguicolors = true
-
 vim.opt.cursorline = true
 vim.opt.winblend = 0
 vim.opt.wildoptions = "pum"
