@@ -1,11 +1,10 @@
 # dots
-My dotfiles, mostly managed using [chezmoi](https://www.chezmoi.io/).
+My dotfiles, mostly managed using [chezmoi](https://www.chezmoi.io/).  
 
---
+run `chezmoi init --apply gusluchetti/dots --ssh` to setup.
+`--ssh` flag is optional, but i usually configure ssh keys before running chezmoi.
 
-_Chezmoi_, obviously, for home directory shenanigans, and I'm still working on a good
-way of incorporating _Ansible_ as a build step so my systems have the same foundation
-(installed programs and anything else relevant).
+---
 
-I value cross-platform compatibility, so I'm trying out [Wezterm](https://wezfurlong.org/wezterm/index.html)
-as my terminal and [Starship](https://starship.rs/) as my prompt.
+Besides chezmoi, I'm working on a bash script that installs the packages I use the most.
+As of now, it's setup for arch, but I might look into an Ansible solution at some point for more flexibility.
