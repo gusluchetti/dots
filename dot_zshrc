@@ -26,17 +26,8 @@ export PATH=$HOME/.local/bin:$PATH
 export PATH=/usr/local/bin:$PATH
 export MANPATH="/usr/local/man:$MANPATH"
 
-# Custom tooling paths
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-# bun completions
-[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
-
-# flyctl
-export FLYCTL_INSTALL="/home/sushii/.fly"
-export PATH="$FLYCTL_INSTALL/bin:$PATH"
+# no more export ENV_VAR for each program! (hopefully)
+eval "$(direnv hook zsh)"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
