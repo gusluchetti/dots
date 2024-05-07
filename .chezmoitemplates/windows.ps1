@@ -1,10 +1,12 @@
 # microsoft things
-winget install --silent --accept-package-agreements --accept-source-agreements `
---uninstall-previous --verbose `
-Microsoft.PowerShell Microsoft.Office Microsoft.PowerToys `
-Microsoft.VisualStudio.2022.BuildTools Microsoft.Teams Microsoft.OpenSSH.Beta `
+winget install gerardog.gsudo --force
+
+sudo winget install --silent --accept-package-agreements --accept-source-agreements `
+--disable-interactivity --verbose Microsoft.PowerShell Microsoft.Office `
+Microsoft.PowerToys Microsoft.VisualStudio.2022.BuildTools Microsoft.Teams `
+Microsoft.OpenSSH.Beta `
 # main
-gerardog.gsudo Git.Git GitHub.cli Neovim.Neovim SyncTrayzor.SyncTrayzor 7zip.7zip `
+Git.Git GitHub.cli Neovim.Neovim SyncTrayzor.SyncTrayzor 7zip.7zip `
 VideoLAN.VLC Anki.Anki Klocman.BulkCrapUninstaller MoritzBunkus.MKVToolNix `
 AntibodySoftware.WizTree AntibodySoftware.WizFile HandBrake.HandBrake.CLI `
 Obsidian.Obsidian Wagnardsoft.DisplayDriverUninstaller OBSProject.OBSStudio `
