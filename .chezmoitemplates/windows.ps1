@@ -1,5 +1,13 @@
-# sudo for windows
-winget install gerardog.gsudo --force
+$ErrorActionPreference = 'Continue'
+echo "`nInstalling Scoop Package Manager..."
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+Invoke-RestMethod get.scoop.sh | Invoke-Expression
+
+echo "`nSetting up clean Scoop installation + main dependencies"
+scoop uninstall *
+scoop config aria2-warning-enabled false
+scoop install sudo
+sudo scoop install aria2 -g
 
 # microsoft things
 sudo winget install --id --silent --accept-package-agreements --accept-source-agreements `
