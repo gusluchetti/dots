@@ -21,7 +21,8 @@ sudo winget install --id --silent --accept-package-agreements --accept-source-ag
 VideoLAN.VLC Anki.Anki Klocman.BulkCrapUninstaller MoritzBunkus.MKVToolNix `
 AntibodySoftware.WizTree AntibodySoftware.WizFile HandBrake.HandBrake.CLI `
 Obsidian.Obsidian Wagnardsoft.DisplayDriverUninstaller OBSProject.OBSStudio `
-Guru3D.Afterburner Guru3D.RTSS OPAutoClicker.OPAutoClicker Logitech.OnboardMemoryManager
+Guru3D.Afterburner Guru3D.RTSS OPAutoClicker.OPAutoClicker Logitech.OnboardMemoryManager `
+IrfanSkiljan.IrfanView
 
 # gaming and others
 sudo winget install --id --silent --accept-package-agreements --accept-source-agreements `
