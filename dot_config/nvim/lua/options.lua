@@ -1,4 +1,3 @@
-vim.opt.guicursor = ""
 vim.opt.title = true
 
 -- Search options
