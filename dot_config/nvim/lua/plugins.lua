@@ -13,15 +13,17 @@ return {
   {
     'norcalli/nvim-colorizer.lua',
     config = function()
-      require 'colorizer'.setup({
+      require('colorizer').setup({
+        'css',
+        'javascript',
+        'html',
         html = { mode = 'background' },
-      }, { css = true })
-    end,
+      }, { mode = 'foreground' })
+    end
   },
 
   {
     "mbbill/undotree",
-
     config = function()
       vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
     end
@@ -40,6 +42,22 @@ return {
   },
 
   {
+    'folke/which-key.nvim',
+    opts = {},
+    config = function()
+      require('which-key').register {
+        ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
+        ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
+        ['<leader>g'] = { name = '[G]it', _ = 'which_key_ignore' },
+        ['<leader>h'] = { name = '[H]arpoon', _ = 'which_key_ignore' },
+        ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
+        ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
+        ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
+      }
+    end
+  },
+
+  {
     'neovim/nvim-lspconfig',
     dependencies = {
       'williamboman/mason.nvim',
@@ -50,9 +68,8 @@ return {
 
   {
     "nvim-tree/nvim-tree.lua",
-    version = "*",
-    lazy = false,
     dependencies = { "nvim-tree/nvim-web-devicons" },
+    version = "*",
     config = function()
       require("nvim-tree").setup({
         update_focused_file = {
@@ -60,16 +77,13 @@ return {
         }
       })
     end,
+    lazy = false,
   },
 
   {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
-    opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    }
+    opts = {}
   },
 
   {
@@ -110,20 +124,21 @@ return {
     },
   },
 
-  -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
+  {
+    'numToStr/Comment.nvim',
+    opts = {},
+    lazy = false,
+  },
 
   {
     'windwp/nvim-autopairs',
+    opts = {},
     event = "InsertEnter",
-    opts = {}
   },
 
   {
     'windwp/nvim-ts-autotag',
-    config = function()
-      require('nvim-ts-autotag').setup()
-    end
+    opts = {},
   },
 
   {
@@ -131,7 +146,7 @@ return {
     branch = "harpoon2",
     dependecies = { "nvim-lua/plenary.nvim" },
     config = function()
-      local harpoon = require 'harpoon'
+      local harpoon = require('harpoon')
       harpoon.setup()
 
       vim.keymap.set("n", "<leader>ha",
@@ -152,7 +167,6 @@ return {
   {
     'akinsho/toggleterm.nvim',
     version = "*",
-    opts = {},
     config = function()
       local Terminal = require('toggleterm.terminal').Terminal
       local lazygit  = Terminal:new({ cmd = "lazygit", direction = "float", hidden = true })
@@ -166,4 +180,65 @@ return {
       )
     end
   },
+
+  {
+    'hrsh7th/nvim-cmp',               -- completion engine
+    dependencies = {
+      'L3MON4D3/LuaSnip',             -- snippet engine
+      'saadparwaiz1/cmp_luasnip',     -- lua snip completion source for cmp
+      'hrsh7th/cmp-nvim-lsp',         -- lsp completion capabilities
+      'rafamadriz/friendly-snippets', -- snippets
+    },
+    config = function()
+      local cmp = require 'cmp'
+      local luasnip = require 'luasnip'
+      require('luasnip.loaders.from_vscode').lazy_load()
+      luasnip.config.setup {}
+
+      cmp.setup {
+        snippet = {
+          expand = function(args)
+            luasnip.lsp_expand(args.body)
+          end,
+        },
+        completion = {
+          completeopt = 'menu,menuone,noinsert'
+        },
+        mapping = cmp.mapping.preset.insert {
+          ['<C-n>'] = cmp.mapping.select_next_item(),
+          ['<C-p>'] = cmp.mapping.select_prev_item(),
+          ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+          ['<C-f>'] = cmp.mapping.scroll_docs(4),
+          ['<C-Space>'] = cmp.mapping.complete {},
+          ['<CR>'] = cmp.mapping.confirm {
+            behavior = cmp.ConfirmBehavior.Replace,
+            select = true,
+          },
+          ['<Tab>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.select_next_item()
+            elseif luasnip.expand_or_locally_jumpable() then
+              luasnip.expand_or_jump()
+            else
+              fallback()
+            end
+          end, { 'i', 's' }),
+          ['<S-Tab>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.select_prev_item()
+            elseif luasnip.locally_jumpable(-1) then
+              luasnip.jump(-1)
+            else
+              fallback()
+            end
+          end, { 'i', 's' }),
+        },
+        sources = {
+          { name = 'nvim_lsp' },
+          { name = 'luasnip' },
+        },
+      }
+    end,
+  },
+
 }
