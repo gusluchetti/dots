@@ -74,7 +74,9 @@ return {
       require("nvim-tree").setup({
         renderer = {
           icons = {
-            show = false
+            show = {
+              file = false
+            }
           },
         },
         actions = {
