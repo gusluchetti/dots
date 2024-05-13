@@ -111,5 +111,3 @@ require('mason-lspconfig').setup {
       end,
   }
 }
-
-require'lspconfig'.biome.setup{}
