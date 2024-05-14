@@ -11,15 +11,14 @@ return {
   },
 
   {
-    'norcalli/nvim-colorizer.lua',
+    'brenoprata10/nvim-highlight-colors',
     config = function()
-      require('colorizer').setup({
-        'css',
-        css = { css = true, css_fn = true },
-        'javascript',
-        'html',
-        html = { mode = 'foreground' },
-      }, { mode = 'background' })
+      require("nvim-highlight-colors").setup {
+        render = 'background',
+        virtual_symbol = '■',
+        enable_named_colors = true,
+        enable_tailwind = true,
+      }
     end
   },
 
