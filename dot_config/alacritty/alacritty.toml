@@ -34,11 +34,10 @@ family = "BerkeleyMono Nerd Font"
 style = "Regular"
 
 [window]
-background_opacity = 1.0
 decorations_theme_variant = "Dark"
 dynamic_padding = true
 dynamic_title = true
-opacity = 0.95
+opacity = 0.80
 
 [window.padding]
 x = 2
