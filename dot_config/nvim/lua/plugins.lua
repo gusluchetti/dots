@@ -17,8 +17,8 @@ return {
         'css',
         'javascript',
         'html',
-        html = { mode = 'background' },
-      }, { mode = 'foreground' })
+        html = { mode = 'foreground' },
+      }, { mode = 'background' })
     end
   },
 
