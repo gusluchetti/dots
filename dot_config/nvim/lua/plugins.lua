@@ -15,6 +15,7 @@ return {
     config = function()
       require('colorizer').setup({
         'css',
+        css = { css = true, css_fn = true },
         'javascript',
         'html',
         html = { mode = 'foreground' },
