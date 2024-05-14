@@ -28,6 +28,9 @@ vim.opt.breakindent = true
 -- Save undo history
 vim.opt.swapfile = false
 vim.opt.backup = false
+
+local home_dir = os.getenv("HOME");
+if home_dir == nil then home_dir = os.getenv("USERPROFILE") end
 vim.opt.undodir = os.getenv("HOME") .. "/.undodir"
 vim.opt.undofile = true
 
