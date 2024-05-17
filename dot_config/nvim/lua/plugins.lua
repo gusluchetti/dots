@@ -4,14 +4,17 @@ return {
     priority = 1000,
     opts = { contrast = "dark" },
     config = function()
-      vim.cmd("let g:gruvbox_transparent_bg = 1")
       vim.cmd("autocmd VimEnter * hi Normal ctermbg=NONE guibg=NONE")
+      vim.cmd("let g:gruvbox_transparent_bg = 1")
       vim.cmd("colorscheme gruvbox")
     end,
   },
 
   {
     'rebelot/kanagawa.nvim',
+    config = function()
+      vim.cmd("autocmd VimEnter * hi Normal ctermbg=NONE guibg=NONE")
+    end,
   },
 
   {
