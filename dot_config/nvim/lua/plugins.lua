@@ -11,13 +11,6 @@ return {
   },
 
   {
-    'rebelot/kanagawa.nvim',
-    config = function()
-      vim.cmd("autocmd VimEnter * hi Normal ctermbg=NONE guibg=NONE")
-    end,
-  },
-
-  {
     'brenoprata10/nvim-highlight-colors',
     config = function()
       require("nvim-highlight-colors").setup {
