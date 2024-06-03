@@ -1,7 +1,7 @@
 # dots
 My dotfiles, mostly managed using [chezmoi](https://www.chezmoi.io/).  
 
-run `sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply gusluchetti/dots --ssh` to setup.
+run `sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply gusluchetti/dots --ssh` to setup.  
 `--ssh` flag is optional, but i usually configure ssh keys before running chezmoi.
 
 ---
