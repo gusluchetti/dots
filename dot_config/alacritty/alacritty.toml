@@ -3,7 +3,7 @@ cursor = "CellForeground"
 text = "CellBackground"
 
 [font]
-size = 17.0
+size = 15.0
 
 [font.normal]
 family = "BerkeleyMono Nerd Font"
@@ -13,7 +13,6 @@ style = "Regular"
 decorations_theme_variant = "Dark"
 dynamic_padding = true
 dynamic_title = true
-opacity = 0.75
 
 [window.padding]
 x = 2
