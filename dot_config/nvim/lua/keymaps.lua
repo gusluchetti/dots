@@ -31,7 +31,7 @@ vim.keymap.set("n", "<leader>wh", "<cmd>wincmd h<CR>")
 vim.keymap.set("n", "<leader>wl", "<cmd>wincmd l<CR>")
 
 -- toggle project explore
-vim.keymap.set("n", "<leader>t", "<cmd>Neotree current toggle<CR>")
+vim.keymap.set("n", "<leader>t", "<cmd>Neotree toggle=true position=current reveal=true<CR>")
 
 -- select all
 vim.keymap.set("n", "<C-a>", "G<S-v>gg")
