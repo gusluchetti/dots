@@ -5,11 +5,11 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 
--- diagnostic keymaps
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
+-- Diagnostic keymaps
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
 -- move things around on visual mode
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -31,7 +31,7 @@ vim.keymap.set("n", "<leader>wh", "<cmd>wincmd h<CR>")
 vim.keymap.set("n", "<leader>wl", "<cmd>wincmd l<CR>")
 
 -- toggle project explore
-vim.keymap.set("n", "<leader>tt", "<cmd>NvimTreeToggle<CR>")
+vim.keymap.set("n", "<leader>tt", "<cmd>Neotree source=filesystem reveal=true toggle=true position=right<CR>")
 
 -- select all
 vim.keymap.set("n", "<C-a>", "G<S-v>gg")
