@@ -1,3 +1,16 @@
+--[[
+  started off as kickstart-nvim
+  https://learnxinyminutes.com/docs/lua/
+  https://neovim.io/doc/user/lua-guide.html
+--]]
+
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
+-- disable netrw, since we're using nvim-tree
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",
 	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
