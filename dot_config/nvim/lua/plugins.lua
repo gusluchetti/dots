@@ -202,7 +202,13 @@ return {
 			-- Insert mode: <c-/> & Normal mode: ?
 			require("telescope").setup({
 				defaults = {
-					file_ignore_patterns = { "node_modules" },
+					vimgrep_arguments = {
+						"rg",
+						"--follow",
+						"--hidden",
+						"--no-ignore-vcs",
+					},
+					file_ignore_patterns = { "node_modules", ".git" },
 					mappings = {
 						i = {
 							["<C-u>"] = false,
@@ -210,7 +216,11 @@ return {
 						},
 					},
 				},
-				pickers = {},
+				pickers = {
+					find_files = {
+						hidden = true,
+					},
+				},
 				extensions = {
 					["ui-select"] = {
 						require("telescope.themes").get_dropdown(),
