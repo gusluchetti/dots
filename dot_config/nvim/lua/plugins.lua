@@ -202,12 +202,6 @@ return {
 			-- Insert mode: <c-/> & Normal mode: ?
 			require("telescope").setup({
 				defaults = {
-					vimgrep_arguments = {
-						"rg",
-						"--follow",
-						"--hidden",
-						"--no-ignore-vcs",
-					},
 					file_ignore_patterns = { "node_modules", ".git" },
 					mappings = {
 						i = {
