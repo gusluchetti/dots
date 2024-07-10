@@ -47,7 +47,7 @@ bindkey '^[w' kill-region
 if [ ! -f "$HOME/.local/bin/mise" ]; then
   curl https://mise.run | sh
 fi
-export PATH="$HOME/.local/share/mise/shims:$PATH"
+eval "$($HOME/.local/bin/mise activate --shims)"
 
 if ! command -v starship &> /dev/null; then
   curl -sS https://starship.rs/install.sh | sh
