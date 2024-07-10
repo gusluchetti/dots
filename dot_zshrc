@@ -44,7 +44,7 @@ bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 bindkey '^[w' kill-region
 
-if [ ! -d "$HOME/.local/share/mise" ]; then
+if [ ! -f "$HOME/.local/bin/mise" ]; then
   curl https://mise.run | sh
 fi
 export PATH="$HOME/.local/share/mise/shims:$PATH"
