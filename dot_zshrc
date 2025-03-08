@@ -49,3 +49,6 @@ if [ ! -f "$HOME/.local/bin/mise" ]; then
   curl https://mise.run | sh
 fi
 eval "$($HOME/.local/bin/mise activate --shims)"
+
+eval "$(ssh-agent -s)"
+ssh-add
