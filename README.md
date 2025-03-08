@@ -1,13 +1,7 @@
 # dots
-My dotfiles, mostly managed using [chezmoi](https://www.chezmoi.io/).  
+My dotfiles, managed using [chezmoi](https://www.chezmoi.io/).  
 
-`sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply gusluchetti/dots --ssh`  
+`sh -c "$(curl -fsLS get.chezmoi.io/lb)" -- init --apply gusluchetti/dots --ssh`  
 
-downloads chezmoi passing the 'init' command, while applying the configuration defined in this repository.  
+downloads chezmoi passing the 'init' command, while applying the configuration defined here.  
 `--ssh` flag is optional, but I usually have SSH configured before chezmoi.
-
----
-
-TODO:
-- cross-platform compatibility (working through multiple linux distros)
-- better 'plug and play' behavior
