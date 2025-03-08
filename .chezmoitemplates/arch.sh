@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# big thanks to zMenta (https://github.com/zMenta) for the initial pkg list!
 pkgs=(
   # core
   base-devel # dependency for most things
@@ -9,40 +8,22 @@ pkgs=(
   curl # when wget is not enough
   wget # when curl is not enough
   xclip # clipboard manager
-  networkmanager # manages something?
-  i3 # lean window manager
-  rofi # app launcher
   man-db # online manual database
-  pipewire # audio manager
-  dunst # lightweight notification daemon
-  vlc # video player
   ffmpeg # convert/stream media
   unzip # unzip files
 
-  # dev tools
-  rustup # rust toolchain manager
-  tmux # terminal multiplexer
-  direnv # per directory env variables
-
-  # neovim
-  npm # node package manager
-  lazygit # git inside neovim (for lazy people)
-  fzf # fuzzy finder
-  findutils # find things!
-  ripgrep # grep but blazingly fast
+  # dev
   neovim # THE text editor
+  lazygit # git inside neovim (for lazy people)
+  tmux # terminal multiplexer
+  mise # manages envs, dev programs, etc.
 
   # misc
+  fzf # fuzzy finder
   eza # modern ls replacement
+  findutils # find things!
+  ripgrep # grep but blazingly fast
   tldr # too long, didn't read man pages
-  rofi-calc # rofi as calculator
-  mpv # another useful media player
-  alacritty # terminal emulator
-  firefox-developer-edition # firefox dev edition
-  flameshot # screenshot tool
-  syncthing # continuous file synchronization (personal cloud)
-  rate-mirrors-bin # rating arch package mirrors
-  udiskie # removable media automounter
 
   # finances
   hledger # manage your finances
@@ -50,6 +31,28 @@ pkgs=(
   hledger-web # web interface for hledger
   hledger-iadd # interactively create hledger entries
 )
+
+# Ask the user for the environment (server or desktop)
+echo "Select the environment (server/desktop):"
+read env
+
+# If desktop, append desktop-specific packages
+if [[ "$env" == "desktop" ]]; then
+    pkgs+=(
+	  networkmanager # manages something?
+	  i3 # lean window manager
+	  rofi # app launcher
+	  pipewire # audio manager
+	  dunst # lightweight notification daemon
+	  vlc # video player
+	  firefox-developer-edition # firefox dev edition
+	  flameshot # screenshot tool
+	  mpv # another useful media player
+	  alacritty # terminal emulator
+	  rate-mirrors-bin # rating arch package mirrors
+	  udiskie # removable media automounter
+    )
+fi
 
 if ! [ -x "$(type -p yay)" ]; then
   # building yay from source
@@ -60,5 +63,4 @@ if ! [ -x "$(type -p yay)" ]; then
   cd .. && rm -rf yay/
 fi
 
-# installing all packages from list
-yay -S --noconfirm $(echo "${pkgs[@]}") # install all packages
+yay -S --noconfirm "${pkgs[@]}"
