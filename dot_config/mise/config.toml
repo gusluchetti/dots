@@ -1,2 +1,2 @@
 [tools]
-node = ['23', '22', '20', '18']
+node = "latest"
