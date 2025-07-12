@@ -44,7 +44,7 @@ fi
 
 if ! [ -x "$(type -p yay)" ]; then
   # building yay from source
-  pacman -S --needed git base-devel
+  sudo pacman -S --needed git base-devel
   git clone https://aur.archlinux.org/yay.git 
   cd yay 
   makepkg -si
