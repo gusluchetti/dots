@@ -2,6 +2,7 @@
 
 pkgs=(
   # core/deps
+  git
   base-devel
   net-tools
   zsh
@@ -15,7 +16,6 @@ pkgs=(
   neovim
   lazygit
   tmux
-  mise
   fzf
   eza
   findutils
@@ -32,10 +32,10 @@ if [[ "$env" == "desktop" ]]; then
 	  i3
 	  alacritty
 	  networkmanager
-	  pipewire # audio
 	  vlc
     firefox
     flameshot
+	  pipewire # audio
 	  rofi # action launcher
 	  dunst # notification daemon
 	  udiskie # removable media automounter
@@ -49,6 +49,10 @@ if ! [ -x "$(type -p yay)" ]; then
   cd yay 
   makepkg -si
   cd .. && rm -rf yay/
+fi
+
+if ! [ -x "$(type -p yay)" ]; then
+  curl https://mise.run | MISE_INSTALL_PATH=~/.local/bin/mise sh
 fi
 
 yay -S --noconfirm "${pkgs[@]}"
