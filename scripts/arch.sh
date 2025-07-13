@@ -13,6 +13,9 @@ pkgs=(
   unzip
   ffmpeg
   mpv
+  ranger # file manager
+  neomutt # email client
+  newsboat # rss reader
 
   # dev
   neovim
@@ -36,7 +39,7 @@ if [[ "$env" == "desktop" ]]; then
       networkmanager
       vlc
       firefox
-      flameshot
+      flameshot # screenshot manager, also on windows
       pipewire # audio
       rofi # action launcher
       dunst # notification daemon
