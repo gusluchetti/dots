@@ -50,14 +50,14 @@ if ! [ -x "$(type -p yay)" ]; then
   cd yay 
   makepkg -si
   cd .. && rm -rf yay/
-  yay
 fi
 
-yay -S --noconfirm "${pkgs[@]}"
+yay -Syu --noconfirm "${pkgs[@]}"
 
 # changing shell to zsh
 chsh -s /usr/bin/zsh
 rm -rf ~/.bash*
+zsh
 
 if ! [ -x "$(type -p mise)" ]; then
   curl https://mise.run | MISE_INSTALL_PATH=~/.local/bin/mise sh
