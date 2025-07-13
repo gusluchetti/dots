@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo "setting up arch..."
 pkgs=(
   # core/deps
   git
@@ -23,11 +24,10 @@ pkgs=(
   ripgrep
 )
 
-# ask the user for environment type (server or desktop)
-echo "Select the environment (server/desktop):"
+echo "select the environment (server/desktop):"
 read env
 
-# append desktop-specific packages (mostly GUI and others)
+echo "appending desktop-specific packages..."
 if [[ "$env" == "desktop" ]]; then
     pkgs+=(
       i3
@@ -43,7 +43,7 @@ if [[ "$env" == "desktop" ]]; then
     )
 fi
 
-# setting up yay, using it from now on
+echo "setting up yay, using it from now on"
 if ! [ -x "$(type -p yay)" ]; then
   sudo pacman -S --needed git base-devel
   git clone https://aur.archlinux.org/yay.git 
@@ -52,14 +52,16 @@ if ! [ -x "$(type -p yay)" ]; then
   cd .. && rm -rf yay/
 fi
 
+echo "downloading all packages..."
 yay -Syu --noconfirm "${pkgs[@]}"
 
-# changing shell to zsh
-chsh -s /usr/bin/zsh
-rm -rf ~/.bash*
-zsh
-
+echo "installing mise and installing projects it'll manage (node, go, etc.)"
 if ! [ -x "$(type -p mise)" ]; then
   curl https://mise.run | MISE_INSTALL_PATH=~/.local/bin/mise sh
   mise install
 fi
+
+echo "changing shell to zsh..."
+chsh -s /usr/bin/zsh
+rm -rf ~/.bash*
+zsh
