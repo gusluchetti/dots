@@ -4,11 +4,6 @@ HISTSIZE=10000
 SAVEHIST=$HISTSIZE
 HISTDUP=erase
 
-if ! pgrep -u "$USER" ssh-agent > /dev/null 2>&1; then
-    rm -f "$SSH_AUTH_SOCK"
-    ssh-agent -a "$SSH_AUTH_SOCK" > /dev/null 2>&1 &
-fi
-
 if [ ! -d "$ZINIT_HOME" ]; then
    mkdir -p "$(dirname $ZINIT_HOME)"
    git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
@@ -56,8 +51,4 @@ alias lt='eza --tree $eza_params'
 alias tree='eza --tree $eza_params'
 
 
-# mise -- manage dev tools, envs, tasks, etc.
-if [ ! -f "$HOME/.local/bin/mise" ]; then
-  curl https://mise.run | sh
-fi
 eval "$($HOME/.local/bin/mise activate --shims)"
