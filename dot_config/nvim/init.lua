@@ -26,8 +26,7 @@ if not vim.loop.fs_stat(lazypath) then
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup(
-{
+require("lazy").setup({
 	{
 		"ellisonleao/gruvbox.nvim",
 		priority = 1000,
@@ -48,13 +47,6 @@ require("lazy").setup(
 				enable_named_colors = true,
 				enable_tailwind = true,
 			})
-		end,
-	},
-
-	{
-		"mbbill/undotree",
-		config = function()
-			vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 		end,
 	},
 
@@ -80,7 +72,7 @@ require("lazy").setup(
 		version = "*",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
-			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+			-- "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
 			"MunifTanjim/nui.nvim",
 		},
 		cmd = "Neotree",
@@ -469,9 +461,6 @@ require("lazy").setup(
 				-- Some languages (like typescript) have entire language plugins that can be useful:
 				--    https://github.com/pmizio/typescript-tools.nvim
 				--
-
-				clangd = {},
-				tsserver = {},
 				lua_ls = {
 					-- cmd = {...},
 					-- filetypes = { ...},
