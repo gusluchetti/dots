@@ -1,4 +1,3 @@
-ansible-setup.yaml
 README.md
 
 {{- if ne .chezmoi.os "windows" }}
