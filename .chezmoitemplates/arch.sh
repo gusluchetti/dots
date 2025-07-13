@@ -20,6 +20,7 @@ pkgs=(
   tmux
   fzf
   eza
+  fastfetch
   findutils
   ripgrep
 )
