@@ -193,8 +193,8 @@ return {
 			})
 			-- visual mode
 			require("which-key").register({
-				["<leader>h"] = { "Git [H]unk" },
-			}, { mode = "v" })
+				{ "<leader>h", desc = "Git [H]unk", mode = "v" },
+			})
 		end,
 	},
 
