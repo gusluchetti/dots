@@ -59,6 +59,12 @@ return {
 					},
 				},
 			},
+			default_component_configs = {
+				icon = {
+					default = "*",
+					highlight = "NeoTreeFileIcon",
+				},
+			},
 		},
 	},
 
