@@ -50,6 +50,4 @@ alias lx='eza -lbhHigUmuSa@'
 alias lt='eza --tree $eza_params'
 alias tree='eza --tree $eza_params'
 
-export OLLAMA_HOST="0.0.0.0:11434"
-
 eval "$($HOME/.local/bin/mise activate --shims)"
