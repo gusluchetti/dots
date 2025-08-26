@@ -651,6 +651,14 @@ return {
 		end,
 	},
 
+	{
+		"gruvw/strudel.nvim",
+		build = "npm install",
+		config = function()
+			require("strudel").setup()
+		end,
+	},
+
 	{ -- Collection of various small independent plugins/modules
 		"echasnovski/mini.nvim",
 		config = function()
