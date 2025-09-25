@@ -431,20 +431,32 @@ return {
 			local servers = {
 				-- gopls = {},
 				-- pyright = {},
-				["rust-analyzer"] = {
+				rust_analyzer = {
 					settings = {
-						cargo = {
-							buildScripts = {
+						["rust-analyzer"] = {
+							cargo = {
+								buildScripts = {
+									enable = true,
+								},
+								features = "all",
+							},
+							procMacro = {
 								enable = true,
 							},
-							features = "all",
-						},
-						procMacro = {
-							enable = true,
-						},
-						checkOnSave = {
-							command = "check",
-							allTargets = false,
+							checkOnSave = {
+								command = "check",
+								allTargets = false,
+							},
+							cachePriming = {
+								enable = true,
+								numThreads = 8,
+							},
+							files = {
+								watcherExclude = {
+									"**/target/**",
+									"**/.git/**",
+								},
+							},
 						},
 					},
 				},
