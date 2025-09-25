@@ -431,7 +431,21 @@ return {
 			local servers = {
 				-- gopls = {},
 				-- pyright = {},
-				-- rust_analyzer = {},
+				rust_analyzer = {
+					cargo = {
+						buildScripts = {
+							enable = true,
+						},
+						features = "all",
+					},
+					procMacro = {
+						enable = true,
+					},
+					checkOnSave = {
+						command = "check",
+						allTargets = false,
+					},
+				},
 				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
 				--
 				-- Some languages (like typescript) have entire language plugins that can be useful:
@@ -506,9 +520,9 @@ return {
 			end,
 			formatters_by_ft = {
 				lua = { "stylua" },
+				rust = { "rustfmt" },
 				-- Conform can also run multiple formatters sequentially
 				-- python = { "isort", "black" },
-				--
 				-- You can use a sub-list to tell conform to run *until* a formatter is found.
 				javascript = { "prettierd", "prettier", stop_after_first = true },
 			},
