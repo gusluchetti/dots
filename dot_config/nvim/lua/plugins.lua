@@ -433,20 +433,18 @@ return {
 				-- pyright = {},
 				rust_analyzer = {
 					settings = {
-						["rust-analyzer"] = {
-							cargo = {
-								buildScripts = {
-									enable = true,
-								},
-								features = "all",
-							},
-							procMacro = {
+						cargo = {
+							buildScripts = {
 								enable = true,
 							},
-							checkOnSave = {
-								command = "check",
-								allTargets = false,
-							},
+							features = "all",
+						},
+						procMacro = {
+							enable = true,
+						},
+						checkOnSave = {
+							command = "check",
+							allTargets = false,
 						},
 					},
 				},
