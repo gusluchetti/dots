@@ -432,18 +432,22 @@ return {
 				-- gopls = {},
 				-- pyright = {},
 				rust_analyzer = {
-					cargo = {
-						buildScripts = {
-							enable = true,
+					settings = {
+						["rust-analyzer"] = {
+							cargo = {
+								buildScripts = {
+									enable = true,
+								},
+								features = "all",
+							},
+							procMacro = {
+								enable = true,
+							},
+							checkOnSave = {
+								command = "check",
+								allTargets = false,
+							},
 						},
-						features = "all",
-					},
-					procMacro = {
-						enable = true,
-					},
-					checkOnSave = {
-						command = "check",
-						allTargets = false,
 					},
 				},
 				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
