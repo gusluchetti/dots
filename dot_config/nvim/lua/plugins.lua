@@ -431,7 +431,7 @@ return {
 			local servers = {
 				-- gopls = {},
 				-- pyright = {},
-				rust_analyzer = {
+				["rust-analyzer"] = {
 					settings = {
 						cargo = {
 							buildScripts = {
