@@ -1,0 +1,66 @@
+{{- if and (eq .chezmoi.os "linux") (.chezmoi.kernel.osrelease | lower | contains "microsoft") -}}
+#!/bin/bash
+# setup-startup-apps hash: {{ include "scripts/windows.ps1" | sha256sum }}
+set -euo pipefail
+
+powershell.exe -NoProfile -Command '
+$ErrorActionPreference = "Stop"
+
+# --- Install TinyNvidiaUpdateChecker via winget (portable) ---
+Write-Host "`nInstalling TinyNvidiaUpdateChecker..." -ForegroundColor Cyan
+winget install --id Hawaii_Beach.TinyNvidiaUpdateChecker --silent --accept-package-agreements --accept-source-agreements --disable-interactivity
+
+# --- Download vibranceGUI ---
+$vibranceDir = "$env:LOCALAPPDATA\Programs\vibranceGUI"
+$vibranceExe = "$vibranceDir\vibranceGUI.exe"
+if (-not (Test-Path $vibranceExe)) {
+    Write-Host "`nDownloading vibranceGUI..." -ForegroundColor Cyan
+    New-Item -ItemType Directory -Force -Path $vibranceDir | Out-Null
+    Invoke-WebRequest -Uri "https://github.com/juv/vibranceGUI/releases/download/v2.5.0/vibranceGUI.exe" -OutFile $vibranceExe -UseBasicParsing
+    Write-Host "Downloaded to $vibranceExe"
+} else {
+    Write-Host "`nvibranceGUI already exists at $vibranceExe, skipping download." -ForegroundColor Yellow
+}
+
+# --- Create startup shortcuts ---
+$startupFolder = [Environment]::GetFolderPath("Startup")
+$wsh = New-Object -ComObject WScript.Shell
+
+# OBS with replay buffer
+$lnk = $wsh.CreateShortcut("$startupFolder\OBS Studio.lnk")
+$lnk.TargetPath = "C:\Program Files\obs-studio\bin\64bit\obs64.exe"
+$lnk.Arguments = "--startreplaybuffer --disable-shutdown-check --minimize-to-tray"
+$lnk.WorkingDirectory = "C:\Program Files\obs-studio\bin\64bit"
+$lnk.Save()
+Write-Host "Created OBS startup shortcut" -ForegroundColor Green
+
+# TinyNvidiaUpdateChecker
+$tinyExe = Get-ChildItem "$env:LOCALAPPDATA\Microsoft\WinGet\Packages\Hawaii_Beach.TinyNvidiaUpdateChecker_*\TinyNvidiaUpdateChecker.exe" -ErrorAction SilentlyContinue | Select-Object -First 1
+if ($tinyExe) {
+    $lnk = $wsh.CreateShortcut("$startupFolder\TinyNvidiaUpdateChecker.lnk")
+    $lnk.TargetPath = $tinyExe.FullName
+    $lnk.Arguments = "--quiet"
+    $lnk.WorkingDirectory = $tinyExe.DirectoryName
+    $lnk.Save()
+    Write-Host "Created TinyNvidiaUpdateChecker startup shortcut" -ForegroundColor Green
+} else {
+    Write-Host "WARNING: TinyNvidiaUpdateChecker.exe not found in WinGet packages" -ForegroundColor Red
+}
+
+# vibranceGUI
+$lnk = $wsh.CreateShortcut("$startupFolder\vibranceGUI.lnk")
+$lnk.TargetPath = $vibranceExe
+$lnk.WorkingDirectory = $vibranceDir
+$lnk.Save()
+Write-Host "Created vibranceGUI startup shortcut" -ForegroundColor Green
+
+# Clean up old manually-created shortcut
+$oldLnk = "$startupFolder\obs w replay buffer.lnk"
+if (Test-Path $oldLnk) {
+    Remove-Item $oldLnk -Force
+    Write-Host "Removed old obs shortcut: $oldLnk" -ForegroundColor Yellow
+}
+
+Write-Host "`nAll startup shortcuts configured." -ForegroundColor Cyan
+'
+{{ end -}}
