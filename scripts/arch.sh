@@ -14,9 +14,6 @@ pkgs=(
   unzip
   ffmpeg
   mpv
-  ranger # file manager
-  neomutt # email client
-  newsboat # rss reader
 
   fastfetch
 
@@ -29,6 +26,11 @@ pkgs=(
   neovim
   lazygit
   mise
+
+  # cool cli stuff
+  ranger # file manager
+  neomutt # email client
+  newsboat # rss reader
 )
 
 setup_type="${1:-}"
