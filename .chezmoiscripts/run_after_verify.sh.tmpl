@@ -1,5 +1,9 @@
 {{- if eq .chezmoi.os "linux" -}}
 #!/bin/bash
+echo "installing mise-managed tools..."
+mise install
+eval "$(mise activate bash)"
+
 echo "=== Post-setup checklist ==="
 command -v nvim >/dev/null && echo "✓ neovim" || echo "✗ neovim"
 command -v tmux >/dev/null && echo "✓ tmux" || echo "✗ tmux"
@@ -7,11 +11,13 @@ command -v mise >/dev/null && echo "✓ mise" || echo "✗ mise"
 command -v fzf >/dev/null && echo "✓ fzf" || echo "✗ fzf"
 command -v eza >/dev/null && echo "✓ eza" || echo "✗ eza"
 command -v lazygit >/dev/null && echo "✓ lazygit" || echo "✗ lazygit"
-command -v node >/dev/null && echo "✓ node $(node -v)" || echo "✗ node (run: mise install)"
-command -v go >/dev/null && echo "✓ go" || echo "✗ go (run: mise install)"
-command -v rustc >/dev/null && echo "✓ rust" || echo "✗ rust (run: mise install)"
+command -v node >/dev/null && echo "✓ node $(node -v)" || echo "✗ node"
+command -v go >/dev/null && echo "✓ go" || echo "✗ go"
+command -v rustc >/dev/null && echo "✓ rust" || echo "✗ rust"
 [[ -f ~/.ssh/id_ed25519 ]] && echo "✓ ssh key" || echo "✗ ssh key (generate or restore)"
+{{- if .isWSL }}
 [[ -L ~/.aws ]] && echo "✓ aws symlink" || echo "✗ aws symlink"
 [[ -L ~/.azure ]] && echo "✓ azure symlink" || echo "✗ azure symlink"
+{{- end }}
 echo "==========================="
 {{ end -}}

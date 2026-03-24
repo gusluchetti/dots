@@ -33,6 +33,7 @@ vim.opt.swapfile = false
 vim.opt.backup = false
 
 local home_dir = os.getenv("HOME") or os.getenv("USERPROFILE");
+vim.fn.mkdir(home_dir .. "/.undodir", "p")
 vim.opt.undodir = home_dir .. "/.undodir"
 vim.opt.undofile = true
 

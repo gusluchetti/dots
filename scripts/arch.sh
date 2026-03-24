@@ -52,7 +52,7 @@ fi
 
 echo "setting up yay, using it from now on"
 if ! [ -x "$(type -p yay)" ]; then
-  sudo pacman -S --needed git base-devel
+  sudo pacman -S --noconfirm --needed git base-devel
   tmpdir=$(mktemp -d)
   git clone https://aur.archlinux.org/yay.git "$tmpdir/yay"
   (cd "$tmpdir/yay" && makepkg -si)
@@ -62,10 +62,8 @@ fi
 echo "downloading all packages..."
 yay -Syu --noconfirm "${pkgs[@]}"
 
-echo "installing mise-managed tools (node, go, rust, etc.)"
-mise install
-
 echo "changing shell to zsh..."
-chsh -s $(which zsh)
+chsh -s "$(which zsh)"
 rm -f ~/.bash_history ~/.bash_logout ~/.bash_profile ~/.bashrc
-zsh
+
+echo "done! open a new terminal for zsh. then run: chezmoi init --apply gusluchetti/dots --ssh"
