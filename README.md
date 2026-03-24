@@ -1,14 +1,14 @@
 # dots
-My dotfiles, managed using [chezmoi](https://www.chezmoi.io/).  
+My dotfiles, managed using [chezmoi](https://www.chezmoi.io/).
 
-`sh -c "$(curl -fsLS get.chezmoi.io/lb)" -- init --apply gusluchetti/dots --ssh`  
+Covers zsh, nvim, tmux, ranger, newsboat, mise, and Windows-side tooling (winget apps, startup shortcuts) for an Arch WSL setup.
 
-downloads chezmoi passing the 'init' command, while applying the configuration defined here.  
-`--ssh` flag is optional, but I usually have SSH configured before chezmoi.
+## Bootstrap
 
-# TODO:
-- fix nvim config: swpa neo-tree.nvim for something else(?) preferrably that doesn't use nerd icons
-## for later:
-- configure ranger, cli file manager
-- configure neomutt, email cli
-- configure newsboat
+```bash
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply gusluchetti/dots --ssh
+```
+
+`--ssh` is optional but I usually have SSH configured before running chezmoi.
+
+For a full reinstall walkthrough (fresh Windows → working WSL), see [`extras/reinstall-plan.md`](extras/reinstall-plan.md).
