@@ -31,8 +31,11 @@ pkgs=(
   mise
 )
 
-echo "select the environment (server/desktop):"
-read setup_type
+setup_type="${1:-}"
+if [[ -z "$setup_type" ]]; then
+  echo "select the environment (server/desktop):"
+  read -r setup_type
+fi
 
 if [[ "$setup_type" == "desktop" ]]; then
   echo "appending desktop-specific packages..."

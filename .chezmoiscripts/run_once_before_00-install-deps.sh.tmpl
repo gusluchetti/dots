@@ -1,0 +1,5 @@
+{{- if eq .chezmoi.os "linux" -}}
+#!/bin/bash
+set -euo pipefail
+bash "{{ .chezmoi.sourceDir }}/scripts/arch.sh" server
+{{ end -}}

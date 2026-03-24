@@ -1,0 +1,31 @@
+auto-reload yes
+reload-time 60
+reload-threads 4
+show-read-feeds yes
+confirm-exit no
+
+# Show article count in feed list
+feed-sort-order unreadarticlecount-desc
+
+# Keybinds
+bind-key j down
+bind-key k up
+bind-key J next-feed
+bind-key K prev-feed
+bind-key G end
+bind-key g home
+bind-key l open
+bind-key h quit
+bind-key u toggle-show-read-feeds
+
+# Colors — dark terminal theme
+color background          default default
+color listnormal          default default
+color listfocus           black   cyan    bold
+color listnormal_unread   cyan    default bold
+color listfocus_unread    black   cyan    bold
+color info                black   cyan    bold
+color article             default default
+
+# Article display
+articlelist-format "%4i %f %D %6L  %t"
