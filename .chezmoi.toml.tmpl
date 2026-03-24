@@ -1,0 +1,19 @@
+{{- $isWSL := false -}}
+{{- if eq .chezmoi.os "linux" -}}
+{{-   if (.chezmoi.kernel.osrelease | lower | contains "microsoft") -}}
+{{-     $isWSL = true -}}
+{{-   end -}}
+{{- end -}}
+
+[data]
+    isWSL = {{ $isWSL }}
+    windowsUser = "gusta"
+    name = "Gustavo Luchetti"
+    email = "gustavo@luchetti.dev"
+
+[git]
+    autoCommit = true
+
+[edit]
+    watch = true
+    command = "nvim"

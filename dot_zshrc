@@ -39,8 +39,9 @@ bindkey '^n' history-search-forward
 bindkey '^[w' kill-region
 
 
+eza_params=('--git' '--icons' '--classify' '--group-directories-first' '--time-style=long-iso' '--color-scale')
+
 alias ff="fastfetch"
-alias ls='ls -la --color'
 alias ls='eza $eza_params'
 alias l='eza --git-ignore $eza_params'
 alias ll='eza --all --header --long $eza_params'
@@ -50,6 +51,4 @@ alias lx='eza -lbhHigUmuSa@'
 alias lt='eza --tree $eza_params'
 alias tree='eza --tree $eza_params'
 
-OLLAMA_HOST=0.0.0.0
-
-eval "$($HOME/.local/bin/mise activate --shims)"
+eval "$(mise activate zsh)"

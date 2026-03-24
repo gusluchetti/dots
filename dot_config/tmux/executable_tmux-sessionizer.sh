@@ -3,7 +3,16 @@
 if [[ $# -eq 1 ]]; then
     s_path=$1
 else
-    s_path=$(find ~/Github -name '.git' | xargs -I{} dirname {} | fzf --height 50% --reverse)
+    s_dirs=()
+    [[ -d ~/Github ]] && s_dirs+=(~/Github)
+    [[ -d ~/projects ]] && s_dirs+=(~/projects)
+
+    if [[ ${#s_dirs[@]} -eq 0 ]]; then
+        echo "No project directories found"
+        exit 0
+    fi
+
+    s_path=$(find "${s_dirs[@]}" -maxdepth 3 -name '.git' | xargs -I{} dirname {} | fzf --height 50% --reverse)
 fi
 
 if [[ -z $s_path ]]; then
@@ -27,4 +36,3 @@ if [[ -z $TMUX ]]; then
 else
     tmux switch-client -t $s_name
 fi
-

@@ -1,0 +1,7 @@
+{{- if .isWSL -}}
+#!/bin/bash
+# windows.ps1 hash: {{ include "scripts/windows.ps1" | sha256sum }}
+set -euo pipefail
+powershell.exe -NoProfile -ExecutionPolicy RemoteSigned -File \
+  "$(wslpath -w "{{ .chezmoi.sourceDir }}/scripts/windows.ps1")"
+{{ end -}}

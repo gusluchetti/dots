@@ -1,7 +1,6 @@
 [tools]
-node = "22"
+node = "lts"
 bun = "latest"
-deno = "latest"
 go = "latest"
 rust = "latest"
 uv = "latest"
