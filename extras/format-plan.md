@@ -1,4 +1,4 @@
-# Windows Reinstall Walkthrough
+# Windows Format Walkthrough
 
 ## 1. Create Bootable USB (Rufus)
 
@@ -65,7 +65,7 @@ mkdir -p ~/.claude && cp /mnt/d/Backups/wsl-backup/claude-credentials.json ~/.cl
 ## 5. Bootstrap (one command)
 
 ```bash
-sudo pacman -Syu curl git
+sudo pacman -Syu curl git openssh
 sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply gusluchetti/dots --ssh
 ```
 
