@@ -17,7 +17,6 @@ Guru3D.RTSS OPAutoClicker.OPAutoClicker Logitech.OnboardMemoryManager IrfanSkilj
 winget install --silent --accept-package-agreements --accept-source-agreements `
 --disable-interactivity Valve.Steam Discord.Discord FACEITLTD.FACEITAC ppy.osu `
 TeamSpeakSystems.TeamSpeakClient  Telegram.TelegramDesktop `
-Mozilla.Firefox.DeveloperEdition Amazon.Kindle `
-PeterPawlowski.foobar2000 PeterPawlowski.foobar2000.EncoderPack
+Mozilla.Firefox PeterPawlowski.foobar2000 PeterPawlowski.foobar2000.EncoderPack
 
 echo "`nWindows app installation complete. A restart may be needed."
