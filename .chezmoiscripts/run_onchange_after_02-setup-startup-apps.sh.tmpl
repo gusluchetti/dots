@@ -52,6 +52,7 @@ if ($tinyExe) {
 # vibranceGUI
 $lnk = $wsh.CreateShortcut("$startupFolder\vibranceGUI.lnk")
 $lnk.TargetPath = $vibranceExe
+$lnk.Arguments = "--force-nvidia"
 $lnk.WorkingDirectory = $vibranceDir
 $lnk.Save()
 Write-Host "Created vibranceGUI startup shortcut" -ForegroundColor Green
