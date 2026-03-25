@@ -16,7 +16,7 @@ Guru3D.RTSS OPAutoClicker.OPAutoClicker Logitech.OnboardMemoryManager IrfanSkilj
 # gaming and others
 winget install --silent --accept-package-agreements --accept-source-agreements `
 --disable-interactivity Valve.Steam Discord.Discord FACEITLTD.FACEITAC Peppy.Osu! `
-TeamSpeakSystems.TeamSpeakClient WhatsApp.WhatsApp `
+TeamSpeakSystems.TeamSpeakClient  Telegram.TelegramDesktop `
 Mozilla.Firefox.DeveloperEdition Amazon.Kindle `
 PeterPawlowski.foobar2000 PeterPawlowski.foobar2000.EncoderPack
 
