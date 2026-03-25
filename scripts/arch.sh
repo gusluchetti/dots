@@ -68,7 +68,7 @@ echo "downloading all packages..."
 yay -Syu --noconfirm "${pkgs[@]}"
 
 echo "changing shell to zsh..."
-chsh -s "$(which zsh)"
+chsh -s /usr/bin/zsh
 rm -f ~/.bash_history ~/.bash_logout ~/.bash_profile ~/.bashrc
 
 echo "done! open a new terminal for zsh. then run: chezmoi init --apply gusluchetti/dots --ssh"
