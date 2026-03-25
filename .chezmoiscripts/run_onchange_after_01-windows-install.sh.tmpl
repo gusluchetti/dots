@@ -2,6 +2,8 @@
 #!/bin/bash
 # windows.ps1 hash: {{ include "scripts/windows.ps1" | sha256sum }}
 set -euo pipefail
-powershell.exe -NoProfile -ExecutionPolicy RemoteSigned -File \
-  "$(wslpath -w "{{ .chezmoi.sourceDir }}/scripts/windows.ps1")"
+TMPPS1="$(wslpath "$(cmd.exe /C echo %TEMP% 2>/dev/null | tr -d '\r')")/chezmoi-windows.ps1"
+cp "{{ .chezmoi.sourceDir }}/scripts/windows.ps1" "$TMPPS1"
+powershell.exe -NoProfile -ExecutionPolicy RemoteSigned -File "$(wslpath -w "$TMPPS1")"
+rm -f "$TMPPS1"
 {{ end -}}
