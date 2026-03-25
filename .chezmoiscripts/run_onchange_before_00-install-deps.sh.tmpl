@@ -1,5 +1,6 @@
 {{- if eq .chezmoi.os "linux" -}}
 #!/bin/bash
+# arch.sh hash: {{ include "scripts/arch.sh" | sha256sum }}
 set -euo pipefail
 bash "{{ .chezmoi.sourceDir }}/scripts/arch.sh" server
 {{ end -}}

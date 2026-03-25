@@ -1,5 +1,3 @@
-$ErrorActionPreference = 'Stop'
-
 # microsoft things
 winget install --silent --accept-package-agreements --accept-source-agreements `
 --disable-interactivity Microsoft.PowerShell Microsoft.Office `
@@ -23,8 +21,4 @@ TeamSpeakSystems.TeamSpeakClient.Beta WhatsApp.WhatsApp.Beta `
 Mozilla.Firefox.DeveloperEdition Amazon.Kindle PeterPawlowski.foobar2000 `
 PeterPawlowski.foobar2000.EncoderPack
 
-echo "`nA restart is necessary to finish installation..."
-$confirmation = Read-Host "Do you want to restart now? (y/n)"
-if ($confirmation -eq 'y') {
-    Restart-Computer
-}
+echo "`nWindows app installation complete. A restart may be needed."

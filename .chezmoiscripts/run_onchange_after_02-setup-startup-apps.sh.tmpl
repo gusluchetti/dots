@@ -3,10 +3,13 @@
 set -euo pipefail
 
 powershell.exe -NoProfile -Command '
-$ErrorActionPreference = "Stop"
 
-# --- Install TinyNvidiaUpdateChecker via winget (portable) ---
-Write-Host "`nInstalling TinyNvidiaUpdateChecker..." -ForegroundColor Cyan
+# --- Install OBS if not present ---
+Write-Host "`nEnsuring OBS is installed..." -ForegroundColor Cyan
+winget install --id OBSProject.OBSStudio --silent --accept-package-agreements --accept-source-agreements --disable-interactivity
+
+# --- Install TinyNvidiaUpdateChecker ---
+Write-Host "`nEnsuring TinyNvidiaUpdateChecker is installed..." -ForegroundColor Cyan
 winget install --id Hawaii_Beach.TinyNvidiaUpdateChecker --silent --accept-package-agreements --accept-source-agreements --disable-interactivity
 
 # --- Download vibranceGUI ---
@@ -52,13 +55,6 @@ $lnk.TargetPath = $vibranceExe
 $lnk.WorkingDirectory = $vibranceDir
 $lnk.Save()
 Write-Host "Created vibranceGUI startup shortcut" -ForegroundColor Green
-
-# Clean up old manually-created shortcut
-$oldLnk = "$startupFolder\obs w replay buffer.lnk"
-if (Test-Path $oldLnk) {
-    Remove-Item $oldLnk -Force
-    Write-Host "Removed old obs shortcut: $oldLnk" -ForegroundColor Yellow
-}
 
 Write-Host "`nAll startup shortcuts configured." -ForegroundColor Cyan
 '

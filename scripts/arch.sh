@@ -67,8 +67,13 @@ fi
 echo "downloading all packages..."
 yay -Syu --noconfirm "${pkgs[@]}"
 
-echo "changing shell to zsh..."
-chsh -s /usr/bin/zsh
+if [ "$SHELL" != "/usr/bin/zsh" ]; then
+  echo "changing shell to zsh..."
+  chsh -s /usr/bin/zsh
+fi
 rm -f ~/.bash_history ~/.bash_logout ~/.bash_profile ~/.bashrc
+
+echo "installing mise-managed tools..."
+mise install
 
 echo "done! open a new terminal for zsh. then run: chezmoi init --apply gusluchetti/dots --ssh"

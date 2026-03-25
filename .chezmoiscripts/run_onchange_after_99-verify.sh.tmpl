@@ -1,9 +1,6 @@
 {{- if eq .chezmoi.os "linux" -}}
 #!/bin/bash
-echo "installing mise-managed tools..."
-mise install
 eval "$(mise activate bash)"
-
 echo "=== Post-setup checklist ==="
 command -v nvim >/dev/null && echo "✓ neovim" || echo "✗ neovim"
 command -v tmux >/dev/null && echo "✓ tmux" || echo "✗ tmux"
