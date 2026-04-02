@@ -26,6 +26,7 @@ pkgs=(
   neovim
   lazygit
   mise
+  age
 
   # cool cli stuff
   ranger # file manager
