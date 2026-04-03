@@ -26,6 +26,7 @@ pkgs=(
   neovim
   lazygit
   mise
+  opencode
   age
 
   # cool cli stuff
