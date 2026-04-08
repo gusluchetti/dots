@@ -1,4 +1,11 @@
 {
-  "model": "openrouter/moonshotai/kimi-k2.5",
-  "small_model": "openrouter/mistralai/devstral-small"
+  "$schema": "https://opencode.ai/config.json",
+  "agent": {
+    "build": {
+      "model": "openrouter/qwen/qwen3-coder"
+    },
+    "plan": {
+      "model": "openrouter/qwen/qwen3.6-plus"
+    }
+  }
 }
