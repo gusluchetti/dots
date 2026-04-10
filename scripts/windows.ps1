@@ -11,7 +11,8 @@ Neovim.Neovim 7zip.7zip VideoLAN.VLC Anki.Anki `
 Klocman.BulkCrapUninstaller MoritzBunkus.MKVToolNix AntibodySoftware.WizTree `
 AntibodySoftware.WizFile HandBrake.HandBrake.CLI Obsidian.Obsidian `
 Wagnardsoft.DisplayDriverUninstaller OBSProject.OBSStudio Guru3D.Afterburner `
-Guru3D.RTSS OPAutoClicker.OPAutoClicker Logitech.OnboardMemoryManager IrfanSkiljan.IrfanView
+Guru3D.RTSS OPAutoClicker.OPAutoClicker Logitech.OnboardMemoryManager IrfanSkiljan.IrfanView `
+xanderfrangos.twinkletray
 
 # gaming and others
 winget install --silent --accept-package-agreements --accept-source-agreements `
