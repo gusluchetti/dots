@@ -1,15 +1,15 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "model": "openrouter/anthropic/claude-sonnet-4.6",
-  "small_model": "openrouter/anthropic/claude-haiku-4.5",
+  "small_model": "openrouter/deepseek/deepseek-v3.2",
   "agent": {
     "plan": {
       "model": "openrouter/anthropic/claude-sonnet-4.6",
       "reasoning": { "effort": "high" }
     },
     "build": {
-      "model": "openrouter/anthropic/claude-haiku-4.5",
-      "reasoning": { "effort": "medium" }
+      "model": "openrouter/deepseek/deepseek-v3.2",
+      "reasoning": { "enabled": false }
     }
   }
 }
