@@ -1,3 +1,9 @@
+# Locale and encoding settings for proper terminal handling
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export LC_CTYPE=en_US.UTF-8
+export LC_MESSAGES=en_US.UTF-8
+
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
@@ -16,10 +22,20 @@ zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 
+# ZLE and terminal rendering improvements
+setopt COMBINING_CHARS
+setopt MULTIBYTE
+setopt promptpercent
+setopt promptsubst
+
 autoload -Uz compinit && compinit
 
 zinit cdreplay -q
 
+# Zsh options for better prompt handling
+setopt correct
+setopt correctall
+setopt histignorespace
 setopt appendhistory
 setopt sharehistory
 setopt hist_ignore_space
