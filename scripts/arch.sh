@@ -14,7 +14,6 @@ pkgs=(
   unzip
   ffmpeg
   mpv
-
   fastfetch
 
   # dev

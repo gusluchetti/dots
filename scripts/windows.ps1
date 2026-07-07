@@ -1,18 +1,17 @@
 # microsoft things
+Add-WindowsCapability -Online -Name OpenSSH.Client*
 winget install --silent --accept-package-agreements --accept-source-agreements `
 --disable-interactivity Microsoft.PowerShell Microsoft.Office `
-Microsoft.PowerToys Microsoft.VisualStudio.2022.BuildTools Microsoft.Teams `
-Microsoft.OpenSSH.Preview
+Microsoft.PowerToys Microsoft.VisualStudio.2022.BuildTools
 
 # main
 winget install --silent --accept-package-agreements --accept-source-agreements `
 --disable-interactivity gerardog.gsudo aria2.aria2 Git.Git GitHub.cli `
-Neovim.Neovim 7zip.7zip VideoLAN.VLC Anki.Anki `
-Klocman.BulkCrapUninstaller MoritzBunkus.MKVToolNix AntibodySoftware.WizTree `
-AntibodySoftware.WizFile HandBrake.HandBrake.CLI Obsidian.Obsidian `
-Wagnardsoft.DisplayDriverUninstaller OBSProject.OBSStudio Guru3D.Afterburner `
-Guru3D.RTSS OPAutoClicker.OPAutoClicker Logitech.OnboardMemoryManager IrfanSkiljan.IrfanView `
-xanderfrangos.twinkletray
+Neovim.Neovim 7zip.7zip VideoLAN.VLC Anki.Anki Klocman.BulkCrapUninstaller `
+MoritzBunkus.MKVToolNix AntibodySoftware.WizTree AntibodySoftware.WizFile `
+HandBrake.HandBrake.CLI Obsidian.Obsidian Wagnardsoft.DisplayDriverUninstaller `
+OBSProject.OBSStudio Guru3D.Afterburner Guru3D.RTSS OPAutoClicker.OPAutoClicker `
+Logitech.OnboardMemoryManager IrfanSkiljan.IrfanView xanderfrangos.twinkletray
 
 # gaming and others
 winget install --silent --accept-package-agreements --accept-source-agreements `
