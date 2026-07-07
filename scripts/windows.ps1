@@ -19,6 +19,7 @@ xanderfrangos.twinkletray
 # misc
 winget install --silent --accept-package-agreements --accept-source-agreements `
 --disable-interactivity Valve.Steam smartfrigde.Legcord FACEITLTD.FACEITAC ppy.osu `
-Mozilla.Firefox PeterPawlowski.foobar2000 PeterPawlowski.foobar2000.EncoderPack
+Mozilla.Firefox PeterPawlowski.foobar2000 PeterPawlowski.foobar2000.EncoderPack `
+Hawaii_Beach.TinyNvidiaUpdateChecker
 
 echo "`nWindows app installation complete. A restart may be needed."
